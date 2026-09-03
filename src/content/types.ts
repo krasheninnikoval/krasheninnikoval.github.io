@@ -56,8 +56,11 @@ export interface CaseStudy {
   coverPair?: {
     photo: ImageRef;
     screen: ImageRef;
-    /** Фон картинки прозрачный — ставим её прямо на подложку, без рамки и тени */
-    photoBare?: boolean;
+    /**
+     * Пояснительная дуга поверх композиции: путь SVG в системе координат
+     * 1000×315 (ширина блока × высота нижней картинки). Необязательна.
+     */
+    arrowPath?: string;
   };
   meta: {
     timeline: string;

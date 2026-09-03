@@ -20,11 +20,19 @@ export const clinicNavigation: CaseStudy = {
     width: 1920,
     height: 1080,
   },
-  cover: {
-    src: "/images/cases/clinic/main-page.png",
-    alt: "Главная страница сайта клиники с раскрытым меню",
-    width: 1920,
-    height: 1080,
+  coverPair: {
+    photo: {
+      src: "/images/cases/clinic/main-page.png",
+      alt: "Главная страница сайта клиники с раскрытым меню",
+      width: 1920,
+      height: 1080,
+    },
+    screen: {
+      src: "/images/cases/clinic/new-structure.png",
+      alt: "Схема новой информационной архитектуры сайта",
+      width: 2416,
+      height: 2968,
+    },
   },
   meta: {
     timeline: "сентябрь 2025 – настоящее время",

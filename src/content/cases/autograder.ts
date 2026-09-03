@@ -21,6 +21,7 @@ export const autograder: CaseStudy = {
     height: 1080,
   },
   coverPair: {
+    arrowPath: "M400 206 C 326 206, 208 168, 157 64",
     photo: {
       src: "/images/cases/autograder/cabin-1920.jpg",
       alt: "Кабина автогрейдера с сенсорной панелью",
