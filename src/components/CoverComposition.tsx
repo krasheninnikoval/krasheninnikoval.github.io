@@ -31,7 +31,9 @@ export function CoverComposition({
     <div
       className={cn(
         "w-full rounded-card bg-stage",
-        compact ? "p-4 sm:p-6" : "p-4 sm:p-8 lg:p-10",
+        compact
+          ? "p-4 sm:p-6 sm:pb-10"
+          : "p-4 sm:p-8 sm:pb-14 lg:p-10 lg:pb-16",
         className,
       )}
     >
@@ -53,7 +55,7 @@ export function CoverComposition({
         <div
           className={cn(
             card,
-            "sm:absolute sm:bottom-0 sm:ring-8 sm:ring-stage",
+            "sm:absolute sm:bottom-0 sm:translate-y-[9%] sm:ring-8 sm:ring-stage",
             bare ? "sm:left-0 sm:w-[46%]" : "sm:right-0 sm:w-[64%]",
           )}
         >
