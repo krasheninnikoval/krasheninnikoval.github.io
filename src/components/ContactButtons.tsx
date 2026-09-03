@@ -7,8 +7,7 @@ import { CheckIcon, DocumentIcon, MailIcon, TelegramIcon } from "./icons";
 /* Кнопки-ссылки: иконка и текст, без обводок и заливок. */
 const link =
   "group inline-flex items-center gap-2 text-[15px] font-medium text-ink underline-offset-[7px] transition-colors hover:text-muted hover:underline sm:gap-3 sm:text-[22px]";
-const icon =
-  "size-[20px] shrink-0 text-muted transition-colors group-hover:text-ink/60 sm:size-[25px]";
+const icon = "size-[20px] shrink-0 sm:size-[25px]";
 
 export function ContactButtons() {
   const [copied, setCopied] = useState(false);
