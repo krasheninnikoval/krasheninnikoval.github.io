@@ -29,8 +29,8 @@ export function CaseCard({
       ) : (
         <div
           className={cn(
-            "relative flex w-full items-center justify-center overflow-hidden rounded-media bg-stage",
-            wide ? "aspect-16/9 p-4 sm:p-8" : "aspect-16/10 p-3",
+            "w-full overflow-hidden rounded-media bg-stage",
+            wide ? "p-5 sm:p-10 lg:p-12" : "p-4 sm:p-6",
           )}
         >
           <Image
@@ -39,7 +39,7 @@ export function CaseCard({
             width={study.preview.width}
             height={study.preview.height}
             sizes={sizes}
-            className="h-full w-full rounded-media object-cover shadow-[0_10px_30px_rgba(24,24,27,0.14)] transition-transform duration-500 group-hover:scale-[1.02]"
+            className="h-auto w-full rounded-media shadow-[0_10px_30px_rgba(24,24,27,0.16)] transition-transform duration-500 group-hover:scale-[1.02]"
           />
         </div>
       )}
