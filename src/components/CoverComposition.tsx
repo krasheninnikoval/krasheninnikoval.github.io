@@ -101,7 +101,7 @@ export function CoverComposition({
             </marker>
           </defs>
           <path
-            d="M392 206 C 330 238, 198 190, 156 84"
+            d="M392 206 C 322 206, 206 172, 156 74"
             fill="none"
             stroke="currentColor"
             strokeWidth="3"
