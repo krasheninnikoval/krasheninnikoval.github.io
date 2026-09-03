@@ -69,6 +69,39 @@ export function CoverComposition({
             className="h-auto w-full"
           />
         </div>
+
+        {/* Дуга от экрана к панели в кабине.
+           Система координат SVG совпадает с блоком: 1000 единиц по ширине,
+           315 по высоте — это пропорция фотографии при её ширине 56%. */}
+        <svg
+          viewBox="0 0 1000 315"
+          preserveAspectRatio="none"
+          aria-hidden
+          className="pointer-events-none absolute inset-0 hidden h-full w-full overflow-visible text-white sm:block"
+        >
+          <defs>
+            <marker
+              id="cover-arrow-head"
+              viewBox="0 0 10 10"
+              refX="9"
+              refY="5"
+              markerWidth="5"
+              markerHeight="5"
+              orient="auto-start-reverse"
+            >
+              <path d="M0 0 L10 5 L0 10 Z" fill="currentColor" />
+            </marker>
+          </defs>
+          <path
+            d="M418 206 C 332 250, 198 218, 150 38"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+            markerEnd="url(#cover-arrow-head)"
+            style={{ filter: "drop-shadow(0 1px 3px rgba(0,0,0,0.55))" }}
+          />
+        </svg>
       </div>
     </div>
   );
