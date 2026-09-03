@@ -3,6 +3,7 @@ import type { Project } from "@/content/types";
 import { CaseCard } from "./CaseCard";
 import { Container } from "./Container";
 import { MetaLine } from "./MetaLine";
+import { MetricRow } from "./Metrics";
 import { Reveal } from "./Reveal";
 import { TagList } from "./Tag";
 
@@ -42,6 +43,12 @@ function ProjectRow({ project }: { project: Project }) {
       <div className="mt-6">
         <TagList tags={project.tags} />
       </div>
+
+      {/* Результаты показываем, только если у проекта нет кейса:
+         иначе цифры уже стоят на карточке кейса. */}
+      {study ? null : (
+        <MetricRow items={project.results} plain className="mt-10 sm:mt-12" />
+      )}
 
       {/* Кейс — под описанием, на всю ширину раздела */}
       {study ? (
