@@ -2,7 +2,6 @@ import Image from "next/image";
 import { profile } from "@/content";
 import { Container } from "./Container";
 import { ContactButtons } from "./ContactButtons";
-import { ChevronDownIcon } from "./icons";
 
 /** Блок «Обо мне» — первый экран сайта. */
 export function Hero() {
@@ -46,13 +45,6 @@ export function Hero() {
         </div>
       </Container>
 
-      {/* Индикатор прокрутки — только на больших экранах */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-8 hidden justify-center text-muted/60 lg:flex"
-      >
-        <ChevronDownIcon width={22} height={22} />
-      </div>
     </section>
   );
 }
