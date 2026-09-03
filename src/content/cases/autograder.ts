@@ -22,10 +22,10 @@ export const autograder: CaseStudy = {
   },
   coverPair: {
     photo: {
-      src: "/images/cases/autograder/cabin.jpg",
+      src: "/images/cases/autograder/cabin-16x9.jpg",
       alt: "Кабина автогрейдера изнутри",
       width: 574,
-      height: 400,
+      height: 323,
     },
     screen: {
       src: "/images/cases/autograder/nivelirovanie.png",
