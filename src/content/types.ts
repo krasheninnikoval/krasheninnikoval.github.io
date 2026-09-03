@@ -53,7 +53,12 @@ export interface CaseStudy {
    * Обложка-композиция: фотография контекста и экран интерфейса поверх неё.
    * Если задана, используется вместо cover и вместо превью на карточке.
    */
-  coverPair?: { photo: ImageRef; screen: ImageRef };
+  coverPair?: {
+    photo: ImageRef;
+    screen: ImageRef;
+    /** Фон картинки прозрачный — ставим её прямо на подложку, без рамки и тени */
+    photoBare?: boolean;
+  };
   meta: {
     timeline: string;
     team: string;

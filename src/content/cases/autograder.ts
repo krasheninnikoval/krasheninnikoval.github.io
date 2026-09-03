@@ -21,11 +21,12 @@ export const autograder: CaseStudy = {
     height: 1080,
   },
   coverPair: {
+    photoBare: true,
     photo: {
-      src: "/images/cases/autograder/cabin-16x9.jpg",
-      alt: "Кабина автогрейдера изнутри",
-      width: 574,
-      height: 323,
+      src: "/images/cases/autograder/grader-k714.png",
+      alt: "Автогрейдер Кировец К-714",
+      width: 1032,
+      height: 644,
     },
     screen: {
       src: "/images/cases/autograder/nivelirovanie.png",

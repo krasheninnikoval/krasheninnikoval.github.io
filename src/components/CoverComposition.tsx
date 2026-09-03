@@ -2,13 +2,13 @@ import Image from "next/image";
 import type { CaseStudy } from "@/content/types";
 import { cn } from "@/lib/cn";
 
-const layer =
+const card =
   "overflow-hidden rounded-media shadow-[0_14px_44px_rgba(24,24,27,0.20)]";
 
 /**
- * Обложка кейса: фотография контекста и экран интерфейса поверх неё
- * со сдвигом, на нейтральной подложке. Обе картинки целиком внутри подложки.
- * На узких экранах встают друг под друга.
+ * Обложка кейса: картинка контекста (техника или фотография) и экран
+ * интерфейса поверх неё, всё на нейтральной подложке.
+ * На узких экранах картинки встают друг под друга.
  */
 export function CoverComposition({
   pair,
@@ -25,6 +25,8 @@ export function CoverComposition({
   /** Уменьшенные отступы — для карточки в разделе «Опыт» */
   compact?: boolean;
 }) {
+  const bare = pair.photoBare === true;
+
   return (
     <div
       className={cn(
@@ -34,8 +36,8 @@ export function CoverComposition({
       )}
     >
       <div className="relative grid gap-4 sm:block">
-        {/* Фотография кабины задаёт высоту композиции */}
-        <div className={cn(layer, "sm:w-[62%]")}>
+        {/* Картинка контекста задаёт высоту композиции */}
+        <div className={cn(bare ? "sm:w-full" : cn(card, "sm:w-[62%]"))}>
           <Image
             src={pair.photo.src}
             alt={pair.photo.alt}
@@ -47,12 +49,12 @@ export function CoverComposition({
           />
         </div>
 
-        {/* Экран интерфейса поверх фотографии, со светлым зазором */}
+        {/* Экран интерфейса поверх, со светлым зазором */}
         <div
           className={cn(
-            layer,
-            "sm:absolute sm:bottom-0 sm:right-0 sm:w-[64%]",
-            "sm:ring-8 sm:ring-stage",
+            card,
+            "sm:absolute sm:bottom-0 sm:ring-8 sm:ring-stage",
+            bare ? "sm:left-0 sm:w-[46%]" : "sm:right-0 sm:w-[64%]",
           )}
         >
           <Image
