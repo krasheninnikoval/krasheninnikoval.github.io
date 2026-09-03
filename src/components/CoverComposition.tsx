@@ -77,9 +77,51 @@ export function CoverComposition({
           viewBox="0 0 1000 315"
           preserveAspectRatio="none"
           aria-hidden
-          className="pointer-events-none absolute inset-0 hidden h-full w-full overflow-visible text-white sm:block"
+          className="pointer-events-none absolute inset-0 hidden h-full w-full overflow-visible text-[#d91324] sm:block"
         >
           <defs>
+            {/* Меловая текстура: края «дрожат», по линии рассыпана крошка */}
+            <filter
+              id="cover-chalk"
+              x="-20%"
+              y="-20%"
+              width="140%"
+              height="140%"
+            >
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.055"
+                numOctaves="4"
+                seed="9"
+                result="edgeNoise"
+              />
+              <feDisplacementMap
+                in="SourceGraphic"
+                in2="edgeNoise"
+                scale="3.2"
+                xChannelSelector="R"
+                yChannelSelector="G"
+                result="rough"
+              />
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.34"
+                numOctaves="3"
+                seed="4"
+                result="grain"
+              />
+              <feColorMatrix
+                in="grain"
+                type="matrix"
+                values="0 0 0 0 0
+                        0 0 0 0 0
+                        0 0 0 0 0
+                        0.85 0 0 0 -0.34"
+                result="grainMask"
+              />
+              <feComposite in="rough" in2="grainMask" operator="out" />
+            </filter>
+
             <marker
               id="cover-arrow-head"
               viewBox="0 0 10 10"
@@ -104,10 +146,13 @@ export function CoverComposition({
             d="M400 206 C 326 206, 208 168, 157 64"
             fill="none"
             stroke="currentColor"
-            strokeWidth="3"
+            strokeWidth="3.4"
             strokeLinecap="round"
             markerEnd="url(#cover-arrow-head)"
-            style={{ filter: "drop-shadow(0 1px 3px rgba(0,0,0,0.55))" }}
+            style={{
+              filter:
+                "url(#cover-chalk) drop-shadow(0 1px 3px rgba(0,0,0,0.45))",
+            }}
           />
         </svg>
       </div>
