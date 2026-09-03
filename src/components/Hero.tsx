@@ -15,15 +15,11 @@ export function Hero() {
             <h1 className="text-[38px] font-medium leading-[1.05] tracking-[-0.03em] text-balance sm:text-[56px] lg:text-[64px]">
               {profile.fullName}
             </h1>
-            <p className="mt-4 text-lg text-muted sm:text-xl">{profile.role}</p>
+            <p className="mt-6 max-w-[34ch] text-[20px] leading-snug text-balance text-muted sm:mt-7 sm:text-[26px]">
+              {profile.tagline}
+            </p>
 
-            <div className="mt-7 max-w-[56ch] space-y-4 text-[17px] leading-relaxed text-ink/80 sm:mt-8">
-              {profile.about.map((paragraph) => (
-                <p key={paragraph.slice(0, 32)}>{paragraph}</p>
-              ))}
-            </div>
-
-            <div className="mt-9 sm:mt-10">
+            <div className="mt-9 sm:mt-11">
               <ContactButtons />
             </div>
           </div>

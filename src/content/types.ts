@@ -75,8 +75,10 @@ export interface Project {
 
 export interface Profile {
   fullName: string;
+  /** Короткая должность — используется в заголовке вкладки и разметке для поисковиков */
   role: string;
-  about: string[];
+  /** Одна строка под именем в блоке «Обо мне» */
+  tagline: string;
   photo: ImageRef;
   telegram: { handle: string; url: string };
   email: string;
