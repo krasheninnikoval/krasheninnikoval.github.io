@@ -43,14 +43,28 @@ export function typo(text: string): string {
   return result;
 }
 
-/** Рекурсивно применяет typo ко всем строкам внутри объекта или массива. */
+/**
+ * Поля, которые типографике не подлежат: это не текст для чтения,
+ * а технические строки. Неразрывный пробел сломал бы их.
+ */
+const SKIP_KEYS = new Set([
+  "arrowPath",
+  "src",
+  "slug",
+  "url",
+  "resumeUrl",
+  "email",
+  "handle",
+]);
+
+/** Рекурсивно применяет typo ко всем текстовым строкам объекта или массива. */
 export function deepTypo<T>(value: T): T {
   if (typeof value === "string") return typo(value) as T;
-  if (Array.isArray(value)) return value.map(deepTypo) as unknown as T;
+  if (Array.isArray(value)) return value.map((item) => deepTypo(item)) as unknown as T;
   if (value && typeof value === "object") {
     const out: Record<string, unknown> = {};
     for (const [key, item] of Object.entries(value)) {
-      out[key] = deepTypo(item);
+      out[key] = SKIP_KEYS.has(key) ? item : deepTypo(item);
     }
     return out as T;
   }
