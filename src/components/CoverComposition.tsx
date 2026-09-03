@@ -83,17 +83,25 @@ export function CoverComposition({
             <marker
               id="cover-arrow-head"
               viewBox="0 0 10 10"
-              refX="9"
+              refX="8.5"
               refY="5"
-              markerWidth="5"
-              markerHeight="5"
+              markerWidth="6"
+              markerHeight="6"
               orient="auto-start-reverse"
             >
-              <path d="M0 0 L10 5 L0 10 Z" fill="currentColor" />
+              {/* Наконечник из двух палочек, а не залитый треугольник */}
+              <path
+                d="M2 1 L9 5 L2 9"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </marker>
           </defs>
           <path
-            d="M418 206 C 332 250, 198 218, 150 38"
+            d="M392 206 C 330 238, 198 190, 156 84"
             fill="none"
             stroke="currentColor"
             strokeWidth="3"
