@@ -1,8 +1,5 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
 import { profile } from "@/content";
-import { CheckIcon, DocumentIcon, MailIcon, TelegramIcon } from "./icons";
+import { DocumentIcon, MailIcon, TelegramIcon } from "./icons";
 
 /* Кнопки-ссылки: иконка и текст, без обводок и заливок. */
 const link =
@@ -10,26 +7,6 @@ const link =
 const icon = "size-[20px] shrink-0 sm:size-[25px]";
 
 export function ContactButtons() {
-  const [copied, setCopied] = useState(false);
-  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
-
-  useEffect(() => () => clearTimeout(timer.current), []);
-
-  /** Открываем почтовый клиент и параллельно кладём адрес в буфер обмена. */
-  const handleMail = () => {
-    if (!navigator.clipboard) return;
-    navigator.clipboard
-      .writeText(profile.email)
-      .then(() => {
-        setCopied(true);
-        clearTimeout(timer.current);
-        timer.current = setTimeout(() => setCopied(false), 2000);
-      })
-      .catch(() => {
-        /* буфер недоступен — mailto всё равно сработает */
-      });
-  };
-
   return (
     <div className="flex w-full max-w-[420px] flex-wrap items-center justify-between gap-x-6 gap-y-4 sm:max-w-[470px]">
       <a
@@ -52,17 +29,9 @@ export function ContactButtons() {
         Резюме
       </a>
 
-      <a
-        href={`mailto:${profile.email}`}
-        onClick={handleMail}
-        className={link}
-      >
-        {copied ? (
-          <CheckIcon className={icon} strokeWidth={1.75} />
-        ) : (
-          <MailIcon className={icon} strokeWidth={1.75} />
-        )}
-        <span aria-live="polite">{copied ? "Адрес скопирован" : "Почта"}</span>
+      <a href={`mailto:${profile.email}`} className={link}>
+        <MailIcon className={icon} strokeWidth={1.75} />
+        Почта
       </a>
     </div>
   );

@@ -39,14 +39,6 @@ export function MailIcon(props: IconProps) {
   );
 }
 
-export function CheckIcon(props: IconProps) {
-  return (
-    <svg {...base} {...props}>
-      <path d="m4 12.5 5 5L20 6.5" />
-    </svg>
-  );
-}
-
 export function ArrowLeftIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>
