@@ -22,7 +22,7 @@ function ProjectMeta({ project }: { project: Project }) {
       {items.map((item, index) => (
         <Fragment key={item.label}>
           {index > 0 ? <span className="px-2 text-line">·</span> : null}
-          {item.label} <span className="text-ink/80">{item.value}</span>
+          {item.label} {item.value}
         </Fragment>
       ))}
     </p>
