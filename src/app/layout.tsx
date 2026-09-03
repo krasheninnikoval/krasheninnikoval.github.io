@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Golos_Text } from "next/font/google";
 import { profile, site } from "@/content";
 import "./globals.css";
 
 /* Шрифт с полноценной кириллицей. Чтобы попробовать другой — меняется здесь. */
-const sans = Inter({
+const sans = Golos_Text({
   variable: "--font-app-sans",
   subsets: ["latin", "cyrillic"],
   display: "swap",

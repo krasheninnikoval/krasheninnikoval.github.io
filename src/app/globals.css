@@ -38,7 +38,6 @@ body {
   background-color: var(--color-bg);
   color: var(--color-ink);
   font-family: var(--font-sans);
-  font-feature-settings: "cv11", "ss01";
   text-rendering: optimizeLegibility;
 }
 
