@@ -134,7 +134,7 @@ function Block({ block }: { block: CaseBlock }) {
           {block.heading ? (
             <h2 className={cn(heading, "mb-6")}>{block.heading}</h2>
           ) : null}
-          <MetricRow items={block.items} />
+          <MetricRow items={block.items} plain />
         </div>
       );
 

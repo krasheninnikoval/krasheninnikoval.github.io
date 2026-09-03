@@ -85,7 +85,7 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
                 <TagList tags={project.tags} />
               </div>
 
-              <MetricRow items={study.results} className="mt-12" />
+              <MetricRow items={study.results} plain className="mt-12" />
             </header>
 
             {study.cover ? (
