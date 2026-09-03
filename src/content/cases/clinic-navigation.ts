@@ -21,6 +21,7 @@ export const clinicNavigation: CaseStudy = {
     height: 1080,
   },
   coverPair: {
+    photoOnTop: true,
     photo: {
       src: "/images/cases/clinic/main-page.png",
       alt: "Главная страница сайта клиники с раскрытым меню",

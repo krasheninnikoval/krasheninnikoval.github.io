@@ -11,6 +11,8 @@ const PHOTO_WIDTH = 0.56;
 const OVERLAY_HEIGHT = 1.03;
 /** Насколько картинки заходят друг на друга, в долях ширины блока. */
 const OVERLAP = 0.136;
+/* Когда сверху лежит нижняя картинка, нахлёст меньше — иначе она закроет вторую. */
+const OVERLAP_REVERSED = 0.07;
 
 /**
  * Обложка кейса: картинка контекста и вторая картинка поверх неё со сдвигом,
@@ -42,7 +44,8 @@ export function CoverComposition({
   const photoHeight = PHOTO_WIDTH / photoAspect;
   const overlayWidth = photoHeight * OVERLAY_HEIGHT * screenAspect;
   /* Пара картинок с нахлёстом занимает столько и центрируется на подложке. */
-  const groupWidth = PHOTO_WIDTH + overlayWidth - OVERLAP;
+  const overlap = pair.photoOnTop ? OVERLAP_REVERSED : OVERLAP;
+  const groupWidth = PHOTO_WIDTH + overlayWidth - overlap;
 
   return (
     <div
@@ -62,7 +65,11 @@ export function CoverComposition({
       >
         {/* Нижняя картинка задаёт высоту композиции */}
         <div
-          className={cn(card, "sm:w-(--photo-width)")}
+          className={cn(
+            card,
+            "sm:w-(--photo-width)",
+            pair.photoOnTop && "sm:relative sm:z-10 sm:ring-8 sm:ring-stage",
+          )}
           style={
             {
               "--photo-width": `${(PHOTO_WIDTH / groupWidth) * 100}%`,
@@ -85,7 +92,8 @@ export function CoverComposition({
           className={cn(
             card,
             "sm:absolute sm:bottom-0 sm:right-0 sm:w-(--overlay-width)",
-            "sm:translate-y-[20%] sm:ring-8 sm:ring-stage",
+            "sm:translate-y-[20%]",
+            pair.photoOnTop ? "sm:z-0" : "sm:ring-8 sm:ring-stage",
           )}
           style={
             {
