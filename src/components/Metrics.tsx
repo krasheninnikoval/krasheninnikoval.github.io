@@ -10,17 +10,20 @@ export function MetricRow({
   items,
   className,
   plain = false,
+  /** Уменьшенные цифры — для карточки кейса */
+  compact = false,
 }: {
   items: Metric[];
   className?: string;
   plain?: boolean;
+  compact?: boolean;
 }) {
   if (items.length === 0) return null;
   return (
     <dl
       className={cn(
         "grid grid-cols-2 gap-x-6 sm:gap-x-10",
-        plain ? "gap-y-10" : "gap-y-8",
+        plain && !compact ? "gap-y-10" : "gap-y-8",
         items.length >= 4 ? "md:grid-cols-4" : "md:grid-cols-3",
         className,
       )}
@@ -33,11 +36,22 @@ export function MetricRow({
             plain ? "gap-2.5" : "gap-1.5 border-t border-line pt-4",
           )}
         >
-          <dt className="text-sm leading-snug text-muted">{item.label}</dt>
+          <dt
+            className={cn(
+              "leading-snug text-muted",
+              compact ? "text-[13px]" : "text-sm",
+            )}
+          >
+            {item.label}
+          </dt>
           <dd
             className={cn(
               "font-medium leading-none tracking-tight",
-              plain ? "text-[36px] sm:text-[44px]" : "text-[32px] sm:text-4xl",
+              compact
+                ? "text-[26px] sm:text-[32px]"
+                : plain
+                  ? "text-[36px] sm:text-[44px]"
+                  : "text-[32px] sm:text-4xl",
             )}
           >
             {item.value}

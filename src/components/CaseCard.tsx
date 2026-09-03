@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { CaseStudy } from "@/content/types";
 import { cn } from "@/lib/cn";
+import { MetricRow } from "./Metrics";
 
 /**
  * Карточка кейса. Используется и в правой колонке проекта на главной,
@@ -49,6 +50,15 @@ export function CaseCard({
         <p className="mt-2.5 max-w-[62ch] text-[15px] leading-relaxed text-muted sm:text-base">
           {study.cardSummary}
         </p>
+
+        {wide ? (
+          <MetricRow
+            items={study.results}
+            plain
+            compact
+            className="mt-7 sm:mt-8"
+          />
+        ) : null}
       </div>
     </Link>
   );
