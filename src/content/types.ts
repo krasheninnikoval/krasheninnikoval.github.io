@@ -62,6 +62,10 @@ export interface CaseStudy {
 export interface Project {
   slug: string;
   title: string;
+  /** Заказчик или компания — необязательно */
+  client?: string;
+  /** Сроки работы над проектом — необязательно */
+  period?: string;
   description: string;
   tags: string[];
   results: Metric[];

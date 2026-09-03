@@ -19,7 +19,13 @@ function ProjectRow({ project }: { project: Project }) {
       <h3 className="text-[28px] font-medium leading-tight tracking-[-0.02em] text-balance sm:text-[34px]">
         {project.title}
       </h3>
-      <p className="mt-4 max-w-[62ch] text-[17px] leading-relaxed text-muted">
+      {project.client || project.period ? (
+        <p className="mt-3 text-[15px] leading-relaxed text-muted">
+          {[project.client, project.period].filter(Boolean).join(" · ")}
+        </p>
+      ) : null}
+
+      <p className="mt-4 max-w-[62ch] text-[17px] leading-relaxed text-ink/80">
         {project.description}
       </p>
 

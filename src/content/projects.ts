@@ -2,8 +2,19 @@ import type { Project } from "./types";
 import { onboarding } from "./cases/onboarding";
 import { partnerPortal } from "./cases/partner-portal";
 
-/* ЗАГЛУШКА. Порядок проектов на главной = порядок в этом списке. */
+/* Порядок проектов на главной = порядок в этом списке.
+   Ниже первого проекта пока стоят заглушки — заменяются по мере поступления данных. */
 export const projects: Project[] = [
+  {
+    slug: "autograder-panel",
+    title: "Панель управления автогрейдером",
+    client: "АО «Петербургский тракторный завод» (ОАО «Кировский завод»)",
+    period: "Сентябрь 2024 – март 2025",
+    description: "Интерфейс сенсорной панели в кабине автогрейдера.",
+    tags: ["B2B"],
+    results: [],
+    cases: [],
+  },
   {
     slug: "neobank",
     title: "Мобильный банк",
