@@ -32,14 +32,14 @@ export function CoverComposition({
       className={cn(
         "w-full rounded-card bg-stage",
         compact
-          ? "p-4 sm:p-6 sm:pb-10"
-          : "p-4 sm:p-8 sm:pb-14 lg:p-10 lg:pb-16",
+          ? "p-4 sm:p-6 sm:pb-14"
+          : "p-4 sm:p-8 sm:pb-20 lg:p-10 lg:pb-24",
         className,
       )}
     >
       <div className="relative grid gap-4 sm:block">
         {/* Картинка контекста задаёт высоту композиции */}
-        <div className={cn(bare ? "sm:w-full" : cn(card, "sm:w-[62%]"))}>
+        <div className={cn(bare ? "sm:w-full" : cn(card, "sm:w-[56%]"))}>
           <Image
             src={pair.photo.src}
             alt={pair.photo.alt}
@@ -55,8 +55,8 @@ export function CoverComposition({
         <div
           className={cn(
             card,
-            "sm:absolute sm:bottom-0 sm:translate-y-[9%] sm:ring-8 sm:ring-stage",
-            bare ? "sm:left-0 sm:w-[46%]" : "sm:right-0 sm:w-[64%]",
+            "sm:absolute sm:bottom-0 sm:translate-y-[20%] sm:ring-8 sm:ring-stage",
+            bare ? "sm:left-0 sm:w-[46%]" : "sm:right-0 sm:w-[58%]",
           )}
         >
           <Image
