@@ -20,11 +20,19 @@ export const autograder: CaseStudy = {
     width: 1920,
     height: 1080,
   },
-  cover: {
-    src: "/images/cases/autograder/nivelirovanie.png",
-    alt: "Экран запуска системы 2D-нивелирования на панели автогрейдера",
-    width: 1920,
-    height: 1080,
+  coverPair: {
+    photo: {
+      src: "/images/cases/autograder/cabin.jpg",
+      alt: "Кабина автогрейдера изнутри",
+      width: 574,
+      height: 400,
+    },
+    screen: {
+      src: "/images/cases/autograder/nivelirovanie.png",
+      alt: "Экран запуска системы 2D-нивелирования",
+      width: 1920,
+      height: 1080,
+    },
   },
   meta: {
     timeline: "сентябрь 2024 – март 2025",

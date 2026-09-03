@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { CaseStudy } from "@/content/types";
 import { cn } from "@/lib/cn";
+import { CoverComposition } from "./CoverComposition";
 import { MetricRow } from "./Metrics";
 
 /**
@@ -23,21 +24,25 @@ export function CaseCard({
       href={`/cases/${study.slug}`}
       className="group block rounded-card border border-line bg-surface p-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-ink/15 hover:shadow-[0_8px_30px_rgba(24,24,27,0.06)]"
     >
-      <div
-        className={cn(
-          "relative flex w-full items-center justify-center overflow-hidden rounded-media bg-stage",
-          wide ? "aspect-16/9 p-4 sm:p-8" : "aspect-16/10 p-3",
-        )}
-      >
-        <Image
-          src={study.preview.src}
-          alt={study.preview.alt}
-          width={study.preview.width}
-          height={study.preview.height}
-          sizes={sizes}
-          className="h-full w-full rounded-media object-cover shadow-[0_10px_30px_rgba(24,24,27,0.14)] transition-transform duration-500 group-hover:scale-[1.02]"
-        />
-      </div>
+      {study.coverPair ? (
+        <CoverComposition pair={study.coverPair} compact sizes={sizes} />
+      ) : (
+        <div
+          className={cn(
+            "relative flex w-full items-center justify-center overflow-hidden rounded-media bg-stage",
+            wide ? "aspect-16/9 p-4 sm:p-8" : "aspect-16/10 p-3",
+          )}
+        >
+          <Image
+            src={study.preview.src}
+            alt={study.preview.alt}
+            width={study.preview.width}
+            height={study.preview.height}
+            sizes={sizes}
+            className="h-full w-full rounded-media object-cover shadow-[0_10px_30px_rgba(24,24,27,0.14)] transition-transform duration-500 group-hover:scale-[1.02]"
+          />
+        </div>
+      )}
 
       <div className="px-2 pb-2 pt-5">
         <h3

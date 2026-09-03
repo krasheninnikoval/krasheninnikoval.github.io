@@ -49,6 +49,11 @@ export interface CaseStudy {
   preview: ImageRef;
   /** Широкая обложка в шапке страницы кейса (необязательно) */
   cover?: ImageRef;
+  /**
+   * Обложка-композиция: фотография контекста и экран интерфейса поверх неё.
+   * Если задана, используется вместо cover и вместо превью на карточке.
+   */
+  coverPair?: { photo: ImageRef; screen: ImageRef };
   meta: {
     timeline: string;
     team: string;

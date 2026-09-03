@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CaseBlocks } from "@/components/CaseBlocks";
 import { CaseCard } from "@/components/CaseCard";
+import { CoverComposition } from "@/components/CoverComposition";
 import { Container } from "@/components/Container";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -88,7 +89,14 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
               <MetricRow items={study.results} plain className="mt-12" />
             </header>
 
-            {study.cover ? (
+            {study.coverPair ? (
+              <CoverComposition
+                pair={study.coverPair}
+                priority
+                className="mx-auto mt-14 max-w-[1040px] sm:mt-16"
+                sizes="(max-width: 1100px) 70vw, 700px"
+              />
+            ) : study.cover ? (
               <ZoomableImage
                 image={study.cover}
                 priority
