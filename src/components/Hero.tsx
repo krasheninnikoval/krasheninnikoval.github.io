@@ -19,9 +19,11 @@ export function Hero() {
               {profile.tagline}
             </p>
 
-            <p className="mt-5 max-w-[52ch] text-[17px] leading-relaxed text-muted sm:mt-6">
-              {profile.summary}
-            </p>
+            <div className="mt-5 max-w-[52ch] space-y-4 text-[17px] leading-relaxed text-muted sm:mt-6">
+              {profile.summary.map((paragraph) => (
+                <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+              ))}
+            </div>
 
             <div className="mt-9 sm:mt-11">
               <ContactButtons />
