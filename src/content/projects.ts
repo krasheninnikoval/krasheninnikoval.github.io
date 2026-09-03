@@ -1,4 +1,5 @@
 import type { Project } from "./types";
+import { autograder } from "./cases/autograder";
 
 /* Порядок проектов на главной = порядок в этом списке. */
 export const projects: Project[] = [
@@ -11,7 +12,7 @@ export const projects: Project[] = [
     description: "Интерфейс сенсорной панели в кабине автогрейдера",
     tags: ["B2B", "Промышленное ПО"],
     results: [],
-    cases: [],
+    cases: [autograder],
   },
   {
     slug: "requests-service",
