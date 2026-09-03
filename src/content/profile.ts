@@ -2,7 +2,7 @@ import type { Profile } from "./types";
 
 /* ЗАГЛУШКА. Заменяется на реальные данные, когда придут материалы. */
 export const profile: Profile = {
-  fullName: "Имя Фамилия Отчество",
+  fullName: "Крашенинникова Любовь",
   role: "Продуктовый дизайнер",
   about: [
     "Проектирую цифровые продукты семь лет: от финтех-сервисов и внутренних инструментов до маркетплейсов. Отвечаю за путь от исследования и гипотезы до интерфейса, который прошёл проверку метриками.",
@@ -10,10 +10,10 @@ export const profile: Profile = {
     "Сейчас ищу команду, где дизайн влияет на продуктовые решения, а не только на их оформление.",
   ],
   photo: {
-    src: "/images/placeholder/portrait.png",
-    alt: "Фотография",
-    width: 1200,
-    height: 1500,
+    src: "/images/profile.jpg",
+    alt: "Крашенинникова Любовь",
+    width: 1400,
+    height: 1750,
   },
   telegram: { handle: "@username", url: "https://t.me/username" },
   email: "hello@example.com",
