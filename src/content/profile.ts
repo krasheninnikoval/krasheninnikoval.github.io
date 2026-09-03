@@ -12,7 +12,10 @@ export const profile: Profile = {
     width: 1400,
     height: 1750,
   },
-  telegram: { handle: "@username", url: "https://t.me/username" },
-  email: "hello@example.com",
-  resumeUrl: "/resume.pdf",
+  telegram: {
+    handle: "@krasheninnikovalm",
+    url: "https://t.me/krasheninnikovalm",
+  },
+  email: "klm1302@yandex.ru",
+  resumeUrl: "/Krasheninnikova-Lyubov-resume.pdf",
 };
