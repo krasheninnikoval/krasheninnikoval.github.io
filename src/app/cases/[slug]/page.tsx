@@ -71,7 +71,7 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
                   { label: "Продукт", value: study.meta.product },
                 ].map((item) => (
                   <div key={item.label}>
-                    <dt className="text-[13px] uppercase tracking-[0.12em] text-muted">
+                    <dt className="text-[13px] text-muted">
                       {item.label}
                     </dt>
                     <dd className="mt-2 text-[15px] leading-relaxed">
@@ -108,7 +108,7 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
         {others.length > 0 ? (
           <Container className="mt-24 sm:mt-32">
             <div className="border-t border-line pt-12">
-              <h2 className="text-[13px] font-medium uppercase tracking-[0.14em] text-muted">
+              <h2 className="text-[15px] font-medium text-muted sm:text-[17px]">
                 Другие кейсы
               </h2>
               <ul className="mt-8 grid gap-6 sm:grid-cols-2">

@@ -10,7 +10,7 @@ export function Footer() {
   return (
     <footer id="contacts" className="scroll-mt-24 border-t border-line">
       <Container className="py-16 sm:py-20">
-        <h2 className="text-[13px] font-medium uppercase tracking-[0.14em] text-muted">
+        <h2 className="text-[15px] font-medium text-muted sm:text-[17px]">
           Связаться
         </h2>
 

@@ -10,7 +10,7 @@ export default function NotFound() {
       <Header />
       <main className="flex flex-1 items-center">
         <Container className="py-32 text-center">
-          <p className="text-sm uppercase tracking-[0.14em] text-muted">404</p>
+          <p className="text-sm text-muted">404</p>
           <h1 className="mt-4 text-[32px] font-medium tracking-[-0.02em] sm:text-[44px]">
             Страница не найдена
           </h1>
