@@ -1,8 +1,12 @@
-import { projects } from "./projects";
+import { deepTypo } from "@/lib/typography";
+import { profile as rawProfile } from "./profile";
+import { projects as rawProjects } from "./projects";
 import type { CaseStudy, Project } from "./types";
 
-export { projects };
-export { profile } from "./profile";
+/* Все тексты проходят микротипографику: висячих предлогов и частиц не остаётся. */
+export const projects = deepTypo(rawProjects);
+export const profile = deepTypo(rawProfile);
+
 export { site } from "./site";
 export type * from "./types";
 
