@@ -47,8 +47,8 @@ export function ProjectsSection() {
     <section id="projects" className="scroll-mt-24 pb-24 pt-8 sm:pb-32">
       <Container>
         <Reveal>
-          <h2 className="text-[13px] font-medium uppercase tracking-[0.14em] text-muted">
-            Проекты
+          <h2 className="text-[15px] font-medium uppercase tracking-[0.14em] text-muted sm:text-[17px]">
+            Опыт
           </h2>
         </Reveal>
 

@@ -55,7 +55,7 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
                 className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink"
               >
                 <ArrowLeftIcon width={16} height={16} />
-                Все проекты
+                Весь опыт
               </Link>
 
               <p className="mt-10 text-sm text-muted">{project.title}</p>

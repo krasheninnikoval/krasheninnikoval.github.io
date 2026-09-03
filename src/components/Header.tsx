@@ -24,7 +24,7 @@ export function Header({ variant = "page" }: { variant?: "home" | "page" }) {
           href={`${prefix}#projects`}
           className="rounded-full px-3.5 py-2 text-sm text-muted transition-colors hover:bg-chip hover:text-ink"
         >
-          Проекты
+          Опыт
         </a>
         <a
           href={profile.telegram.url}
