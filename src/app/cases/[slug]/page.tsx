@@ -4,6 +4,7 @@ import { CaseBlocks } from "@/components/CaseBlocks";
 import { CaseCard } from "@/components/CaseCard";
 import { CoverComposition } from "@/components/CoverComposition";
 import { Container } from "@/components/Container";
+import { MetaLine } from "@/components/MetaLine";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { MetricRow } from "@/components/Metrics";
@@ -65,24 +66,16 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
               </h1>
 
               {/* Сроки · Команда · Классификация продукта */}
-              <dl className="mt-10 grid gap-6 border-t border-line pt-8 sm:grid-cols-3 sm:gap-8">
-                {[
+              <MetaLine
+                className="mt-6"
+                items={[
                   { label: "Сроки", value: study.meta.timeline },
                   { label: "Команда", value: study.meta.team },
                   { label: "Продукт", value: study.meta.product },
-                ].map((item) => (
-                  <div key={item.label}>
-                    <dt className="text-[13px] text-muted">
-                      {item.label}
-                    </dt>
-                    <dd className="mt-2 text-[15px] leading-relaxed">
-                      {item.value}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
+                ]}
+              />
 
-              <div className="mt-8">
+              <div className="mt-6">
                 <TagList tags={project.tags} />
               </div>
 

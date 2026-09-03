@@ -1,31 +1,23 @@
-import { Fragment } from "react";
 import { projects } from "@/content";
 import type { Project } from "@/content/types";
 import { CaseCard } from "./CaseCard";
 import { Container } from "./Container";
+import { MetaLine } from "./MetaLine";
 import { MetricRow } from "./Metrics";
 import { Reveal } from "./Reveal";
 import { TagList } from "./Tag";
 
 /** Компания, заказчик и сроки — тонкая строка-подпись под названием проекта. */
 function ProjectMeta({ project }: { project: Project }) {
-  const items = [
-    { label: "Компания", value: project.company },
-    { label: "Заказчик", value: project.client },
-    { label: "Сроки", value: project.period },
-  ].filter((item) => Boolean(item.value));
-
-  if (items.length === 0) return null;
-
   return (
-    <p className="mt-3 text-[15px] leading-relaxed text-muted">
-      {items.map((item, index) => (
-        <Fragment key={item.label}>
-          {index > 0 ? <span className="px-2 text-line">·</span> : null}
-          {item.label} {item.value}
-        </Fragment>
-      ))}
-    </p>
+    <MetaLine
+      className="mt-3"
+      items={[
+        { label: "Компания", value: project.company },
+        { label: "Заказчик", value: project.client },
+        { label: "Сроки", value: project.period },
+      ]}
+    />
   );
 }
 
