@@ -6,9 +6,9 @@ const layer =
   "overflow-hidden rounded-media shadow-[0_14px_44px_rgba(24,24,27,0.20)]";
 
 /**
- * Обложка кейса: фотография контекста и экран интерфейса рядом,
- * обе картинки видны целиком, на нейтральной подложке.
- * На узких экранах картинки встают друг под друга.
+ * Обложка кейса: фотография контекста и экран интерфейса поверх неё
+ * со сдвигом, на нейтральной подложке. Обе картинки целиком внутри подложки.
+ * На узких экранах встают друг под друга.
  */
 export function CoverComposition({
   pair,
@@ -33,9 +33,9 @@ export function CoverComposition({
         className,
       )}
     >
-      <div className="grid items-center gap-4 sm:grid-cols-[46fr_54fr] sm:gap-6 lg:gap-8">
-        {/* Фотография кабины */}
-        <div className={layer}>
+      <div className="relative grid gap-4 sm:block">
+        {/* Фотография кабины задаёт высоту композиции */}
+        <div className={cn(layer, "sm:w-[62%]")}>
           <Image
             src={pair.photo.src}
             alt={pair.photo.alt}
@@ -47,8 +47,14 @@ export function CoverComposition({
           />
         </div>
 
-        {/* Экран интерфейса */}
-        <div className={layer}>
+        {/* Экран интерфейса поверх фотографии, со светлым зазором */}
+        <div
+          className={cn(
+            layer,
+            "sm:absolute sm:bottom-0 sm:right-0 sm:w-[64%]",
+            "sm:ring-8 sm:ring-stage",
+          )}
+        >
           <Image
             src={pair.screen.src}
             alt={pair.screen.alt}
