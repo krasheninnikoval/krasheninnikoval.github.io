@@ -1,5 +1,6 @@
 import type { Project } from "./types";
 import { autograder } from "./cases/autograder";
+import { clinicNavigation } from "./cases/clinic-navigation";
 
 /* Порядок проектов на главной = порядок в этом списке. */
 export const projects: Project[] = [
@@ -29,7 +30,7 @@ export const projects: Project[] = [
       { value: "с нуля", label: "собрана дизайн-система и обновлена стилистика" },
       { value: "1,5 млн", label: "пациентов, 11 филиалов клиники" },
     ],
-    cases: [],
+    cases: [clinicNavigation],
   },
   {
     slug: "requests-service",
