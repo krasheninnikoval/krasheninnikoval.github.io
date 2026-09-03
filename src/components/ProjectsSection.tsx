@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { projects } from "@/content";
 import type { Project } from "@/content/types";
 import { CaseCard } from "./CaseCard";
@@ -6,7 +7,7 @@ import { MetricRow } from "./Metrics";
 import { Reveal } from "./Reveal";
 import { TagList } from "./Tag";
 
-/** Компания, заказчик и сроки — только те поля, которые заполнены. */
+/** Компания, заказчик и сроки — тонкая строка-подпись под названием проекта. */
 function ProjectMeta({ project }: { project: Project }) {
   const items = [
     { label: "Компания", value: project.company },
@@ -17,14 +18,14 @@ function ProjectMeta({ project }: { project: Project }) {
   if (items.length === 0) return null;
 
   return (
-    <dl className="mt-7 grid gap-5 border-t border-line pt-6 sm:grid-cols-3 sm:gap-8">
-      {items.map((item) => (
-        <div key={item.label}>
-          <dt className="text-[13px] text-muted">{item.label}</dt>
-          <dd className="mt-1.5 text-[15px] leading-relaxed">{item.value}</dd>
-        </div>
+    <p className="mt-3 text-[15px] leading-relaxed text-muted">
+      {items.map((item, index) => (
+        <Fragment key={item.label}>
+          {index > 0 ? <span className="px-2 text-line">·</span> : null}
+          {item.label} <span className="text-ink/80">{item.value}</span>
+        </Fragment>
       ))}
-    </dl>
+    </p>
   );
 }
 
@@ -41,7 +42,9 @@ function ProjectRow({ project }: { project: Project }) {
       <h3 className="text-[28px] font-medium leading-tight tracking-[-0.02em] text-balance sm:text-[34px]">
         {project.title}
       </h3>
-      <p className="mt-4 max-w-[62ch] text-[17px] leading-relaxed text-ink/80">
+      <ProjectMeta project={project} />
+
+      <p className="mt-5 max-w-[62ch] text-[17px] leading-relaxed text-ink/80">
         {project.description}
       </p>
 
@@ -49,9 +52,7 @@ function ProjectRow({ project }: { project: Project }) {
         <TagList tags={project.tags} />
       </div>
 
-      <ProjectMeta project={project} />
-
-      <MetricRow items={project.results} className="mt-9 sm:mt-10" />
+      <MetricRow items={project.results} plain className="mt-10 sm:mt-12" />
 
       {/* Кейс — под описанием, на всю ширину раздела */}
       {study ? (
