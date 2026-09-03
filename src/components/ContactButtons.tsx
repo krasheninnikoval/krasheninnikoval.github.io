@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { profile } from "@/content";
 import { CheckIcon, DocumentIcon, MailIcon, TelegramIcon } from "./icons";
 
-const primary =
-  "inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink px-5 py-3.5 text-[15px] text-bg transition-opacity hover:opacity-85 sm:w-auto";
-const secondary =
-  "inline-flex w-full items-center justify-center gap-2 rounded-full border border-line bg-surface px-5 py-3.5 text-[15px] text-ink transition-colors hover:border-ink/25 hover:bg-chip sm:w-auto";
+/* Кнопки-ссылки: иконка и текст, без обводок и заливок. */
+const link =
+  "group inline-flex items-center gap-2.5 text-[15px] text-ink underline-offset-[6px] transition-colors hover:text-muted hover:underline sm:text-base";
+const icon = "shrink-0 text-muted transition-colors group-hover:text-ink/60";
 
 export function ContactButtons() {
   const [copied, setCopied] = useState(false);
@@ -31,14 +31,14 @@ export function ContactButtons() {
   };
 
   return (
-    <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+    <div className="flex flex-wrap items-center gap-x-7 gap-y-4 sm:gap-x-9">
       <a
         href={profile.telegram.url}
         target="_blank"
         rel="noreferrer noopener"
-        className={primary}
+        className={link}
       >
-        <TelegramIcon />
+        <TelegramIcon className={icon} width={19} height={19} />
         Telegram
       </a>
 
@@ -46,18 +46,22 @@ export function ContactButtons() {
         href={profile.resumeUrl}
         target="_blank"
         rel="noreferrer noopener"
-        className={secondary}
+        className={link}
       >
-        <DocumentIcon />
+        <DocumentIcon className={icon} width={19} height={19} />
         Резюме
       </a>
 
       <a
         href={`mailto:${profile.email}`}
         onClick={handleMail}
-        className={secondary}
+        className={link}
       >
-        {copied ? <CheckIcon /> : <MailIcon />}
+        {copied ? (
+          <CheckIcon className={icon} width={19} height={19} />
+        ) : (
+          <MailIcon className={icon} width={19} height={19} />
+        )}
         <span aria-live="polite">{copied ? "Адрес скопирован" : "Почта"}</span>
       </a>
     </div>
