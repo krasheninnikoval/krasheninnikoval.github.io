@@ -31,7 +31,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="ru" className={`${sans.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        {/* Без JavaScript анимация появления не сработает — показываем всё сразу */}
+        <noscript>
+          <style>{".reveal{opacity:1}"}</style>
+        </noscript>
+        {children}
+      </body>
     </html>
   );
 }

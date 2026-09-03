@@ -1,26 +1,6 @@
 import { cn } from "@/lib/cn";
 import type { Metric } from "@/content/types";
 
-/** Результаты столбиком — левая колонка проекта на главной. */
-export function MetricList({ items }: { items: Metric[] }) {
-  if (items.length === 0) return null;
-  return (
-    <dl className="border-t border-line">
-      {items.map((item) => (
-        <div
-          key={item.label}
-          className="flex flex-col-reverse gap-1 border-b border-line py-4"
-        >
-          <dt className="text-sm text-muted">{item.label}</dt>
-          <dd className="text-2xl font-medium tracking-tight sm:text-[28px]">
-            {item.value}
-          </dd>
-        </div>
-      ))}
-    </dl>
-  );
-}
-
 /** Результаты в ряд — шапка страницы кейса и блок metrics внутри кейса. */
 export function MetricRow({
   items,

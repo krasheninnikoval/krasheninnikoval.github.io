@@ -2,12 +2,12 @@ import { projects } from "@/content";
 import type { Project } from "@/content/types";
 import { CaseCard } from "./CaseCard";
 import { Container } from "./Container";
-import { MetricList } from "./Metrics";
+import { MetricRow } from "./Metrics";
 import { Reveal } from "./Reveal";
 import { TagList } from "./Tag";
 
 function ProjectRow({ project }: { project: Project }) {
-  /* Показываем первый кейс проекта. Если кейса нет — правая колонка пустая. */
+  /* Показываем первый кейс проекта. Если кейса нет — остаётся только описание. */
   const study = project.cases[0];
 
   return (
@@ -15,28 +15,26 @@ function ProjectRow({ project }: { project: Project }) {
       as="li"
       className="border-t border-line pt-10 first:border-t-0 first:pt-0 sm:pt-12"
     >
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,45fr)_minmax(0,55fr)] lg:gap-16">
-        {/* Левая колонка: проект */}
-        <div>
-          <h3 className="text-[28px] font-medium leading-tight tracking-[-0.02em] text-balance sm:text-[34px]">
-            {project.title}
-          </h3>
-          <p className="mt-4 max-w-[52ch] text-[17px] leading-relaxed text-muted">
-            {project.description}
-          </p>
+      {/* Описание проекта */}
+      <h3 className="text-[28px] font-medium leading-tight tracking-[-0.02em] text-balance sm:text-[34px]">
+        {project.title}
+      </h3>
+      <p className="mt-4 max-w-[62ch] text-[17px] leading-relaxed text-muted">
+        {project.description}
+      </p>
 
-          <div className="mt-6">
-            <TagList tags={project.tags} />
-          </div>
-
-          <div className="mt-8">
-            <MetricList items={project.results} />
-          </div>
-        </div>
-
-        {/* Правая колонка: карточка кейса или пустое место */}
-        <div>{study ? <CaseCard study={study} /> : null}</div>
+      <div className="mt-6">
+        <TagList tags={project.tags} />
       </div>
+
+      <MetricRow items={project.results} className="mt-9 sm:mt-10" />
+
+      {/* Кейс — под описанием, на всю ширину раздела */}
+      {study ? (
+        <div className="mt-10 sm:mt-12">
+          <CaseCard study={study} wide sizes="(max-width: 1280px) 100vw, 1240px" />
+        </div>
+      ) : null}
     </Reveal>
   );
 }
@@ -52,7 +50,7 @@ export function ProjectsSection() {
           </h2>
         </Reveal>
 
-        <ul className="mt-10 space-y-10 sm:mt-12 sm:space-y-12">
+        <ul className="mt-10 space-y-14 sm:mt-12 sm:space-y-16">
           {projects.map((project) => (
             <ProjectRow key={project.slug} project={project} />
           ))}
