@@ -6,6 +6,28 @@ import { MetricRow } from "./Metrics";
 import { Reveal } from "./Reveal";
 import { TagList } from "./Tag";
 
+/** Компания, заказчик и сроки — только те поля, которые заполнены. */
+function ProjectMeta({ project }: { project: Project }) {
+  const items = [
+    { label: "Компания", value: project.company },
+    { label: "Заказчик", value: project.client },
+    { label: "Сроки", value: project.period },
+  ].filter((item) => Boolean(item.value));
+
+  if (items.length === 0) return null;
+
+  return (
+    <dl className="mt-7 grid gap-5 border-t border-line pt-6 sm:grid-cols-3 sm:gap-8">
+      {items.map((item) => (
+        <div key={item.label}>
+          <dt className="text-[13px] text-muted">{item.label}</dt>
+          <dd className="mt-1.5 text-[15px] leading-relaxed">{item.value}</dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
 function ProjectRow({ project }: { project: Project }) {
   /* Показываем первый кейс проекта. Если кейса нет — остаётся только описание. */
   const study = project.cases[0];
@@ -19,12 +41,6 @@ function ProjectRow({ project }: { project: Project }) {
       <h3 className="text-[28px] font-medium leading-tight tracking-[-0.02em] text-balance sm:text-[34px]">
         {project.title}
       </h3>
-      {project.client || project.period ? (
-        <p className="mt-3 text-[15px] leading-relaxed text-muted">
-          {[project.client, project.period].filter(Boolean).join(" · ")}
-        </p>
-      ) : null}
-
       <p className="mt-4 max-w-[62ch] text-[17px] leading-relaxed text-ink/80">
         {project.description}
       </p>
@@ -32,6 +48,8 @@ function ProjectRow({ project }: { project: Project }) {
       <div className="mt-6">
         <TagList tags={project.tags} />
       </div>
+
+      <ProjectMeta project={project} />
 
       <MetricRow items={project.results} className="mt-9 sm:mt-10" />
 
