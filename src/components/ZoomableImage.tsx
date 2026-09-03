@@ -15,11 +15,14 @@ export function ZoomableImage({
   sizes,
   className,
   priority,
+  /** Экран на нейтральной подложке — для обложек кейсов */
+  backdrop = false,
 }: {
   image: ImageRef;
   sizes: string;
   className?: string;
   priority?: boolean;
+  backdrop?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const close = useCallback(() => setOpen(false), []);
@@ -44,7 +47,12 @@ export function ZoomableImage({
         type="button"
         onClick={() => setOpen(true)}
         aria-label={`Открыть изображение крупнее: ${image.alt}`}
-        className="block w-full cursor-zoom-in overflow-hidden rounded-media border border-line bg-chip"
+        className={cn(
+          "block w-full cursor-zoom-in overflow-hidden rounded-card",
+          backdrop
+            ? "bg-stage p-4 sm:p-8 lg:p-12"
+            : "rounded-media border border-line bg-chip",
+        )}
       >
         <Image
           src={image.src}
@@ -53,7 +61,11 @@ export function ZoomableImage({
           height={image.height}
           sizes={sizes}
           priority={priority}
-          className="h-auto w-full"
+          className={cn(
+            "h-auto w-full",
+            backdrop &&
+              "rounded-media shadow-[0_12px_40px_rgba(24,24,27,0.16)]",
+          )}
         />
       </button>
 

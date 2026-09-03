@@ -12,6 +12,7 @@
   --color-muted: #71717a; /* второстепенный текст, подписи */
   --color-line: #e4e4e7; /* границы и разделители */
   --color-chip: #f4f4f5; /* фон тэгов */
+  --color-stage: #f1f0ee; /* подложка под скриншотами интерфейсов */
   --color-chip-hover: #ececee;
 
   --font-sans: var(--font-app-sans), ui-sans-serif, system-ui, sans-serif;

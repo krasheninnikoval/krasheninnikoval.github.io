@@ -92,6 +92,7 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
               <ZoomableImage
                 image={study.cover}
                 priority
+                backdrop
                 className="mx-auto mt-14 w-full max-w-[1040px] sm:mt-16"
                 sizes="(max-width: 1100px) 100vw, 1040px"
               />
