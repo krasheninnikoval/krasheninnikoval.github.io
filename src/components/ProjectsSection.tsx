@@ -59,7 +59,7 @@ function ProjectRow({ project }: { project: Project }) {
 /** Раздел «Проекты» на главной. */
 export function ProjectsSection() {
   return (
-    <section id="projects" className="scroll-mt-24 pb-24 pt-8 sm:pb-32">
+    <section id="projects" className="scroll-mt-24 pb-24 sm:pb-32">
       <Container>
         <Reveal>
           <h2 className="text-[15px] font-medium text-muted sm:text-[17px]">

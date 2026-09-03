@@ -7,7 +7,7 @@ import { ContactButtons } from "./ContactButtons";
 export function Hero() {
   return (
     <section id="about" className="relative">
-      <Container className="flex flex-col justify-center pb-20 pt-24 sm:pt-28 lg:min-h-[100svh] lg:py-24">
+      <Container className="flex flex-col justify-center pb-16 pt-24 sm:pt-28 lg:min-h-[88svh] lg:py-24">
         <div className="grid items-center gap-10 sm:gap-12 lg:grid-cols-[minmax(0,55fr)_minmax(0,45fr)] lg:gap-16">
           {/* Текстовая колонка: на мобильном идёт после фотографии */}
           <div className="order-2 lg:order-1">
