@@ -10,10 +10,27 @@ const NBSP = " ";
 /** Предлоги и союзы длиной три буквы, которые тоже не оставляем в конце строки. */
 const SHORT_WORDS = ["для", "при", "над", "под", "про", "без", "изо", "ото"];
 
+/**
+ * Словосочетания и слова, которые нельзя разрывать переносом.
+ * Внутри них пробелы заменяются неразрывными, а дефис — неразрывным дефисом.
+ * Список пополняется по мере появления таких названий.
+ */
+const KEEP_TOGETHER = ["Telegram Mini App", "UX-текстам"];
+
+const NB_HYPHEN = "‑";
+
 export function typo(text: string): string {
-  if (!text.includes(" ")) return text;
+  if (!text.includes(" ") && !text.includes("-")) return text;
 
   let result = text;
+
+  for (const phrase of KEEP_TOGETHER) {
+    if (!result.includes(phrase)) continue;
+    const glued = phrase
+      .replaceAll(" ", NBSP)
+      .replaceAll("-", NB_HYPHEN);
+    result = result.replaceAll(phrase, glued);
+  }
 
   /* Слова из одной-двух букв прилипают к следующему слову.
      Проходим дважды — на случай двух коротких слов подряд («и в поле»). */
