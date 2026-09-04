@@ -35,7 +35,7 @@ export const clinicNavigation: CaseStudy = {
     },
   },
   meta: {
-    team: "Единственный дизайнер, 2 backend, 1 frontend, project manager, работа с SEO-командой",
+    team: "Единственный дизайнер, 2 backend, 1 frontend, PM, работа с SEO-командой",
   },
   results: [
     { value: "+12%", label: "онлайн-записей за счёт логичных точек входа" },
