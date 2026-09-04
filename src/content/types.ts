@@ -71,6 +71,8 @@ export interface CaseStudy {
   };
   /** Ключевые результаты в шапке кейса, 2–5 штук */
   results: Metric[];
+  /** Абзацы-вступление между шапкой и обложкой — необязательно */
+  lead?: string[];
   blocks: CaseBlock[];
 }
 

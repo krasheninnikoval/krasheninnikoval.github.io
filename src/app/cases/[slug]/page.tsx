@@ -83,6 +83,14 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
               <MetricRow items={study.results} plain className="mt-12" />
             </header>
 
+            {study.lead ? (
+              <div className="mx-auto mt-12 w-full max-w-reading space-y-4 text-[17px] leading-[1.75] text-ink/85 sm:mt-14">
+                {study.lead.map((paragraph) => (
+                  <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+                ))}
+              </div>
+            ) : null}
+
             {study.coverPair ? (
               <CoverComposition
                 pair={study.coverPair}
