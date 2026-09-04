@@ -100,10 +100,8 @@ export interface Profile {
   role: string;
   /** Строка под именем: специализация и опыт, через разделительную точку */
   intro: string[];
-  /** Абзацы с описанием опыта под тэгами */
+  /** Абзацы блока «Обо мне» */
   summary: string[];
-  /** Образование — последний абзац в блоке «Обо мне» */
-  education: string;
   photo: ImageRef;
   telegram: { handle: string; url: string };
   email: string;
