@@ -25,6 +25,10 @@ export function Hero() {
               ))}
             </div>
 
+            <div className="mt-6 sm:mt-7">
+              <TagList tags={[profile.education]} large />
+            </div>
+
             <div className="mt-9 sm:mt-11">
               <ContactButtons />
             </div>
