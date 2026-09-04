@@ -2,7 +2,6 @@ import Image from "next/image";
 import { profile } from "@/content";
 import { Container } from "./Container";
 import { ContactButtons } from "./ContactButtons";
-import { MetaLine } from "./MetaLine";
 
 /** Блок «Обо мне» — первый экран сайта. */
 export function Hero() {
@@ -18,17 +17,15 @@ export function Hero() {
             <p className="mt-5 max-w-[34ch] text-[20px] leading-snug text-balance sm:mt-6 sm:text-[26px]">
               {profile.tagline}
             </p>
+            <p className="mt-2 max-w-[46ch] text-[16px] leading-snug text-balance text-muted sm:mt-2.5 sm:text-[19px]">
+              {profile.education}
+            </p>
 
             <div className="mt-5 max-w-[52ch] space-y-4 text-[17px] leading-relaxed text-muted sm:mt-6">
               {profile.summary.map((paragraph) => (
                 <p key={paragraph.slice(0, 32)}>{paragraph}</p>
               ))}
             </div>
-
-            <MetaLine
-              className="mt-6 sm:mt-7"
-              items={[{ label: "Образование", value: profile.education }]}
-            />
 
             <div className="mt-9 sm:mt-11">
               <ContactButtons />
