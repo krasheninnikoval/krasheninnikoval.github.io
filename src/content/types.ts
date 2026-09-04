@@ -79,6 +79,8 @@ export interface Project {
   company?: string;
   /** Заказчик, для которого делался продукт — необязательно */
   client?: string;
+  /** Название продукта — необязательно */
+  product?: string;
   /** Сроки работы над проектом — необязательно */
   period?: string;
   description: string;

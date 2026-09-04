@@ -15,6 +15,7 @@ function ProjectMeta({ project }: { project: Project }) {
       items={[
         { label: "Компания", value: project.company },
         { label: "Заказчик", value: project.client },
+        { label: "Продукт", value: project.product },
         { label: "Сроки", value: project.period },
       ]}
     />
