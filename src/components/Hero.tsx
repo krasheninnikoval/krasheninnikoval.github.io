@@ -16,7 +16,7 @@ export function Hero() {
               {profile.fullName}
             </h1>
             <div className="mt-6 sm:mt-7">
-              <TagList tags={profile.tags} />
+              <TagList tags={profile.tags} large />
             </div>
 
             <div className="mt-5 max-w-[52ch] space-y-4 text-[17px] leading-relaxed text-muted sm:mt-6">
