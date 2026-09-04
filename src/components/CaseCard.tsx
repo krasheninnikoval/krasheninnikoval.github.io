@@ -57,14 +57,12 @@ export function CaseCard({
           {study.cardSummary}
         </p>
 
-        {wide ? (
-          <MetricRow
-            items={study.results}
-            plain
-            compact
-            className="mt-7 sm:mt-8"
-          />
-        ) : null}
+        <MetricRow
+          items={study.results}
+          plain
+          compact
+          className={wide ? "mt-7 sm:mt-8" : "mt-6"}
+        />
       </div>
     </Link>
   );
