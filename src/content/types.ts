@@ -100,6 +100,8 @@ export interface Profile {
   tagline: string;
   /** Абзацы с описанием опыта под этой строкой */
   summary: string[];
+  /** Строка про образование под текстом «Обо мне» */
+  education: string;
   photo: ImageRef;
   telegram: { handle: string; url: string };
   email: string;

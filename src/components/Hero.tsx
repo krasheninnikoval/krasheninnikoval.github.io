@@ -2,6 +2,7 @@ import Image from "next/image";
 import { profile } from "@/content";
 import { Container } from "./Container";
 import { ContactButtons } from "./ContactButtons";
+import { MetaLine } from "./MetaLine";
 
 /** Блок «Обо мне» — первый экран сайта. */
 export function Hero() {
@@ -23,6 +24,11 @@ export function Hero() {
                 <p key={paragraph.slice(0, 32)}>{paragraph}</p>
               ))}
             </div>
+
+            <MetaLine
+              className="mt-6 sm:mt-7"
+              items={[{ label: "Образование", value: profile.education }]}
+            />
 
             <div className="mt-9 sm:mt-11">
               <ContactButtons />
