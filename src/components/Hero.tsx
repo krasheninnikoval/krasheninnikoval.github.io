@@ -9,7 +9,7 @@ export function Hero() {
   return (
     <section id="about" className="relative">
       <Container className="flex flex-col justify-center pb-16 pt-24 sm:pt-28 lg:min-h-[100svh] lg:py-24">
-        <div className="grid items-center gap-10 sm:gap-12 lg:grid-cols-[minmax(0,55fr)_minmax(0,45fr)] lg:gap-16">
+        <div className="grid items-center gap-10 sm:gap-12 lg:grid-cols-[minmax(0,55fr)_minmax(0,45fr)] lg:items-stretch lg:gap-16">
           {/* Текстовая колонка: на мобильном идёт после фотографии */}
           <div className="order-2 lg:order-1">
             <h1 className="text-[38px] font-medium leading-[1.05] tracking-[-0.03em] text-balance sm:text-[56px] lg:text-[64px]">
@@ -39,7 +39,7 @@ export function Hero() {
 
           {/* Фотография */}
           <div className="order-1 lg:order-2">
-            <div className="relative aspect-4/5 w-full max-w-[260px] overflow-hidden rounded-card bg-chip sm:max-w-[320px] lg:max-w-none">
+            <div className="relative aspect-4/5 w-full max-w-[260px] overflow-hidden rounded-card bg-chip sm:max-w-[320px] lg:aspect-auto lg:h-full lg:max-w-none">
               <Image
                 src={profile.photo.src}
                 alt={profile.photo.alt}
