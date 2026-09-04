@@ -102,7 +102,7 @@ export interface Profile {
   tags: string[];
   /** Абзацы с описанием опыта под тэгами */
   summary: string[];
-  /** Образование — тэгом в самом низу блока */
+  /** Образование — последний абзац в блоке «Обо мне» */
   education: string;
   photo: ImageRef;
   telegram: { handle: string; url: string };

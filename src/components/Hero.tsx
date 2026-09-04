@@ -23,10 +23,7 @@ export function Hero() {
               {profile.summary.map((paragraph) => (
                 <p key={paragraph.slice(0, 32)}>{paragraph}</p>
               ))}
-            </div>
-
-            <div className="mt-6 sm:mt-7">
-              <TagList tags={[profile.education]} large />
+              <p>{profile.education}</p>
             </div>
 
             <div className="mt-9 sm:mt-11">
