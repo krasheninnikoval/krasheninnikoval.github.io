@@ -66,13 +66,11 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="scroll-mt-24 pb-24 sm:pb-32">
       <Container>
-        <Reveal>
-          <h2 className="text-[15px] font-medium text-muted sm:text-[17px]">
-            Опыт
-          </h2>
-        </Reveal>
+        {/* Заголовок скрыт визуально, но остаётся для поисковиков
+           и программ чтения с экрана: без него раздел теряет структуру. */}
+        <h2 className="sr-only">Опыт</h2>
 
-        <ul className="mt-10 space-y-14 sm:mt-12 sm:space-y-16">
+        <ul className="space-y-14 sm:space-y-16">
           {projects.map((project) => (
             <ProjectRow key={project.slug} project={project} />
           ))}
