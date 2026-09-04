@@ -63,7 +63,8 @@ export interface CaseStudy {
     arrowPath?: string;
   };
   meta: {
-    timeline: string;
+    /** Сроки — необязательно */
+    timeline?: string;
     team: string;
     /** Классификация продукта — необязательно */
     product?: string;

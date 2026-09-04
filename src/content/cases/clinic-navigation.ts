@@ -35,8 +35,7 @@ export const clinicNavigation: CaseStudy = {
     },
   },
   meta: {
-    timeline: "сентябрь 2025 – настоящее время",
-    team: "Единственный дизайнер, 2 бэкенда, 1 фронтенд, проджект-менеджер, работа с командой SEO",
+    team: "Единственный дизайнер, 2 backend, 1 frontend, project manager, работа с SEO-командой",
   },
   results: [
     { value: "+12%", label: "онлайн-записей за счёт логичных точек входа" },
