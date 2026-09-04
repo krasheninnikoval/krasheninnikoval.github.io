@@ -11,6 +11,8 @@ const BASE_HEIGHT = 0.315;
 const OVERLAY_HEIGHT = 1.03;
 /** Нахлёст — доля ширины более узкой из двух картинок. */
 const OVERLAP_RATIO = 0.243;
+/** Насколько верхняя картинка опущена вниз, в долях своей высоты. */
+const OVERLAY_SHIFT = 0.2;
 
 /**
  * Обложка кейса: картинка контекста и вторая картинка поверх неё со сдвигом,
@@ -43,31 +45,33 @@ export function CoverComposition({
   const overlayWidth =
     BASE_HEIGHT * OVERLAY_HEIGHT * (pair.screen.width / pair.screen.height);
   const overlap = OVERLAP_RATIO * Math.min(photoWidth, overlayWidth);
-  /* Пара картинок с нахлёстом занимает столько и центрируется на подложке. */
+  /* Пара с нахлёстом занимает всю ширину подложки, поэтому доли пересчитываем. */
   const groupWidth = photoWidth + overlayWidth - overlap;
+  const photoShare = photoWidth / groupWidth;
+  const overlayShare = overlayWidth / groupWidth;
+  /* Верхняя картинка свисает вниз — на столько же опускаем низ блока,
+     иначе рамка подложки снизу окажется тоньше, чем по бокам. */
+  const overhang =
+    (overlayShare / (pair.screen.width / pair.screen.height)) * OVERLAY_SHIFT;
 
   return (
     <div
       className={cn(
         "w-full rounded-card bg-stage",
-        compact
-          ? "p-4 sm:p-6 sm:pb-14"
-          : "p-4 sm:p-8 sm:pb-20 lg:p-10 lg:pb-24",
+        compact ? "p-4 sm:p-6" : "p-4 sm:p-8 lg:p-10",
         className,
       )}
     >
       <div
-        className="relative grid gap-4 sm:mx-auto sm:block sm:w-(--group-width)"
-        style={
-          { "--group-width": `${groupWidth * 100}%` } as React.CSSProperties
-        }
+        className="relative grid gap-4 sm:mb-(--overhang) sm:block"
+        style={{ "--overhang": `${overhang * 100}%` } as React.CSSProperties}
       >
         {/* Нижняя картинка задаёт высоту композиции */}
         <div
           className={cn(card, "sm:w-(--photo-width)")}
           style={
             {
-              "--photo-width": `${(photoWidth / groupWidth) * 100}%`,
+              "--photo-width": `${photoShare * 100}%`,
             } as React.CSSProperties
           }
         >
@@ -91,7 +95,7 @@ export function CoverComposition({
           )}
           style={
             {
-              "--overlay-width": `${(overlayWidth / groupWidth) * 100}%`,
+              "--overlay-width": `${overlayShare * 100}%`,
             } as React.CSSProperties
           }
         >
