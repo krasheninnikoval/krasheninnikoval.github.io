@@ -22,10 +22,10 @@ export const clinicNavigation: CaseStudy = {
   },
   coverPair: {
     photo: {
-      src: "/images/cases/clinic/new-structure.png",
+      src: "/images/cases/clinic/new-structure-trimmed.png",
       alt: "Схема новой информационной архитектуры сайта",
-      width: 2416,
-      height: 2968,
+      width: 2336,
+      height: 2888,
     },
     screen: {
       src: "/images/cases/clinic/main-page.png",
