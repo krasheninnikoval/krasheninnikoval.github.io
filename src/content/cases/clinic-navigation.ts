@@ -17,21 +17,21 @@ export const clinicNavigation: CaseStudy = {
   preview: {
     src: "/images/cases/clinic/main-page.png",
     alt: "Главная страница сайта клиники с раскрытым меню",
-    width: 1920,
-    height: 1080,
+    width: 1400,
+    height: 787,
   },
   coverPair: {
     photo: {
       src: "/images/cases/clinic/new-structure-clean.png",
       alt: "Схема новой информационной архитектуры сайта",
-      width: 2330,
-      height: 2882,
+      width: 800,
+      height: 990,
     },
     screen: {
       src: "/images/cases/clinic/main-page.png",
       alt: "Главная страница сайта клиники с раскрытым меню",
-      width: 1920,
-      height: 1080,
+      width: 1400,
+      height: 787,
     },
   },
   meta: {

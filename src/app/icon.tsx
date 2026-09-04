@@ -1,6 +1,9 @@
 import { ImageResponse } from "next/og";
 import { profile } from "@/content";
 
+/* Картинка генерируется один раз при сборке. */
+export const dynamic = "force-static";
+
 export const size = { width: 64, height: 64 };
 export const contentType = "image/png";
 

@@ -13,8 +13,8 @@ export const profile: Profile = {
   photo: {
     src: "/images/profile.jpg",
     alt: "Крашенинникова Любовь",
-    width: 1400,
-    height: 1750,
+    width: 1000,
+    height: 1250,
   },
   telegram: {
     handle: "@krasheninnikovalm",
