@@ -5,14 +5,12 @@ import { cn } from "@/lib/cn";
 const card =
   "overflow-hidden rounded-media shadow-[0_14px_44px_rgba(24,24,27,0.20)]";
 
-/** Ширина нижней картинки в долях ширины блока. */
-const PHOTO_WIDTH = 0.56;
-/** Высота верхней картинки относительно высоты нижней. */
+/** Высота нижней картинки в долях ширины блока — одинакова у всех обложек. */
+const BASE_HEIGHT = 0.315;
+/** Высота верхней картинки относительно нижней. */
 const OVERLAY_HEIGHT = 1.03;
-/** Насколько картинки заходят друг на друга, в долях ширины блока. */
-const OVERLAP = 0.136;
-/* Когда сверху лежит нижняя картинка, нахлёст меньше — иначе она закроет вторую. */
-const OVERLAP_REVERSED = 0.07;
+/** Нахлёст — доля ширины более узкой из двух картинок. */
+const OVERLAP_RATIO = 0.243;
 
 /**
  * Обложка кейса: картинка контекста и вторая картинка поверх неё со сдвигом,
@@ -39,13 +37,14 @@ export function CoverComposition({
   /** Уменьшенные отступы — для карточки в разделе «Опыт» */
   compact?: boolean;
 }) {
-  const photoAspect = pair.photo.width / pair.photo.height;
-  const screenAspect = pair.screen.width / pair.screen.height;
-  const photoHeight = PHOTO_WIDTH / photoAspect;
-  const overlayWidth = photoHeight * OVERLAY_HEIGHT * screenAspect;
+  /* Обе ширины считаются из пропорций так, чтобы высота обложки
+     не зависела от того, горизонтальные картинки или вертикальные. */
+  const photoWidth = BASE_HEIGHT * (pair.photo.width / pair.photo.height);
+  const overlayWidth =
+    BASE_HEIGHT * OVERLAY_HEIGHT * (pair.screen.width / pair.screen.height);
+  const overlap = OVERLAP_RATIO * Math.min(photoWidth, overlayWidth);
   /* Пара картинок с нахлёстом занимает столько и центрируется на подложке. */
-  const overlap = pair.photoOnTop ? OVERLAP_REVERSED : OVERLAP;
-  const groupWidth = PHOTO_WIDTH + overlayWidth - overlap;
+  const groupWidth = photoWidth + overlayWidth - overlap;
 
   return (
     <div
@@ -65,14 +64,10 @@ export function CoverComposition({
       >
         {/* Нижняя картинка задаёт высоту композиции */}
         <div
-          className={cn(
-            card,
-            "sm:w-(--photo-width)",
-            pair.photoOnTop && "sm:relative sm:z-10 sm:ring-8 sm:ring-stage",
-          )}
+          className={cn(card, "sm:w-(--photo-width)")}
           style={
             {
-              "--photo-width": `${(PHOTO_WIDTH / groupWidth) * 100}%`,
+              "--photo-width": `${(photoWidth / groupWidth) * 100}%`,
             } as React.CSSProperties
           }
         >
@@ -92,8 +87,7 @@ export function CoverComposition({
           className={cn(
             card,
             "sm:absolute sm:bottom-0 sm:right-0 sm:w-(--overlay-width)",
-            "sm:translate-y-[20%]",
-            pair.photoOnTop ? "sm:z-0" : "sm:ring-8 sm:ring-stage",
+            "sm:translate-y-[20%] sm:ring-8 sm:ring-stage",
           )}
           style={
             {
