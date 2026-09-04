@@ -65,7 +65,8 @@ export interface CaseStudy {
   meta: {
     timeline: string;
     team: string;
-    product: string;
+    /** Классификация продукта — необязательно */
+    product?: string;
   };
   /** Ключевые результаты в шапке кейса, 2–5 штук */
   results: Metric[];

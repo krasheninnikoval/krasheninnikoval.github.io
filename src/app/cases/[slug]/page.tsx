@@ -69,6 +69,7 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
               <MetaLine
                 className="mt-6"
                 items={[
+                  { label: "Заказчик", value: project.client },
                   { label: "Сроки", value: study.meta.timeline },
                   { label: "Команда", value: study.meta.team },
                   { label: "Продукт", value: study.meta.product },
