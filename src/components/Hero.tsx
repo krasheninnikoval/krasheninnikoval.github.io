@@ -19,7 +19,7 @@ export function Hero() {
               {profile.intro.map((item, index) => (
                 <Fragment key={item}>
                   {index > 0 ? (
-                    <span className="px-2.5 text-ink/30">·</span>
+                    <span className="px-2.5">·</span>
                   ) : null}
                   {item}
                 </Fragment>
