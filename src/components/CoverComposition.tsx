@@ -3,7 +3,7 @@ import type { CaseStudy } from "@/content/types";
 import { cn } from "@/lib/cn";
 
 const card =
-  "overflow-hidden rounded-media border border-ink/10 shadow-[0_14px_44px_rgba(24,24,27,0.20)]";
+  "overflow-hidden rounded-media border border-edge shadow-[0_14px_44px_rgba(24,24,27,0.20)]";
 
 /** Высота нижней картинки в долях ширины блока — одинакова у всех обложек. */
 const BASE_HEIGHT = 0.315;

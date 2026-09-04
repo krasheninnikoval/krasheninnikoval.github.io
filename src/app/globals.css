@@ -14,6 +14,7 @@
   --color-chip: #f4f4f5; /* мягкая подсветка: наведение в шапке */
   --color-tag: #eaeaec; /* фон тэгов */
   --color-stage: #dcdcdf; /* подложка под скриншотами интерфейсов */
+  --color-edge: #c8c8cb; /* обводка картинок на подложке */
   --color-chip-hover: #ececee;
 
   --font-sans: var(--font-app-sans), ui-sans-serif, system-ui, sans-serif;
