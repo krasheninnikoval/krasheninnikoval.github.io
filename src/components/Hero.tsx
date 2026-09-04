@@ -2,6 +2,7 @@ import Image from "next/image";
 import { profile } from "@/content";
 import { Container } from "./Container";
 import { ContactButtons } from "./ContactButtons";
+import { TagList } from "./Tag";
 
 /** Блок «Обо мне» — первый экран сайта. */
 export function Hero() {
@@ -14,12 +15,9 @@ export function Hero() {
             <h1 className="text-[38px] font-medium leading-[1.05] tracking-[-0.03em] text-balance sm:text-[56px] lg:text-[64px]">
               {profile.fullName}
             </h1>
-            <p className="mt-5 max-w-[34ch] text-[20px] leading-snug text-balance sm:mt-6 sm:text-[26px]">
-              {profile.tagline}
-            </p>
-            <p className="mt-2 max-w-[46ch] text-[16px] leading-snug text-balance text-muted sm:mt-2.5 sm:text-[19px]">
-              {profile.education}
-            </p>
+            <div className="mt-6 sm:mt-7">
+              <TagList tags={profile.tags} />
+            </div>
 
             <div className="mt-5 max-w-[52ch] space-y-4 text-[17px] leading-relaxed text-muted sm:mt-6">
               {profile.summary.map((paragraph) => (

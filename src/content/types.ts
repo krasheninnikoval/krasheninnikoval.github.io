@@ -96,12 +96,10 @@ export interface Profile {
   fullName: string;
   /** Короткая должность — используется в заголовке вкладки и разметке для поисковиков */
   role: string;
-  /** Короткая строка под именем в блоке «Обо мне» */
-  tagline: string;
-  /** Абзацы с описанием опыта под этой строкой */
+  /** Тэги под именем: специализация, опыт, образование */
+  tags: string[];
+  /** Абзацы с описанием опыта под тэгами */
   summary: string[];
-  /** Строка про образование под текстом «Обо мне» */
-  education: string;
   photo: ImageRef;
   telegram: { handle: string; url: string };
   email: string;
