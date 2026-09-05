@@ -136,6 +136,7 @@ export const clinicNavigation: CaseStudy = {
     },
     {
       type: "image",
+      heading: "Решение",
       image: {
         src: "/images/cases/clinic/figma-board-2.png",
         alt: "Рабочее пространство проекта в Figma",
