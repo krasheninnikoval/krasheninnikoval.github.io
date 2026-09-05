@@ -35,13 +35,7 @@ export type CaseBlock =
       /** true — картинка шире колонки текста */
       wide?: boolean;
     }
-  | {
-      type: "image";
-      image: ImageRef;
-      wide?: boolean;
-      /** Картинка на нейтральной подложке — как обложки кейсов */
-      frame?: boolean;
-    }
+  | { type: "image"; image: ImageRef; wide?: boolean }
   | { type: "gallery"; heading?: string; images: ImageRef[] }
   | {
       type: "list";

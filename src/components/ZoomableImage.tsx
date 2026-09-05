@@ -50,7 +50,7 @@ export function ZoomableImage({
         className={cn(
           "block w-full cursor-zoom-in overflow-hidden rounded-card",
           backdrop
-            ? "bg-stage p-4 sm:p-8 lg:p-10"
+            ? "bg-stage p-4 sm:p-8 lg:p-12"
             : "rounded-media border border-line bg-chip",
         )}
       >
@@ -64,7 +64,7 @@ export function ZoomableImage({
           className={cn(
             "h-auto w-full",
             backdrop &&
-              "rounded-media border border-edge shadow-[0_1px_2px_rgba(24,24,27,0.05),0_10px_24px_rgba(24,24,27,0.08)]",
+              "rounded-media shadow-[0_12px_40px_rgba(24,24,27,0.16)]",
           )}
         />
       </button>
