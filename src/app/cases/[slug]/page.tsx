@@ -90,14 +90,20 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
               </div>
             ) : null}
 
-            {study.results.length > 0 ? (
-              <div className="mx-auto mt-12 w-full max-w-reading sm:mt-14">
-                <h2 className="text-[15px] font-medium text-muted sm:text-[17px]">
-                  Результаты
-                </h2>
+            <div className="mx-auto mt-12 w-full max-w-reading sm:mt-14">
+              <h2 className="text-[15px] font-medium text-muted sm:text-[17px]">
+                Результаты
+              </h2>
+              {study.results.length > 0 ? (
                 <MetricRow items={study.results} plain className="mt-6" />
-              </div>
-            ) : null}
+              ) : (
+                /* ВРЕМЕННО: заголовок оставлен как напоминание, пока
+                   результаты кейса не сформулированы. */
+                <p className="mt-4 text-[17px] leading-relaxed text-muted">
+                  дополнить результатами
+                </p>
+              )}
+            </div>
 
             {study.coverPair ? (
               <CoverComposition
