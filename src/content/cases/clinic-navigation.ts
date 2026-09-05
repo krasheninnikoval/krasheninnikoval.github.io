@@ -12,8 +12,8 @@ const img = (n: string, alt: string, w = 1600, h = 1000) => ({
 export const clinicNavigation: CaseStudy = {
   slug: "clinic-navigation",
   title: "Главная страница и навигация",
-  cardSummary:
-    "Проанализировала данные Яндекс Метрики и провела UX-аудит, на их основе пересобрала информационную архитектуру и навигацию сайта клиники",
+  /* ВРЕМЕННЫЙ ТЕКСТ. Заменяется на нормальное описание с результатами. */
+  cardSummary: "дополнить результатами",
   preview: {
     src: "/images/cases/clinic/main-page.png",
     alt: "Главная страница сайта клиники с раскрытым меню",
