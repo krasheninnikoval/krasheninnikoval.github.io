@@ -8,6 +8,8 @@ const wide = "mx-auto w-full max-w-[1040px]";
 
 const heading =
   "text-2xl font-medium leading-snug tracking-[-0.02em] text-balance sm:text-[28px]";
+const subheading =
+  "text-[19px] font-medium leading-snug tracking-[-0.01em] text-balance sm:text-[21px]";
 const prose = "space-y-4 text-[17px] leading-[1.75] text-ink/85";
 
 function Paragraphs({ items }: { items: string[] }) {
@@ -96,7 +98,11 @@ function Block({ block }: { block: CaseBlock }) {
       return (
         <div className={reading}>
           {block.heading ? (
-            <h2 className={cn(heading, "mb-5")}>{block.heading}</h2>
+            block.sub ? (
+              <h3 className={cn(subheading, "mb-4")}>{block.heading}</h3>
+            ) : (
+              <h2 className={cn(heading, "mb-5")}>{block.heading}</h2>
+            )
           ) : null}
           {block.paragraphs ? (
             <div className={cn(prose, "mb-5")}>
@@ -160,9 +166,15 @@ function Block({ block }: { block: CaseBlock }) {
 export function CaseBlocks({ blocks }: { blocks: CaseBlock[] }) {
   return (
     <div className="space-y-14 sm:space-y-20">
-      {blocks.map((block, index) => (
-        <Block key={`${block.type}-${index}`} block={block} />
-      ))}
+      {blocks.map((block, index) => {
+        /* Подчинённый блок стоит ближе к своему разделу, чем к соседнему. */
+        const sub = "sub" in block && block.sub;
+        return (
+          <div key={`${block.type}-${index}`} className={cn(sub && "-mt-8 sm:-mt-12")}>
+            <Block block={block} />
+          </div>
+        );
+      })}
     </div>
   );
 }

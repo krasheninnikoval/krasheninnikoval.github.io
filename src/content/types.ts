@@ -26,7 +26,7 @@ export interface Metric {
 export type ListItem = string | { term: string; text: string };
 
 export type CaseBlock =
-  | { type: "text"; heading?: string; paragraphs: string[] }
+  | { type: "text"; heading?: string; sub?: boolean; paragraphs: string[] }
   | {
       type: "textImage";
       heading?: string;
@@ -40,6 +40,8 @@ export type CaseBlock =
   | {
       type: "list";
       heading?: string;
+      /** Заголовок второго уровня: блок подчинён предыдущему разделу */
+      sub?: boolean;
       /** Абзацы перед списком */
       paragraphs?: string[];
       ordered?: boolean;
