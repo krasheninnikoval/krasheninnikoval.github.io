@@ -109,10 +109,10 @@ export const clinicNavigation: CaseStudy = {
     {
       type: "image",
       image: {
-        src: "/images/cases/clinic/structure-before-after.png",
+        src: "/images/cases/clinic/structure-2.png",
         alt: "Исходная и новая структура сайта рядом",
-        width: 1800,
-        height: 1341,
+        width: 1854,
+        height: 1180,
       },
       wide: true,
     },
