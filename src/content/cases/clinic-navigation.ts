@@ -106,6 +106,16 @@ export const clinicNavigation: CaseStudy = {
     {
       type: "image",
       image: {
+        src: "/images/cases/clinic/figma-board.png",
+        alt: "Рабочее пространство проекта в Figma",
+        width: 1600,
+        height: 1228,
+      },
+      wide: true,
+    },
+    {
+      type: "image",
+      image: {
         ...img("content-16-10", "Схема новой информационной архитектуры"),
         caption: "Здесь будет схема новой информационной архитектуры",
       },
