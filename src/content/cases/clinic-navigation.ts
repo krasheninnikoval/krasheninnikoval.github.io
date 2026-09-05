@@ -1,12 +1,5 @@
 import type { CaseStudy } from "../types";
 
-const img = (n: string, alt: string, w = 1600, h = 1000) => ({
-  src: `/images/placeholder/${n}.png`,
-  alt,
-  width: w,
-  height: h,
-});
-
 /* ЧЕРНОВИК. Факты взяты из резюме, картинки — заглушки.
    Тексты блоков и изображения заменяются на реальные материалы. */
 export const clinicNavigation: CaseStudy = {
@@ -116,8 +109,10 @@ export const clinicNavigation: CaseStudy = {
     {
       type: "image",
       image: {
-        ...img("content-16-10", "Схема новой информационной архитектуры"),
-        caption: "Здесь будет схема новой информационной архитектуры",
+        src: "/images/cases/clinic/structure-before-after.png",
+        alt: "Исходная и новая структура сайта рядом",
+        width: 1800,
+        height: 1341,
       },
       wide: true,
     },
