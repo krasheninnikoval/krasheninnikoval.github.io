@@ -59,6 +59,7 @@ function Block({ block }: { block: CaseBlock }) {
       return (
         <ZoomableImage
           image={block.image}
+          backdrop={block.frame}
           className={block.wide ? wide : reading}
           sizes={
             block.wide

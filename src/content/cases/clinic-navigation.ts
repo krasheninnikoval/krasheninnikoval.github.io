@@ -105,6 +105,7 @@ export const clinicNavigation: CaseStudy = {
         height: 1255,
       },
       wide: true,
+      frame: true,
     },
     {
       type: "image",
@@ -115,6 +116,7 @@ export const clinicNavigation: CaseStudy = {
         height: 1180,
       },
       wide: true,
+      frame: true,
     },
   ],
 };
