@@ -55,18 +55,26 @@ function Block({ block }: { block: CaseBlock }) {
         </div>
       );
 
-    case "image":
+    case "image": {
+      const imageSizes = block.wide
+        ? "(max-width: 1100px) 100vw, 1040px"
+        : "(max-width: 780px) 100vw, 720px";
+      if (!block.heading) {
+        return (
+          <ZoomableImage
+            image={block.image}
+            className={block.wide ? wide : reading}
+            sizes={imageSizes}
+          />
+        );
+      }
       return (
-        <ZoomableImage
-          image={block.image}
-          className={block.wide ? wide : reading}
-          sizes={
-            block.wide
-              ? "(max-width: 1100px) 100vw, 1040px"
-              : "(max-width: 780px) 100vw, 720px"
-          }
-        />
+        <div className={block.wide ? wide : reading}>
+          <h2 className={cn(heading, "mb-6")}>{block.heading}</h2>
+          <ZoomableImage image={block.image} sizes={imageSizes} />
+        </div>
       );
+    }
 
     case "gallery":
       return (

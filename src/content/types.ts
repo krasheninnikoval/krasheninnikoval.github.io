@@ -35,7 +35,7 @@ export type CaseBlock =
       /** true — картинка шире колонки текста */
       wide?: boolean;
     }
-  | { type: "image"; image: ImageRef; wide?: boolean }
+  | { type: "image"; heading?: string; image: ImageRef; wide?: boolean }
   | { type: "gallery"; heading?: string; images: ImageRef[] }
   | {
       type: "list";
