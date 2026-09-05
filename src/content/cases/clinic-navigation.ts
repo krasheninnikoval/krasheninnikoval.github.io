@@ -99,10 +99,10 @@ export const clinicNavigation: CaseStudy = {
     {
       type: "image",
       image: {
-        src: "/images/cases/clinic/figma-board.png",
+        src: "/images/cases/clinic/figma-board-2.png",
         alt: "Рабочее пространство проекта в Figma",
-        width: 1600,
-        height: 1228,
+        width: 1700,
+        height: 1255,
       },
       wide: true,
     },
