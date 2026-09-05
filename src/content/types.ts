@@ -22,6 +22,9 @@ export interface Metric {
 }
 
 /** Блоки, из которых собирается тело кейса. Порядок и состав — любые. */
+/** Пункт списка: обычная строка или «выделенное начало + пояснение». */
+export type ListItem = string | { term: string; text: string };
+
 export type CaseBlock =
   | { type: "text"; heading?: string; paragraphs: string[] }
   | {
@@ -40,7 +43,7 @@ export type CaseBlock =
       /** Абзацы перед списком */
       paragraphs?: string[];
       ordered?: boolean;
-      items: string[];
+      items: ListItem[];
     }
   | { type: "quote"; text: string; author?: string }
   | { type: "metrics"; heading?: string; items: Metric[] }

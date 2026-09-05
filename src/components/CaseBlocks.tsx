@@ -111,11 +111,18 @@ function Block({ block }: { block: CaseBlock }) {
               block.ordered ? "list-decimal" : "list-disc",
             )}
           >
-            {block.items.map((item) => (
-              <li key={item.slice(0, 32)} className="pl-1">
-                {item}
-              </li>
-            ))}
+            {block.items.map((item) =>
+              typeof item === "string" ? (
+                <li key={item.slice(0, 32)} className="pl-1">
+                  {item}
+                </li>
+              ) : (
+                <li key={item.term} className="pl-1">
+                  <span className="font-medium text-ink">{item.term}.</span>{" "}
+                  {item.text}
+                </li>
+              ),
+            )}
           </ListTag>
         </div>
       );
