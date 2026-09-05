@@ -23,8 +23,9 @@ function ProjectMeta({ project }: { project: Project }) {
 }
 
 function ProjectRow({ project }: { project: Project }) {
-  /* Показываем первый кейс проекта. Если кейса нет — остаётся только описание. */
-  const study = project.cases[0];
+  /* Показываем первый непрятанный кейс проекта.
+     Если такого нет — остаётся только описание и результаты. */
+  const study = project.cases.find((item) => !item.hidden);
 
   return (
     <Reveal

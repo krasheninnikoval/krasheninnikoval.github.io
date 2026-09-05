@@ -32,7 +32,9 @@ export function getCaseBySlug(slug: string): CaseWithProject | undefined {
  * Сначала кейсы того же проекта, затем остальные. Текущий исключён.
  */
 export function getOtherCases(slug: string, limit = 4): CaseWithProject[] {
-  const all = getAllCases().filter((c) => c.study.slug !== slug);
+  const all = getAllCases().filter(
+    (c) => c.study.slug !== slug && !c.study.hidden,
+  );
   const current = getCaseBySlug(slug);
   if (!current) return all.slice(0, limit);
   const sameProject = all.filter((c) => c.project.slug === current.project.slug);
