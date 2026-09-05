@@ -114,6 +114,16 @@ export const clinicNavigation: CaseStudy = {
     {
       type: "image",
       image: {
+        src: "/images/cases/clinic/design-system.png",
+        alt: "Компоненты, цветовые и текстовые стили дизайн-системы",
+        width: 1800,
+        height: 778,
+      },
+      wide: true,
+    },
+    {
+      type: "image",
+      image: {
         src: "/images/cases/clinic/figma-board-2.png",
         alt: "Рабочее пространство проекта в Figma",
         width: 1700,
