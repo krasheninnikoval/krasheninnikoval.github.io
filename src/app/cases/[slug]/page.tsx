@@ -80,7 +80,6 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
                 <TagList tags={[...project.tags, ...(study.tags ?? [])]} />
               </div>
 
-              <MetricRow items={study.results} plain className="mt-12" />
             </header>
 
             {study.lead ? (
@@ -88,6 +87,15 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
                 {study.lead.map((paragraph) => (
                   <p key={paragraph.slice(0, 32)}>{paragraph}</p>
                 ))}
+              </div>
+            ) : null}
+
+            {study.results.length > 0 ? (
+              <div className="mx-auto mt-12 w-full max-w-reading sm:mt-14">
+                <h2 className="text-[15px] font-medium text-muted sm:text-[17px]">
+                  Результаты
+                </h2>
+                <MetricRow items={study.results} plain className="mt-6" />
               </div>
             ) : null}
 
