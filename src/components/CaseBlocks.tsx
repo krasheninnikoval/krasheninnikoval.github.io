@@ -70,7 +70,11 @@ function Block({ block }: { block: CaseBlock }) {
       }
       return (
         <div className={block.wide ? wide : reading}>
-          <h2 className={cn(heading, "mb-6")}>{block.heading}</h2>
+          {/* Заголовок выравниваем по колонке текста, как у остальных блоков,
+             а саму картинку оставляем во всю ширину. */}
+          <h2 className={cn(heading, "mx-auto mb-6 w-full max-w-reading")}>
+            {block.heading}
+          </h2>
           <ZoomableImage image={block.image} sizes={imageSizes} />
         </div>
       );
