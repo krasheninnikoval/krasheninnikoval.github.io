@@ -34,7 +34,14 @@ export type CaseBlock =
     }
   | { type: "image"; image: ImageRef; wide?: boolean }
   | { type: "gallery"; heading?: string; images: ImageRef[] }
-  | { type: "list"; heading?: string; ordered?: boolean; items: string[] }
+  | {
+      type: "list";
+      heading?: string;
+      /** Абзацы перед списком */
+      paragraphs?: string[];
+      ordered?: boolean;
+      items: string[];
+    }
   | { type: "quote"; text: string; author?: string }
   | { type: "metrics"; heading?: string; items: Metric[] }
   | { type: "divider" };

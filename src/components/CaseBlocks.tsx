@@ -98,6 +98,13 @@ function Block({ block }: { block: CaseBlock }) {
           {block.heading ? (
             <h2 className={cn(heading, "mb-5")}>{block.heading}</h2>
           ) : null}
+          {block.paragraphs ? (
+            <div className={cn(prose, "mb-5")}>
+              {block.paragraphs.map((text) => (
+                <p key={text.slice(0, 32)}>{text}</p>
+              ))}
+            </div>
+          ) : null}
           <ListTag
             className={cn(
               "space-y-3 pl-5 text-[17px] leading-[1.7] text-ink/85 marker:text-muted",
