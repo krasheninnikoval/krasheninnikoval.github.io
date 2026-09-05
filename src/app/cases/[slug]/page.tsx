@@ -77,7 +77,7 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
               />
 
               <div className="mt-6">
-                <TagList tags={project.tags} />
+                <TagList tags={[...project.tags, ...(study.tags ?? [])]} />
               </div>
 
               <MetricRow items={study.results} plain className="mt-12" />
