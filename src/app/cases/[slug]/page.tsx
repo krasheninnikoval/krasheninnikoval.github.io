@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { CaseBlocks, caseHeading, caseList } from "@/components/CaseBlocks";
+import { CaseBlocks, caseHeading } from "@/components/CaseBlocks";
 import { CaseCard } from "@/components/CaseCard";
 import { CoverComposition } from "@/components/CoverComposition";
 import { Container } from "@/components/Container";
@@ -94,9 +94,13 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
             <div className="mx-auto mt-12 w-full max-w-reading sm:mt-14">
               <h2 className={cn(caseHeading, "mb-5")}>Результаты</h2>
               {study.highlights?.length ? (
-                <ul className={cn(caseList, "list-disc")}>
+                /* Колонками, как результаты проектов в разделе «Опыт» */
+                <ul className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
                   {study.highlights.map((item) => (
-                    <li key={item.slice(0, 32)} className="pl-1">
+                    <li
+                      key={item.slice(0, 32)}
+                      className="border-t border-line pt-4 text-[17px] leading-relaxed text-ink/85"
+                    >
                       {item}
                     </li>
                   ))}
