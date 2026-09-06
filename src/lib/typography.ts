@@ -15,7 +15,7 @@ const SHORT_WORDS = ["для", "при", "над", "под", "про", "без",
  * Внутри них пробелы заменяются неразрывными, а дефис — неразрывным дефисом.
  * Список пополняется по мере появления таких названий.
  */
-const KEEP_TOGETHER = ["Telegram Mini App", "UX-текстам"];
+const KEEP_TOGETHER = ["Telegram Mini App"];
 
 const NB_HYPHEN = "‑";
 
@@ -56,6 +56,12 @@ export function typo(text: string): string {
 
   /* Число не отрывается от того, что за ним: «11 филиалов», «1,5 млн» */
   result = result.replace(/(\d) (?=[А-Яа-яЁёA-Za-z%])/g, `$1${NBSP}`);
+
+  /* Слова через дефис не разрываются: «дизайн-система», «UX-аудит», «low-code» */
+  result = result.replace(
+    /(?<=[А-Яа-яЁёA-Za-z0-9])-(?=[А-Яа-яЁёA-Za-z0-9])/g,
+    NB_HYPHEN,
+  );
 
   return result;
 }
