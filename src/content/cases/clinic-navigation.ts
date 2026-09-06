@@ -135,6 +135,16 @@ export const clinicNavigation: CaseStudy = {
       ],
     },
     {
+      type: "image",
+      image: {
+        src: "/images/cases/clinic/figma-board-2.png",
+        alt: "Рабочее пространство проекта в Figma",
+        width: 1700,
+        height: 1255,
+      },
+      wide: true,
+    },
+    {
       type: "list",
       heading: "Решение",
       ordered: true,
@@ -164,16 +174,6 @@ export const clinicNavigation: CaseStudy = {
           text: "Подготовила макеты в Figma с состояниями и комментариями, это снизило число возможных правок и ускорило коммуникацию",
         },
       ],
-    },
-    {
-      type: "image",
-      image: {
-        src: "/images/cases/clinic/figma-board-2.png",
-        alt: "Рабочее пространство проекта в Figma",
-        width: 1700,
-        height: 1255,
-      },
-      wide: true,
     },
     {
       type: "image",
