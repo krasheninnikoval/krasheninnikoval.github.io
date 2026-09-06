@@ -2,6 +2,7 @@ import { projects } from "@/content";
 import type { Project } from "@/content/types";
 import { CaseCard } from "./CaseCard";
 import { Container } from "./Container";
+import { cn } from "@/lib/cn";
 import { MetaLine } from "./MetaLine";
 import { MetricRow } from "./Metrics";
 import { Reveal } from "./Reveal";
@@ -22,7 +23,14 @@ function ProjectMeta({ project }: { project: Project }) {
   );
 }
 
-function ProjectRow({ project }: { project: Project }) {
+function ProjectRow({
+  project,
+  divided = true,
+}: {
+  project: Project;
+  /** Разделительная линия перед проектом */
+  divided?: boolean;
+}) {
   /* Показываем первый непрятанный кейс проекта.
      Если такого нет — остаётся только описание и результаты. */
   const study = project.cases.find((item) => !item.hidden);
@@ -30,7 +38,9 @@ function ProjectRow({ project }: { project: Project }) {
   return (
     <Reveal
       as="li"
-      className="border-t border-line pt-10 first:border-t-0 first:pt-0 sm:pt-12"
+      className={cn(
+        divided && "border-t border-line pt-10 first:border-t-0 first:pt-0 sm:pt-12",
+      )}
     >
       {/* Описание проекта */}
       <h3 className="text-[28px] font-medium leading-tight tracking-[-0.02em] text-balance sm:text-[34px]">
@@ -75,14 +85,14 @@ export function ProjectsSection() {
            и программ чтения с экрана: без него раздел теряет структуру. */}
         <h2 className="sr-only">Опыт</h2>
 
-        <ul className="space-y-14 sm:space-y-16">
+        <ul className="space-y-20 sm:space-y-24">
           {main.map((project) => (
-            <ProjectRow key={project.slug} project={project} />
+            <ProjectRow key={project.slug} project={project} divided={false} />
           ))}
         </ul>
 
         {other.length > 0 ? (
-          <div className="mt-24 border-t border-line pt-14 sm:mt-32 sm:pt-16">
+          <div className="mt-24 sm:mt-32">
             <h3 className="text-[24px] font-medium leading-tight tracking-[-0.02em] sm:text-[28px]">
               Другие проекты
             </h3>
