@@ -92,7 +92,7 @@ export function ProjectsSection() {
         </ul>
 
         {other.length > 0 ? (
-          <div className="mt-24 sm:mt-32">
+          <div className="mt-32 sm:mt-44">
             <h3 className="text-[24px] font-medium leading-tight tracking-[-0.02em] sm:text-[28px]">
               Другие проекты
             </h3>
