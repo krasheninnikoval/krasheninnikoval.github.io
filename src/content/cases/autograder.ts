@@ -12,7 +12,8 @@ const img = (n: string, alt: string, w = 1600, h = 1000) => ({
 export const autograder: CaseStudy = {
   slug: "autograder-panel",
   title: "Редизайн интерфейса",
-  cardSummary: "Подробное описание работы над проектом",
+  cardSummary:
+    "Проектирование интерфейса сенсорной панели в кабине спецтехники. В кейсе вся работа над проектом: исследование, проектирование, тестирование, рефлексия",
   preview: {
     src: "/images/cases/autograder/nivelirovanie.png",
     alt: "Экран запуска системы 2D-нивелирования на панели автогрейдера",
