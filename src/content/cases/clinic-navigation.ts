@@ -175,5 +175,15 @@ export const clinicNavigation: CaseStudy = {
       },
       wide: true,
     },
+    {
+      type: "image",
+      image: {
+        src: "/images/cases/clinic/result-before-after.png",
+        alt: "Мобильная версия: исходный вариант и финальный",
+        width: 1800,
+        height: 1341,
+      },
+      wide: true,
+    },
   ],
 };
