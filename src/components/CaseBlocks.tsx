@@ -11,6 +11,8 @@ const heading =
 const subheading =
   "text-[19px] font-medium leading-snug tracking-[-0.01em] text-balance sm:text-[21px]";
 const prose = "space-y-4 text-[17px] leading-[1.75] text-ink/85";
+const listBase =
+  "list-decimal space-y-3 pl-5 text-[17px] leading-[1.7] text-ink/85 marker:text-muted";
 
 function Paragraphs({ items }: { items: string[] }) {
   return (
@@ -153,20 +155,22 @@ function Block({ block }: { block: CaseBlock }) {
             <div key={item.heading}>
               <h2 className={cn(heading, "mb-5")}>{item.heading}</h2>
               {item.points?.length ? (
-                <div className={prose}>
+                <ol className={listBase}>
                   {item.points.map((point) =>
                     typeof point === "string" ? (
-                      <p key={point.slice(0, 32)}>{point}</p>
+                      <li key={point.slice(0, 32)} className="pl-1">
+                        {point}
+                      </li>
                     ) : (
-                      <p key={point.term}>
+                      <li key={point.term} className="pl-1">
                         <span className="font-medium text-ink">
                           {point.term}.
                         </span>{" "}
                         {point.text}
-                      </p>
+                      </li>
                     ),
                   )}
-                </div>
+                </ol>
               ) : (
                 /* ВРЕМЕННО: заголовок стоит как напоминание, пока текста нет. */
                 <p className="text-[17px] leading-relaxed text-muted">
