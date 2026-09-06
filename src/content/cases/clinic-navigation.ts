@@ -36,11 +36,11 @@ export const clinicNavigation: CaseStudy = {
     "Дизайн-система",
   ],
   results: [
-    { value: "↓ Клики", label: "до целевых действий" },
     {
       value: "Запущена",
       label: "новая главная с переработанной навигацией",
     },
+    { value: "↓ Клики", label: "до целевых действий" },
   ],
   highlights: [
     {
