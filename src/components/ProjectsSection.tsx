@@ -56,7 +56,7 @@ function ProjectRow({
           <p className="max-w-[62ch] text-[17px] leading-relaxed text-ink/80">
             {project.description}
           </p>
-          <MetricRow items={results} plain compact />
+          <MetricRow items={results} plain narrow />
         </div>
       ) : (
         <p className="mt-5 max-w-[62ch] text-[17px] leading-relaxed text-ink/80">

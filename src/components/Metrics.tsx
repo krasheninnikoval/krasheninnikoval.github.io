@@ -12,11 +12,14 @@ export function MetricRow({
   plain = false,
   /** Уменьшенные цифры — для карточки кейса */
   compact = false,
+  /** Узкая колонка: всегда две колонки, без раскладки на три-четыре */
+  narrow = false,
 }: {
   items: Metric[];
   className?: string;
   plain?: boolean;
   compact?: boolean;
+  narrow?: boolean;
 }) {
   if (items.length === 0) return null;
   return (
@@ -24,7 +27,11 @@ export function MetricRow({
       className={cn(
         "grid grid-cols-2 gap-x-6 sm:gap-x-10",
         plain && !compact ? "gap-y-10" : "gap-y-8",
-        items.length >= 4 ? "md:grid-cols-4" : "md:grid-cols-3",
+        narrow
+          ? ""
+          : items.length >= 4
+            ? "md:grid-cols-4"
+            : "md:grid-cols-3",
         className,
       )}
     >
