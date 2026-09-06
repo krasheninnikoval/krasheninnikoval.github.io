@@ -84,22 +84,22 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
             </header>
 
             {/* Контекст и результаты — двумя колонками по ширине обложки */}
-            <div
-              className={cn(
-                "mx-auto mt-12 w-full max-w-[1040px] sm:mt-14",
-                study.lead ? "grid gap-10 sm:grid-cols-2 sm:gap-12" : "",
-              )}
-            >
-              {study.lead ? (
-                <div>
-                  <h2 className={cn(caseHeading, "mb-5")}>О задаче</h2>
+            <div className="mx-auto mt-12 grid w-full max-w-[1040px] gap-10 sm:mt-14 sm:grid-cols-2 sm:gap-12">
+              <div>
+                <h2 className={cn(caseHeading, "mb-5")}>О задаче</h2>
+                {study.lead?.length ? (
                   <div className="space-y-4 text-[17px] leading-[1.75] text-ink/85">
                     {study.lead.map((paragraph) => (
                       <p key={paragraph.slice(0, 32)}>{paragraph}</p>
                     ))}
                   </div>
-                </div>
-              ) : null}
+                ) : (
+                  /* ВРЕМЕННО: место под описание задачи, пока текст не написан. */
+                  <p className="text-[17px] leading-relaxed text-muted">
+                    дополнить описанием задачи
+                  </p>
+                )}
+              </div>
 
               <div>
                 <h2 className={cn(caseHeading, "mb-5")}>Результаты</h2>
@@ -116,7 +116,7 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
                     ))}
                   </ul>
                 ) : study.results.length > 0 ? (
-                  <MetricRow items={study.results} plain />
+                  <MetricRow items={study.results} plain narrow />
                 ) : (
                   /* ВРЕМЕННО: заголовок оставлен как напоминание, пока
                      результаты кейса не сформулированы. */
