@@ -28,7 +28,7 @@ export const clinicNavigation: CaseStudy = {
     },
   },
   meta: {
-    team: "Единственный дизайнер, 2 backend, 1 frontend, PM, работа с SEO-командой",
+    team: "Единственный дизайнер - я, 2 backend, 1 frontend, PM, работа с SEO-командой",
   },
   tags: [
     "UX-аудит",
