@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { CaseBlocks } from "@/components/CaseBlocks";
+import { CaseBlocks, caseHeading, caseList } from "@/components/CaseBlocks";
 import { CaseCard } from "@/components/CaseCard";
 import { CoverComposition } from "@/components/CoverComposition";
 import { Container } from "@/components/Container";
@@ -13,6 +13,7 @@ import { TagList } from "@/components/Tag";
 import { ZoomableImage } from "@/components/ZoomableImage";
 import { ArrowLeftIcon } from "@/components/icons";
 import { getAllCases, getCaseBySlug, getOtherCases } from "@/content";
+import { cn } from "@/lib/cn";
 
 /** Список страниц кейсов, которые нужно собрать заранее. */
 export function generateStaticParams() {
@@ -91,15 +92,21 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
             ) : null}
 
             <div className="mx-auto mt-12 w-full max-w-reading sm:mt-14">
-              <h2 className="text-[15px] font-medium text-muted sm:text-[17px]">
-                Результаты
-              </h2>
-              {study.results.length > 0 ? (
-                <MetricRow items={study.results} plain className="mt-6" />
+              <h2 className={cn(caseHeading, "mb-5")}>Результаты</h2>
+              {study.highlights?.length ? (
+                <ul className={cn(caseList, "list-disc")}>
+                  {study.highlights.map((item) => (
+                    <li key={item.slice(0, 32)} className="pl-1">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              ) : study.results.length > 0 ? (
+                <MetricRow items={study.results} plain />
               ) : (
                 /* ВРЕМЕННО: заголовок оставлен как напоминание, пока
                    результаты кейса не сформулированы. */
-                <p className="mt-4 text-[17px] leading-relaxed text-muted">
+                <p className="text-[17px] leading-relaxed text-muted">
                   дополнить результатами
                 </p>
               )}

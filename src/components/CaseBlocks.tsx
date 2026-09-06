@@ -6,12 +6,12 @@ import { ZoomableImage } from "./ZoomableImage";
 const reading = "mx-auto w-full max-w-reading";
 const wide = "mx-auto w-full max-w-[1040px]";
 
-const heading =
+export const caseHeading =
   "text-2xl font-medium leading-snug tracking-[-0.02em] text-balance sm:text-[28px]";
 const subheading =
   "text-[19px] font-medium leading-snug tracking-[-0.01em] text-balance sm:text-[21px]";
 const prose = "space-y-4 text-[17px] leading-[1.75] text-ink/85";
-const listBase =
+export const caseList =
   "space-y-3 pl-5 text-[17px] leading-[1.7] text-ink/85 marker:text-muted";
 
 function Paragraphs({ items }: { items: string[] }) {
@@ -30,7 +30,7 @@ function Block({ block }: { block: CaseBlock }) {
       return (
         <div className={reading}>
           {block.heading ? (
-            <h2 className={cn(heading, "mb-5")}>{block.heading}</h2>
+            <h2 className={cn(caseHeading, "mb-5")}>{block.heading}</h2>
           ) : null}
           <Paragraphs items={block.paragraphs} />
         </div>
@@ -41,7 +41,7 @@ function Block({ block }: { block: CaseBlock }) {
         <div className={block.wide ? wide : reading}>
           <div className={block.wide ? reading : undefined}>
             {block.heading ? (
-              <h2 className={cn(heading, "mb-5")}>{block.heading}</h2>
+              <h2 className={cn(caseHeading, "mb-5")}>{block.heading}</h2>
             ) : null}
             <Paragraphs items={block.paragraphs} />
           </div>
@@ -74,7 +74,7 @@ function Block({ block }: { block: CaseBlock }) {
         <div className={block.wide ? wide : reading}>
           {/* Заголовок выравниваем по колонке текста, как у остальных блоков,
              а саму картинку оставляем во всю ширину. */}
-          <h2 className={cn(heading, "mx-auto mb-6 w-full max-w-reading")}>
+          <h2 className={cn(caseHeading, "mx-auto mb-6 w-full max-w-reading")}>
             {block.heading}
           </h2>
           <ZoomableImage image={block.image} sizes={imageSizes} />
@@ -86,7 +86,7 @@ function Block({ block }: { block: CaseBlock }) {
       return (
         <div className={wide}>
           {block.heading ? (
-            <h2 className={cn(heading, "mb-6 w-full max-w-reading")}>
+            <h2 className={cn(caseHeading, "mb-6 w-full max-w-reading")}>
               {block.heading}
             </h2>
           ) : null}
@@ -115,7 +115,7 @@ function Block({ block }: { block: CaseBlock }) {
             block.sub ? (
               <h3 className={cn(subheading, "mb-4")}>{block.heading}</h3>
             ) : (
-              <h2 className={cn(heading, "mb-5")}>{block.heading}</h2>
+              <h2 className={cn(caseHeading, "mb-5")}>{block.heading}</h2>
             )
           ) : null}
           {block.paragraphs ? (
@@ -126,7 +126,7 @@ function Block({ block }: { block: CaseBlock }) {
             </div>
           ) : null}
           <ListTag
-            className={cn(listBase, block.ordered ? "list-decimal" : "list-disc")}
+            className={cn(caseList, block.ordered ? "list-decimal" : "list-disc")}
           >
             {block.items.map((item) =>
               typeof item === "string" ? (
@@ -163,7 +163,7 @@ function Block({ block }: { block: CaseBlock }) {
       return (
         <div className={reading}>
           {block.heading ? (
-            <h2 className={cn(heading, "mb-6")}>{block.heading}</h2>
+            <h2 className={cn(caseHeading, "mb-6")}>{block.heading}</h2>
           ) : null}
           <MetricRow items={block.items} plain />
         </div>

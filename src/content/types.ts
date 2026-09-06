@@ -91,6 +91,8 @@ export interface CaseStudy {
   tags?: string[];
   /** Ключевые результаты в шапке кейса, 2–5 штук */
   results: Metric[];
+  /** Краткие итоги строками — показываются вместо цифр, если заданы */
+  highlights?: string[];
   /** Абзацы-вступление между шапкой и обложкой — необязательно */
   lead?: string[];
   blocks: CaseBlock[];
