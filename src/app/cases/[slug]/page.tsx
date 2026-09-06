@@ -98,10 +98,17 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
                 <ul className="border-t border-line">
                   {study.highlights.map((item) => (
                     <li
-                      key={item.slice(0, 32)}
-                      className="border-b border-line py-4 text-[17px] leading-relaxed text-ink/85"
+                      key={item.title}
+                      className="border-b border-line py-5"
                     >
-                      {item}
+                      <p className="text-[20px] font-medium leading-snug tracking-[-0.01em] sm:text-[22px]">
+                        {item.title}
+                      </p>
+                      {item.text ? (
+                        <p className="mt-1.5 text-[17px] leading-relaxed text-muted">
+                          {item.text}
+                        </p>
+                      ) : null}
                     </li>
                   ))}
                 </ul>
