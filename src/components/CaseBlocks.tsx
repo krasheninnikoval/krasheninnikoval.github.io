@@ -12,7 +12,7 @@ const subheading =
   "text-[19px] font-medium leading-snug tracking-[-0.01em] text-balance sm:text-[21px]";
 const prose = "space-y-4 text-[17px] leading-[1.75] text-ink/85";
 const listBase =
-  "list-decimal space-y-3 pl-5 text-[17px] leading-[1.7] text-ink/85 marker:text-muted";
+  "space-y-3 pl-5 text-[17px] leading-[1.7] text-ink/85 marker:text-muted";
 
 function Paragraphs({ items }: { items: string[] }) {
   return (
@@ -126,10 +126,7 @@ function Block({ block }: { block: CaseBlock }) {
             </div>
           ) : null}
           <ListTag
-            className={cn(
-              "space-y-3 pl-5 text-[17px] leading-[1.7] text-ink/85 marker:text-muted",
-              block.ordered ? "list-decimal" : "list-disc",
-            )}
+            className={cn(listBase, block.ordered ? "list-decimal" : "list-disc")}
           >
             {block.items.map((item) =>
               typeof item === "string" ? (
@@ -147,40 +144,6 @@ function Block({ block }: { block: CaseBlock }) {
         </div>
       );
     }
-
-    case "columns":
-      return (
-        <div className={cn(reading, "grid gap-10 sm:grid-cols-2 sm:gap-8")}>
-          {block.items.map((item) => (
-            <div key={item.heading}>
-              <h2 className={cn(heading, "mb-5")}>{item.heading}</h2>
-              {item.points?.length ? (
-                <ol className={listBase}>
-                  {item.points.map((point) =>
-                    typeof point === "string" ? (
-                      <li key={point.slice(0, 32)} className="pl-1">
-                        {point}
-                      </li>
-                    ) : (
-                      <li key={point.term} className="pl-1">
-                        <span className="font-medium text-ink">
-                          {point.term}.
-                        </span>{" "}
-                        {point.text}
-                      </li>
-                    ),
-                  )}
-                </ol>
-              ) : (
-                /* ВРЕМЕННО: заголовок стоит как напоминание, пока текста нет. */
-                <p className="text-[17px] leading-relaxed text-muted">
-                  дополнить
-                </p>
-              )}
-            </div>
-          ))}
-        </div>
-      );
 
     case "quote":
       return (
