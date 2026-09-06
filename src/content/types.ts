@@ -102,6 +102,8 @@ export interface Project {
   slug: string;
   /** Проект уходит в нижнюю группу «Другие проекты» — те, у которых нет кейса */
   secondary?: boolean;
+  /** Результаты стоят колонкой рядом с описанием, а не под тэгами */
+  resultsAside?: boolean;
   title: string;
   /** Компания, в штате которой велась работа — необязательно */
   company?: string;

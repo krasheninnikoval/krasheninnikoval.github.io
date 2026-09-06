@@ -50,22 +50,38 @@ function ProjectRow({
       </h3>
       <ProjectMeta project={project} />
 
-      {/* Слева описание, справа результаты: свои у проекта или из его кейса */}
-      <div className="mt-5 grid gap-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:gap-16">
-        <p className="max-w-[62ch] text-[17px] leading-relaxed text-ink/80">
+      {project.resultsAside ? (
+        /* Слева описание, справа результаты: свои у проекта или из его кейса */
+        <div className="mt-5 grid gap-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:gap-16">
+          <p className="max-w-[62ch] text-[17px] leading-relaxed text-ink/80">
+            {project.description}
+          </p>
+          <MetricRow items={results} plain compact />
+        </div>
+      ) : (
+        <p className="mt-5 max-w-[62ch] text-[17px] leading-relaxed text-ink/80">
           {project.description}
         </p>
-        <MetricRow items={results} plain compact />
-      </div>
+      )}
 
-      <div className="mt-8">
+      <div className={project.resultsAside ? "mt-8" : "mt-6"}>
         <TagList tags={project.tags} />
       </div>
+
+      {/* Без кейса и без выноса — результаты идут под тэгами */}
+      {!project.resultsAside && !study ? (
+        <MetricRow items={project.results} plain className="mt-10 sm:mt-12" />
+      ) : null}
 
       {/* Кейс — под описанием, на всю ширину раздела */}
       {study ? (
         <div className="mt-10 sm:mt-12">
-          <CaseCard study={study} wide sizes="(max-width: 1280px) 100vw, 1240px" />
+          <CaseCard
+            study={study}
+            wide
+            showResults={!project.resultsAside}
+            sizes="(max-width: 1280px) 100vw, 1240px"
+          />
         </div>
       ) : null}
     </Reveal>

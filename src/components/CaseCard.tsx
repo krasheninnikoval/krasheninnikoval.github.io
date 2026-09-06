@@ -14,10 +14,13 @@ export function CaseCard({
   sizes = "(max-width: 1024px) 100vw, 55vw",
   /** Широкая карточка на всю ширину раздела — превью ниже по высоте */
   wide = false,
+  /** Показывать результаты кейса на карточке */
+  showResults = true,
 }: {
   study: CaseStudy;
   sizes?: string;
   wide?: boolean;
+  showResults?: boolean;
 }) {
   return (
     <Link
@@ -57,11 +60,14 @@ export function CaseCard({
           {study.cardSummary}
         </p>
 
-        {/* На широкой карточке результаты не дублируем: они стоят рядом
-           с описанием проекта. В блоке «Другие кейсы» — показываем. */}
-        {wide ? null : (
-          <MetricRow items={study.results} plain compact className="mt-6" />
-        )}
+        {showResults ? (
+          <MetricRow
+            items={study.results}
+            plain
+            compact
+            className={wide ? "mt-7 sm:mt-8" : "mt-6"}
+          />
+        ) : null}
       </div>
     </Link>
   );
