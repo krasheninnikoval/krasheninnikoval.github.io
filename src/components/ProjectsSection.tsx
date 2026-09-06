@@ -34,6 +34,8 @@ function ProjectRow({
   /* Показываем первый непрятанный кейс проекта.
      Если такого нет — остаётся только описание и результаты. */
   const study = project.cases.find((item) => !item.hidden);
+  /* Если у проекта есть кейс — показываем его результаты, иначе свои. */
+  const results = study ? study.results : project.results;
 
   return (
     <Reveal
@@ -48,19 +50,17 @@ function ProjectRow({
       </h3>
       <ProjectMeta project={project} />
 
-      <p className="mt-5 max-w-[62ch] text-[17px] leading-relaxed text-ink/80">
-        {project.description}
-      </p>
-
-      <div className="mt-6">
-        <TagList tags={project.tags} />
+      {/* Слева описание, справа результаты: свои у проекта или из его кейса */}
+      <div className="mt-5 grid gap-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:gap-16">
+        <p className="max-w-[62ch] text-[17px] leading-relaxed text-ink/80">
+          {project.description}
+        </p>
+        <MetricRow items={results} plain compact />
       </div>
 
-      {/* Результаты показываем, только если у проекта нет кейса:
-         иначе цифры уже стоят на карточке кейса. */}
-      {study ? null : (
-        <MetricRow items={project.results} plain className="mt-10 sm:mt-12" />
-      )}
+      <div className="mt-8">
+        <TagList tags={project.tags} />
+      </div>
 
       {/* Кейс — под описанием, на всю ширину раздела */}
       {study ? (

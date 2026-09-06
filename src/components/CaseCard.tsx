@@ -57,12 +57,11 @@ export function CaseCard({
           {study.cardSummary}
         </p>
 
-        <MetricRow
-          items={study.results}
-          plain
-          compact
-          className={wide ? "mt-7 sm:mt-8" : "mt-6"}
-        />
+        {/* На широкой карточке результаты не дублируем: они стоят рядом
+           с описанием проекта. В блоке «Другие кейсы» — показываем. */}
+        {wide ? null : (
+          <MetricRow items={study.results} plain compact className="mt-6" />
+        )}
       </div>
     </Link>
   );
