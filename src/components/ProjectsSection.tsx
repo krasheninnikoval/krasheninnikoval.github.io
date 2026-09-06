@@ -13,8 +13,8 @@ function ProjectMeta({ project }: { project: Project }) {
     <MetaLine
       className="mt-3"
       items={[
-        { label: "Компания", value: project.company },
         { label: "Заказчик", value: project.client },
+        { label: "Компания", value: project.company },
         { label: "Продукт", value: project.product },
         { label: "Сроки", value: project.period },
       ]}
