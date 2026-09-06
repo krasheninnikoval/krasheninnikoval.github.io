@@ -104,21 +104,17 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
               <div>
                 <h2 className={cn(caseHeading, "mb-5")}>Результаты</h2>
                 {study.highlights?.length ? (
-                  <dl className="grid gap-8">
+                  /* Как остальные списки кейса, но без нумерации */
+                  <ul className="space-y-3 text-[17px] leading-[1.7] text-ink/85">
                     {study.highlights.map((item) => (
-                      <div
-                        key={item.title}
-                        className="flex flex-col-reverse justify-end gap-2"
-                      >
-                        <dt className="text-[17px] leading-relaxed text-muted">
-                          {item.text}
-                        </dt>
-                        <dd className="text-[19px] font-medium leading-snug tracking-[-0.01em] sm:text-[21px]">
-                          {item.title}
-                        </dd>
-                      </div>
+                      <li key={item.title}>
+                        <span className="font-medium text-ink">
+                          {item.title}.
+                        </span>{" "}
+                        {item.text}
+                      </li>
                     ))}
-                  </dl>
+                  </ul>
                 ) : study.results.length > 0 ? (
                   <MetricRow items={study.results} plain />
                 ) : (
