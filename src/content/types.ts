@@ -100,6 +100,8 @@ export interface CaseStudy {
 
 export interface Project {
   slug: string;
+  /** Проект уходит в нижнюю группу «Другие проекты» — те, у которых нет кейса */
+  secondary?: boolean;
   title: string;
   /** Компания, в штате которой велась работа — необязательно */
   company?: string;

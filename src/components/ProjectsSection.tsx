@@ -64,6 +64,10 @@ function ProjectRow({ project }: { project: Project }) {
 
 /** Раздел «Проекты» на главной. */
 export function ProjectsSection() {
+  /* Наверху проекты с кейсами, ниже — остальные. */
+  const main = projects.filter((project) => !project.secondary);
+  const other = projects.filter((project) => project.secondary);
+
   return (
     <section id="projects" className="scroll-mt-24 pb-24 sm:pb-32">
       <Container>
@@ -72,10 +76,23 @@ export function ProjectsSection() {
         <h2 className="sr-only">Опыт</h2>
 
         <ul className="space-y-14 sm:space-y-16">
-          {projects.map((project) => (
+          {main.map((project) => (
             <ProjectRow key={project.slug} project={project} />
           ))}
         </ul>
+
+        {other.length > 0 ? (
+          <div className="mt-20 border-t border-line pt-12 sm:mt-24 sm:pt-14">
+            <h3 className="text-[15px] font-medium text-muted sm:text-[17px]">
+              Другие проекты
+            </h3>
+            <ul className="mt-10 space-y-14 sm:mt-12 sm:space-y-16">
+              {other.map((project) => (
+                <ProjectRow key={project.slug} project={project} />
+              ))}
+            </ul>
+          </div>
+        ) : null}
       </Container>
     </section>
   );

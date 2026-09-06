@@ -38,6 +38,7 @@ export const projects: Project[] = [
   },
   {
     slug: "requests-service",
+    secondary: true,
     title: "Сервис приёма и обработки заявок",
     company: "JetTeam",
     client: "Проект под NDA",
@@ -57,6 +58,7 @@ export const projects: Project[] = [
   },
   {
     slug: "venture-news",
+    secondary: true,
     title: "Раздел венчурных новостей",
     company: "ФИНАМ",
     period: "август – ноябрь 2025",
@@ -72,6 +74,7 @@ export const projects: Project[] = [
   },
   {
     slug: "lowcode-builder",
+    secondary: true,
     title: "Nocode. Low-code конструктор",
     company: "Artsofte",
     product: "Nocode",
