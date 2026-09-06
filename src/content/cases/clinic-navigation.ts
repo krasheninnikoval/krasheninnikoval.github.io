@@ -34,7 +34,6 @@ export const clinicNavigation: CaseStudy = {
     "UX-аудит",
     "Информационная архитектура",
     "Дизайн-система",
-    "Юзабилити-тестирование",
   ],
   results: [],
   lead: [
