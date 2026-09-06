@@ -92,7 +92,7 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
             >
               {study.lead ? (
                 <div>
-                  <h2 className={cn(caseHeading, "mb-5")}>Контекст</h2>
+                  <h2 className={cn(caseHeading, "mb-5")}>О задаче</h2>
                   <div className="space-y-4 text-[17px] leading-[1.75] text-ink/85">
                     {study.lead.map((paragraph) => (
                       <p key={paragraph.slice(0, 32)}>{paragraph}</p>
