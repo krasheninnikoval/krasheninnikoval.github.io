@@ -91,27 +91,28 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
               </div>
             ) : null}
 
-            <div className="mx-auto mt-12 w-full max-w-reading sm:mt-14">
-              <h2 className={cn(caseHeading, "mb-5")}>Результаты</h2>
+            <div className="mx-auto mt-12 w-full max-w-[1040px] sm:mt-14">
+              <h2 className={cn(caseHeading, "mx-auto mb-8 w-full max-w-reading")}>
+                Результаты
+              </h2>
               {study.highlights?.length ? (
-                /* Колонками, как результаты проектов в разделе «Опыт» */
-                <ul className="border-t border-line">
+                /* Крупно итог, под ним пояснение — как результаты проектов
+                   в разделе «Опыт». */
+                <dl className="grid gap-x-10 gap-y-10 sm:grid-cols-2">
                   {study.highlights.map((item) => (
-                    <li
+                    <div
                       key={item.title}
-                      className="border-b border-line py-5"
+                      className="flex flex-col-reverse justify-end gap-2.5"
                     >
-                      <p className="text-[20px] font-medium leading-snug tracking-[-0.01em] sm:text-[22px]">
+                      <dt className="text-sm leading-snug text-muted">
+                        {item.text}
+                      </dt>
+                      <dd className="text-[32px] font-medium leading-none tracking-tight sm:text-[38px]">
                         {item.title}
-                      </p>
-                      {item.text ? (
-                        <p className="mt-1.5 text-[17px] leading-relaxed text-muted">
-                          {item.text}
-                        </p>
-                      ) : null}
-                    </li>
+                      </dd>
+                    </div>
                   ))}
-                </ul>
+                </dl>
               ) : study.results.length > 0 ? (
                 <MetricRow items={study.results} plain />
               ) : (
