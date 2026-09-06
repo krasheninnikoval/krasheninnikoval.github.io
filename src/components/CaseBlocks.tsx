@@ -151,7 +151,7 @@ function Block({ block }: { block: CaseBlock }) {
         <div className={cn(reading, "grid gap-10 sm:grid-cols-2 sm:gap-8")}>
           {block.items.map((item) => (
             <div key={item.heading}>
-              <h2 className={cn(subheading, "mb-4")}>{item.heading}</h2>
+              <h2 className={cn(heading, "mb-5")}>{item.heading}</h2>
               {item.points?.length ? (
                 <div className={prose}>
                   {item.points.map((point) =>
