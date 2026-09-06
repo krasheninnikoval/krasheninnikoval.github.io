@@ -98,16 +98,16 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
               {study.highlights?.length ? (
                 /* Крупно итог, под ним пояснение — как результаты проектов
                    в разделе «Опыт». */
-                <dl className="grid gap-x-10 gap-y-10 sm:grid-cols-2">
+                <dl className="mx-auto grid w-full max-w-reading gap-8">
                   {study.highlights.map((item) => (
                     <div
                       key={item.title}
-                      className="flex flex-col-reverse justify-end gap-2.5"
+                      className="flex flex-col-reverse justify-end gap-2"
                     >
-                      <dt className="text-sm leading-snug text-muted">
+                      <dt className="text-[17px] leading-relaxed text-muted">
                         {item.text}
                       </dt>
-                      <dd className="text-[32px] font-medium leading-none tracking-tight sm:text-[38px]">
+                      <dd className="text-[22px] font-medium leading-snug tracking-[-0.01em] sm:text-[26px]">
                         {item.title}
                       </dd>
                     </div>
