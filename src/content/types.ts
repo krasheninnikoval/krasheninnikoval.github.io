@@ -50,7 +50,7 @@ export type CaseBlock =
   | {
       /** Два блока рядом: на узких экранах встают друг под друга */
       type: "columns";
-      items: { heading: string; paragraphs?: string[] }[];
+      items: { heading: string; points?: ListItem[] }[];
     }
   | { type: "quote"; text: string; author?: string }
   | { type: "metrics"; heading?: string; items: Metric[] }

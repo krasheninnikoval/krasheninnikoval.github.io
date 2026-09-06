@@ -152,11 +152,20 @@ function Block({ block }: { block: CaseBlock }) {
           {block.items.map((item) => (
             <div key={item.heading}>
               <h2 className={cn(subheading, "mb-4")}>{item.heading}</h2>
-              {item.paragraphs?.length ? (
+              {item.points?.length ? (
                 <div className={prose}>
-                  {item.paragraphs.map((text) => (
-                    <p key={text.slice(0, 32)}>{text}</p>
-                  ))}
+                  {item.points.map((point) =>
+                    typeof point === "string" ? (
+                      <p key={point.slice(0, 32)}>{point}</p>
+                    ) : (
+                      <p key={point.term}>
+                        <span className="font-medium text-ink">
+                          {point.term}.
+                        </span>{" "}
+                        {point.text}
+                      </p>
+                    ),
+                  )}
                 </div>
               ) : (
                 /* ВРЕМЕННО: заголовок стоит как напоминание, пока текста нет. */
