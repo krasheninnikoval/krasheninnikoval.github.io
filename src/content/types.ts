@@ -47,6 +47,11 @@ export type CaseBlock =
       ordered?: boolean;
       items: ListItem[];
     }
+  | {
+      /** Два блока рядом: на узких экранах встают друг под друга */
+      type: "columns";
+      items: { heading: string; paragraphs?: string[] }[];
+    }
   | { type: "quote"; text: string; author?: string }
   | { type: "metrics"; heading?: string; items: Metric[] }
   | { type: "divider" };

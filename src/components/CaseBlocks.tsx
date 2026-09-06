@@ -146,6 +146,29 @@ function Block({ block }: { block: CaseBlock }) {
       );
     }
 
+    case "columns":
+      return (
+        <div className={cn(reading, "grid gap-10 sm:grid-cols-2 sm:gap-8")}>
+          {block.items.map((item) => (
+            <div key={item.heading}>
+              <h2 className={cn(subheading, "mb-4")}>{item.heading}</h2>
+              {item.paragraphs?.length ? (
+                <div className={prose}>
+                  {item.paragraphs.map((text) => (
+                    <p key={text.slice(0, 32)}>{text}</p>
+                  ))}
+                </div>
+              ) : (
+                /* ВРЕМЕННО: заголовок стоит как напоминание, пока текста нет. */
+                <p className="text-[17px] leading-relaxed text-muted">
+                  дополнить
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
+      );
+
     case "quote":
       return (
         <figure className={reading}>

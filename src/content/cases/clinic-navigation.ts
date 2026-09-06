@@ -185,5 +185,18 @@ export const clinicNavigation: CaseStudy = {
       },
       wide: true,
     },
+    {
+      /* ВРЕМЕННЫЙ ТЕКСТ: развёрнутые результаты кейса. */
+      type: "text",
+      heading: "Результаты",
+      paragraphs: ["дополнить результатами"],
+    },
+    {
+      type: "columns",
+      items: [
+        { heading: "Что бы сделала иначе" },
+        { heading: "Чему научилась" },
+      ],
+    },
   ],
 };
