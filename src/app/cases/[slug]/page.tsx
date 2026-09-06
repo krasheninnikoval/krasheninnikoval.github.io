@@ -107,7 +107,7 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
                       <dt className="text-[17px] leading-relaxed text-muted">
                         {item.text}
                       </dt>
-                      <dd className="text-[22px] font-medium leading-snug tracking-[-0.01em] sm:text-[26px]">
+                      <dd className="text-[19px] font-medium leading-snug tracking-[-0.01em] sm:text-[21px]">
                         {item.title}
                       </dd>
                     </div>
