@@ -83,45 +83,52 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
 
             </header>
 
-            {study.lead ? (
-              <div className="mx-auto mt-12 w-full max-w-reading space-y-4 text-[17px] leading-[1.75] text-ink/85 sm:mt-14">
-                {study.lead.map((paragraph) => (
-                  <p key={paragraph.slice(0, 32)}>{paragraph}</p>
-                ))}
-              </div>
-            ) : null}
-
-            <div className="mx-auto mt-12 w-full max-w-[1040px] sm:mt-14">
-              <h2 className={cn(caseHeading, "mx-auto mb-8 w-full max-w-reading")}>
-                Результаты
-              </h2>
-              {study.highlights?.length ? (
-                /* Крупно итог, под ним пояснение — как результаты проектов
-                   в разделе «Опыт». */
-                <dl className="mx-auto grid w-full max-w-reading gap-8">
-                  {study.highlights.map((item) => (
-                    <div
-                      key={item.title}
-                      className="flex flex-col-reverse justify-end gap-2"
-                    >
-                      <dt className="text-[17px] leading-relaxed text-muted">
-                        {item.text}
-                      </dt>
-                      <dd className="text-[19px] font-medium leading-snug tracking-[-0.01em] sm:text-[21px]">
-                        {item.title}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-              ) : study.results.length > 0 ? (
-                <MetricRow items={study.results} plain />
-              ) : (
-                /* ВРЕМЕННО: заголовок оставлен как напоминание, пока
-                   результаты кейса не сформулированы. */
-                <p className="text-[17px] leading-relaxed text-muted">
-                  дополнить результатами
-                </p>
+            {/* Контекст и результаты — двумя колонками по ширине обложки */}
+            <div
+              className={cn(
+                "mx-auto mt-12 w-full max-w-[1040px] sm:mt-14",
+                study.lead ? "grid gap-10 sm:grid-cols-2 sm:gap-12" : "",
               )}
+            >
+              {study.lead ? (
+                <div>
+                  <h2 className={cn(caseHeading, "mb-5")}>Контекст</h2>
+                  <div className="space-y-4 text-[17px] leading-[1.75] text-ink/85">
+                    {study.lead.map((paragraph) => (
+                      <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+
+              <div>
+                <h2 className={cn(caseHeading, "mb-5")}>Результаты</h2>
+                {study.highlights?.length ? (
+                  <dl className="grid gap-8">
+                    {study.highlights.map((item) => (
+                      <div
+                        key={item.title}
+                        className="flex flex-col-reverse justify-end gap-2"
+                      >
+                        <dt className="text-[17px] leading-relaxed text-muted">
+                          {item.text}
+                        </dt>
+                        <dd className="text-[19px] font-medium leading-snug tracking-[-0.01em] sm:text-[21px]">
+                          {item.title}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                ) : study.results.length > 0 ? (
+                  <MetricRow items={study.results} plain />
+                ) : (
+                  /* ВРЕМЕННО: заголовок оставлен как напоминание, пока
+                     результаты кейса не сформулированы. */
+                  <p className="text-[17px] leading-relaxed text-muted">
+                    дополнить результатами
+                  </p>
+                )}
+              </div>
             </div>
 
             {study.coverPair ? (
