@@ -15,7 +15,7 @@ export default function NotFound() {
             Страница не найдена
           </h1>
           <p className="mx-auto mt-4 max-w-[46ch] text-[17px] leading-relaxed text-muted">
-            Возможно, страница переехала или в адресе опечатка.
+            Возможно, страница переехала или в адресе опечатка
           </p>
           <Link
             href="/"
