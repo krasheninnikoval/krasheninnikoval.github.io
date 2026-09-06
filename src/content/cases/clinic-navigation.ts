@@ -37,7 +37,10 @@ export const clinicNavigation: CaseStudy = {
   ],
   results: [
     { value: "↓ Клики", label: "до целевых действий" },
-    { value: "Запущено", label: "во всех филиалах в двух городах" },
+    {
+      value: "Запущена",
+      label: "новая главная с переработанной навигацией",
+    },
   ],
   highlights: [
     {
