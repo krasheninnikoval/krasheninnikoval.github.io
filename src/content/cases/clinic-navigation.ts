@@ -5,8 +5,8 @@ import type { CaseStudy } from "../types";
 export const clinicNavigation: CaseStudy = {
   slug: "clinic-navigation",
   title: "Главная страница и навигация",
-  /* ВРЕМЕННЫЙ ТЕКСТ. Заменяется на нормальное описание с результатами. */
-  cardSummary: "дополнить результатами",
+  cardSummary:
+    "Заказчик пришёл за визуальным обновлением главной. UX-аудит показал, что проблема глубже: непредсказуемое поведение компонентов, перегруженное меню навигации, несоответствие неймингов",
   preview: {
     src: "/images/cases/clinic/main-page.png",
     alt: "Главная страница сайта клиники с раскрытым меню",
@@ -35,7 +35,10 @@ export const clinicNavigation: CaseStudy = {
     "Информационная архитектура",
     "Дизайн-система",
   ],
-  results: [],
+  results: [
+    { value: "↓ Клики", label: "до целевых действий" },
+    { value: "Запущено", label: "во всех филиалах в двух городах" },
+  ],
   highlights: [
     {
       title: "Новая главная запущена",
