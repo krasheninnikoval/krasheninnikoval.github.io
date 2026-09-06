@@ -95,11 +95,11 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
               <h2 className={cn(caseHeading, "mb-5")}>Результаты</h2>
               {study.highlights?.length ? (
                 /* Колонками, как результаты проектов в разделе «Опыт» */
-                <ul className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
+                <ul className="border-t border-line">
                   {study.highlights.map((item) => (
                     <li
                       key={item.slice(0, 32)}
-                      className="border-t border-line pt-4 text-[17px] leading-relaxed text-ink/85"
+                      className="border-b border-line py-4 text-[17px] leading-relaxed text-ink/85"
                     >
                       {item}
                     </li>
