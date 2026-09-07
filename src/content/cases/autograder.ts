@@ -43,5 +43,47 @@ export const autograder: CaseStudy = {
       placeholder: true,
       paragraphs: ["дополнить контекстом и проблемами"],
     },
+    {
+      type: "text",
+      heading: "Исследование",
+      placeholder: true,
+      paragraphs: ["дополнить исследованием"],
+    },
+    {
+      type: "text",
+      heading: "Проектирование",
+      placeholder: true,
+      paragraphs: ["дополнить текстом и картинками"],
+    },
+    {
+      type: "text",
+      heading: "Решение",
+      placeholder: true,
+      paragraphs: ["дополнить тем, что изменилось в интерфейсе"],
+    },
+    {
+      type: "text",
+      heading: "Тестирование",
+      placeholder: true,
+      paragraphs: ["дополнить юзабилити-тестом"],
+    },
+    {
+      type: "text",
+      heading: "Результаты",
+      placeholder: true,
+      paragraphs: ["дополнить результатами"],
+    },
+    {
+      type: "text",
+      heading: "Что бы сделала иначе",
+      placeholder: true,
+      paragraphs: ["дополнить рефлексией"],
+    },
+    {
+      type: "text",
+      heading: "Чему научилась",
+      placeholder: true,
+      paragraphs: ["дополнить рефлексией"],
+    },
   ],
 };
