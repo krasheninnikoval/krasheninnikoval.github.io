@@ -8,10 +8,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   return [
     { url: site.url, lastModified: now, priority: 1 },
-    ...getAllCases().map(({ study }) => ({
-      url: `${site.url}/cases/${study.slug}`,
-      lastModified: now,
-      priority: 0.8,
-    })),
+    ...getAllCases()
+      .filter(({ study }) => !study.hidden)
+      .map(({ study }) => ({
+        url: `${site.url}/cases/${study.slug}`,
+        lastModified: now,
+        priority: 0.8,
+      })),
   ];
 }

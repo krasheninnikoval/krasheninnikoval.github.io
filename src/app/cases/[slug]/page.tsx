@@ -29,6 +29,8 @@ export async function generateMetadata({ params }: PageProps<"/cases/[slug]">) {
   return {
     title: study.title,
     description: study.cardSummary,
+    /* Черновые кейсы доступны по ссылке, но не индексируются */
+    robots: study.hidden ? { index: false, follow: false } : undefined,
     openGraph: {
       title: `${study.title} — ${project.title}`,
       description: study.cardSummary,
