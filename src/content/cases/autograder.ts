@@ -27,8 +27,7 @@ export const autograder: CaseStudy = {
     },
   },
   meta: {
-    timeline: "сентябрь 2024 – март 2025",
-    team: "Единственный дизайнер в команде разработки",
+    team: "Единственный дизайнер - я, 4 backend (инженеры), 1 frontend, PM",
     product: "Встроенный сенсорный интерфейс спецтехники, B2B",
   },
   results: [
