@@ -115,6 +115,8 @@ export interface Project {
   period?: string;
   /** Описание проекта: строка или несколько абзацев */
   description: string | string[];
+  /** Что сделала — нумерованным списком под описанием */
+  descriptionList?: string[];
   tags: string[];
   results: Metric[];
   /**

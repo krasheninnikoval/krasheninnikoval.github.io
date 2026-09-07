@@ -26,9 +26,11 @@ function ProjectMeta({ project }: { project: Project }) {
 /** Описание проекта — один или несколько абзацев */
 function ProjectDescription({
   text,
+  list,
   className,
 }: {
   text: string | string[];
+  list?: string[];
   className?: string;
 }) {
   const paragraphs = Array.isArray(text) ? text : [text];
@@ -42,6 +44,15 @@ function ProjectDescription({
       {paragraphs.map((paragraph) => (
         <p key={paragraph.slice(0, 32)}>{paragraph}</p>
       ))}
+      {list?.length ? (
+        <ol className="list-decimal space-y-3 pl-5 marker:text-muted">
+          {list.map((item) => (
+            <li key={item.slice(0, 32)} className="pl-1">
+              {item}
+            </li>
+          ))}
+        </ol>
+      ) : null}
     </div>
   );
 }
@@ -76,11 +87,18 @@ function ProjectRow({
       {project.resultsAside ? (
         /* Слева описание, справа результаты: свои у проекта или из его кейса */
         <div className="mt-5 grid gap-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-center lg:gap-16">
-          <ProjectDescription text={project.description} />
+          <ProjectDescription
+            text={project.description}
+            list={project.descriptionList}
+          />
           <MetricRow items={results} plain narrow />
         </div>
       ) : (
-        <ProjectDescription text={project.description} className="mt-5" />
+        <ProjectDescription
+          text={project.description}
+          list={project.descriptionList}
+          className="mt-5"
+        />
       )}
 
       <div className={project.resultsAside ? "mt-8" : "mt-6"}>
