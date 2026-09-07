@@ -38,10 +38,10 @@ export const autograder: CaseStudy = {
   blocks: [
     {
       type: "text",
-      heading: "Контекст и проблемы",
+      heading: "Контекст и исходная ситуация",
       /* ВРЕМЕННО: место под текст, пока он не написан. */
       placeholder: true,
-      paragraphs: ["дополнить контекстом и проблемами"],
+      paragraphs: ["дополнить контекстом и исходной ситуацией"],
     },
     {
       type: "text",
