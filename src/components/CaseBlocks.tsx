@@ -32,7 +32,13 @@ function Block({ block }: { block: CaseBlock }) {
           {block.heading ? (
             <h2 className={cn(caseHeading, "mb-5")}>{block.heading}</h2>
           ) : null}
-          <Paragraphs items={block.paragraphs} />
+          {block.placeholder ? (
+            <p className="text-[17px] leading-relaxed text-muted">
+              {block.paragraphs[0]}
+            </p>
+          ) : (
+            <Paragraphs items={block.paragraphs} />
+          )}
         </div>
       );
 

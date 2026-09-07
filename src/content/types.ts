@@ -26,7 +26,14 @@ export interface Metric {
 export type ListItem = string | { term: string; text: string };
 
 export type CaseBlock =
-  | { type: "text"; heading?: string; sub?: boolean; paragraphs: string[] }
+  | {
+      type: "text";
+      heading?: string;
+      sub?: boolean;
+      /** Временный текст: серым, пока блок не написан */
+      placeholder?: boolean;
+      paragraphs: string[];
+    }
   | {
       type: "textImage";
       heading?: string;
