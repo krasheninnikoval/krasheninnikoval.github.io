@@ -27,6 +27,7 @@ function Paragraphs({ items }: { items: string[] }) {
 function Block({ block }: { block: CaseBlock }) {
   switch (block.type) {
     case "text":
+      if (block.hidden) return null;
       return (
         <div className={reading}>
           {block.heading ? (

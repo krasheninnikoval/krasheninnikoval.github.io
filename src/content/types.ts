@@ -32,6 +32,8 @@ export type CaseBlock =
       sub?: boolean;
       /** Временный текст: серым, пока блок не написан */
       placeholder?: boolean;
+      /** Заготовка: остаётся в файле, но на странице не показывается */
+      hidden?: boolean;
       paragraphs: string[];
     }
   | {
