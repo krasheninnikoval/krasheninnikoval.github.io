@@ -84,7 +84,7 @@ export const projects: Project[] = [
   {
     slug: "lowcode-builder",
     secondary: true,
-    title: "Nocode. Low-code конструктор",
+    title: "Low-code конструктор",
     company: "Artsofte",
     product: "Nocode",
     period: "июль 2023 – август 2024",
