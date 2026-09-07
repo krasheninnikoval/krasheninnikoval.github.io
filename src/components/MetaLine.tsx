@@ -21,7 +21,10 @@ export function MetaLine({
       {filled.map((item, index) => (
         <Fragment key={item.label}>
           {index > 0 ? <span className="px-2 text-line">·</span> : null}
-          {item.label} {item.value}
+          {/* Реквизит переносится целиком, а не разрывается посередине */}
+          <span className="inline-block">
+            {item.label} {item.value}
+          </span>
         </Fragment>
       ))}
     </p>
