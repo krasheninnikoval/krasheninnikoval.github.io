@@ -55,7 +55,11 @@ export function MetricRow({
             className={cn(
               "font-medium leading-none tracking-tight",
               compact
-                ? "text-[26px] sm:text-[32px]"
+                ? /* Словесный итог набирается мельче цифры: длинное слово
+                     в том же кегле выглядит крупнее и перевешивает */
+                  /\d/.test(item.value)
+                  ? "text-[26px] sm:text-[32px]"
+                  : "text-[22px] sm:text-[26px]"
                 : plain
                   ? "text-[36px] sm:text-[44px]"
                   : "text-[32px] sm:text-4xl",
