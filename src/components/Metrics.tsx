@@ -55,7 +55,7 @@ export function MetricRow({
             className={cn(
               "font-medium leading-none tracking-tight",
               compact
-                ? "text-[19px] sm:text-[22px]"
+                ? "text-[21px] sm:text-[24px]"
                 : plain
                   ? "text-[36px] sm:text-[44px]"
                   : "text-[32px] sm:text-4xl",
