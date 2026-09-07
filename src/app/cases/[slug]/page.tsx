@@ -92,11 +92,7 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
                 {study.lead?.length ? (
                   <div className="space-y-4 text-[17px] leading-[1.75] text-ink/85">
                     {study.lead.map((paragraph) => (
-                      /* Строки выравниваются по длине: в узкой колонке
-                         неразрывные куски иначе дают лесенку */
-                      <p className="text-balance" key={paragraph.slice(0, 32)}>
-                        {paragraph}
-                      </p>
+                      <p key={paragraph.slice(0, 32)}>{paragraph}</p>
                     ))}
                   </div>
                 ) : (
