@@ -23,7 +23,6 @@ export const projects: Project[] = [
   },
   {
     slug: "autograder-panel",
-    resultsAside: true,
     title: "Панель управления автогрейдером",
     company: "JetTeam",
     client: "АО «Петербургский тракторный завод» (ОАО «Кировский завод»)",
