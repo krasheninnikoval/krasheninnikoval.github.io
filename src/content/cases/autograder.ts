@@ -28,7 +28,6 @@ export const autograder: CaseStudy = {
   },
   meta: {
     team: "Единственный дизайнер - я, 4 backend (инженеры), 1 frontend, PM",
-    product: "Встроенный сенсорный интерфейс спецтехники, B2B",
   },
   results: [
     { value: "↓ 37%", label: "время прохождения основных сценариев" },
