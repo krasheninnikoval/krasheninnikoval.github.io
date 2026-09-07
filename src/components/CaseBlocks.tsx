@@ -27,7 +27,6 @@ function Paragraphs({ items }: { items: string[] }) {
 function Block({ block }: { block: CaseBlock }) {
   switch (block.type) {
     case "text":
-      if (block.hidden) return null;
       return (
         <div className={reading}>
           {block.heading ? (
@@ -184,15 +183,22 @@ function Block({ block }: { block: CaseBlock }) {
 export function CaseBlocks({ blocks }: { blocks: CaseBlock[] }) {
   return (
     <div className="space-y-14 sm:space-y-20">
-      {blocks.map((block, index) => {
-        /* Подчинённый блок стоит ближе к своему разделу, чем к соседнему. */
-        const sub = "sub" in block && block.sub;
-        return (
-          <div key={`${block.type}-${index}`} className={cn(sub && "-mt-8 sm:-mt-12")}>
-            <Block block={block} />
-          </div>
-        );
-      })}
+      {/* Заготовки не попадают в разметку, иначе их пустые обёртки
+         добавляют отступы между видимыми блоками */}
+      {blocks
+        .filter((block) => !("hidden" in block && block.hidden))
+        .map((block, index) => {
+          /* Подчинённый блок стоит ближе к своему разделу, чем к соседнему. */
+          const sub = "sub" in block && block.sub;
+          return (
+            <div
+              key={`${block.type}-${index}`}
+              className={cn(sub && "-mt-8 sm:-mt-12")}
+            >
+              <Block block={block} />
+            </div>
+          );
+        })}
     </div>
   );
 }
