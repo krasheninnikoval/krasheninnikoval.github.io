@@ -23,6 +23,29 @@ function ProjectMeta({ project }: { project: Project }) {
   );
 }
 
+/** Описание проекта — один или несколько абзацев */
+function ProjectDescription({
+  text,
+  className,
+}: {
+  text: string | string[];
+  className?: string;
+}) {
+  const paragraphs = Array.isArray(text) ? text : [text];
+  return (
+    <div
+      className={cn(
+        "max-w-[62ch] space-y-4 text-[17px] leading-relaxed text-ink/80",
+        className,
+      )}
+    >
+      {paragraphs.map((paragraph) => (
+        <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+      ))}
+    </div>
+  );
+}
+
 function ProjectRow({
   project,
   divided = true,
@@ -53,15 +76,11 @@ function ProjectRow({
       {project.resultsAside ? (
         /* Слева описание, справа результаты: свои у проекта или из его кейса */
         <div className="mt-5 grid gap-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-center lg:gap-16">
-          <p className="max-w-[62ch] text-[17px] leading-relaxed text-ink/80">
-            {project.description}
-          </p>
+          <ProjectDescription text={project.description} />
           <MetricRow items={results} plain narrow />
         </div>
       ) : (
-        <p className="mt-5 max-w-[62ch] text-[17px] leading-relaxed text-ink/80">
-          {project.description}
-        </p>
+        <ProjectDescription text={project.description} className="mt-5" />
       )}
 
       <div className={project.resultsAside ? "mt-8" : "mt-6"}>

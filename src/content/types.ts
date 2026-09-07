@@ -113,7 +113,8 @@ export interface Project {
   product?: string;
   /** Сроки работы над проектом — необязательно */
   period?: string;
-  description: string;
+  /** Описание проекта: строка или несколько абзацев */
+  description: string | string[];
   tags: string[];
   results: Metric[];
   /**
