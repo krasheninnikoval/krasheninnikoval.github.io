@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Golos_Text } from "next/font/google";
+import { Metrika } from "@/components/Metrika";
 import { profile, site } from "@/content";
 import "./globals.css";
 
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <style>{".reveal{opacity:1}"}</style>
         </noscript>
         {children}
+        <Metrika />
       </body>
     </html>
   );
