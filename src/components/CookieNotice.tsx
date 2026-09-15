@@ -10,7 +10,7 @@ function subscribe(onChange: () => void) {
 }
 
 const button =
-  "shrink-0 rounded-full px-4 py-1.5 text-[14px] font-medium transition-colors";
+  "shrink-0 rounded-full px-5 py-2 text-[15px] font-medium transition-colors";
 
 /**
  * Плашка о сборе статистики. Показывается, пока посетитель не сделал выбор.
@@ -40,8 +40,8 @@ export function CookieNotice() {
       aria-label="Уведомление о сборе статистики"
       className="fixed inset-x-0 bottom-0 z-50 border-t border-line bg-surface"
     >
-      <Container className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-3">
-        <p className="text-[14px] leading-snug text-muted">
+      <Container className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-3.5">
+        <p className="text-[15px] leading-snug text-muted sm:text-base">
           Здесь работает Яндекс Метрика, cookie помогают мне понять, как люди
           пользуются сайтом
         </p>
