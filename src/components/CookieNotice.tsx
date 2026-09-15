@@ -48,17 +48,17 @@ export function CookieNotice() {
         <div className="flex gap-2">
           <button
             type="button"
-            onClick={() => decide("accepted")}
-            className={`${button} bg-ink text-surface hover:bg-ink/85`}
-          >
-            Принять
-          </button>
-          <button
-            type="button"
             onClick={() => decide("declined")}
             className={`${button} text-ink hover:bg-chip`}
           >
             Отказаться
+          </button>
+          <button
+            type="button"
+            onClick={() => decide("accepted")}
+            className={`${button} bg-ink text-surface hover:bg-ink/85`}
+          >
+            Принять
           </button>
         </div>
       </Container>
