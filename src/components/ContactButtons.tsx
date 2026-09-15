@@ -3,7 +3,7 @@ import { ArrowUpRightIcon } from "./icons";
 
 /* Кнопки-пилюли: главное действие тёмное, остальные с обводкой. */
 const pill =
-  "group inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[15px] font-medium leading-none transition-colors sm:px-6 sm:py-3 sm:text-[16px]";
+  "group inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[15px] font-medium leading-none transition-colors sm:px-6 sm:py-3.5 sm:text-[17px]";
 /* Прозрачная обводка — чтобы высота совпадала с кнопками в обводке */
 const primary = `${pill} border border-transparent bg-ink text-surface hover:bg-ink/85`;
 const secondary = `${pill} border border-line bg-surface text-ink hover:bg-chip`;
