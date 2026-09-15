@@ -42,7 +42,7 @@ export function Hero() {
         </div>
 
         {/* Коротко о главном — в ряд, как результаты у проектов */}
-        <dl className="mt-14 grid gap-x-8 gap-y-10 sm:mt-16 sm:grid-cols-2 lg:grid-cols-12">
+        <dl className="mt-16 grid gap-x-8 gap-y-10 sm:mt-24 sm:grid-cols-2 lg:grid-cols-12">
           {profile.facts.map((fact) => (
             <div key={fact.title} className="lg:col-span-3">
               {/* Заголовку отведено две строки, чтобы тексты в ряду начинались на одной высоте */}
