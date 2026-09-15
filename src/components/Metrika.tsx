@@ -2,12 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
-
-declare global {
-  interface Window {
-    ym?: (id: number, action: string, ...args: unknown[]) => void;
-  }
-}
+import { loadMetrika, readConsent } from "@/lib/metrika";
 
 /** Ссылка → название цели в Метрике. */
 function goalFor(href: string): string | null {
@@ -18,14 +13,17 @@ function goalFor(href: string): string | null {
 }
 
 /**
- * Отправляет в Метрику то, чего она не видит сама:
- * переходы между страницами (они идут без перезагрузки)
- * и клики по контактам — Telegram, почта, резюме.
- * Сам счётчик подключается в разметке страницы, см. `metrikaSnippet`.
+ * Включает счётчик, если посетитель уже давал согласие, и отправляет
+ * в Метрику то, чего она не видит сама: переходы между страницами
+ * (они идут без перезагрузки) и клики по контактам.
  */
 export function MetrikaTracker({ counterId }: { counterId: number }) {
   const pathname = usePathname();
   const first = useRef(true);
+
+  useEffect(() => {
+    if (readConsent() === "accepted") loadMetrika();
+  }, []);
 
   useEffect(() => {
     if (first.current) {
