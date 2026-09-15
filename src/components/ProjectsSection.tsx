@@ -117,7 +117,7 @@ function ProjectRow({
             study={study}
             wide
             showResults={!project.resultsAside}
-            sizes="(max-width: 1280px) 100vw, 1240px"
+            sizes="(max-width: 1600px) 100vw, 1520px"
           />
         </div>
       ) : null}
