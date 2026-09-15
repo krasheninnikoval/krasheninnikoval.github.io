@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { Fragment } from "react";
 import { profile } from "@/content";
 import { Container } from "./Container";
 import { ContactButtons } from "./ContactButtons";
+import { TagList } from "./Tag";
 
 /** Блок «Обо мне» — первый экран сайта. */
 export function Hero() {
@@ -12,19 +12,12 @@ export function Hero() {
         <div className="grid items-center gap-10 sm:gap-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:gap-16">
           {/* Текстовая колонка: на мобильном идёт после фотографии */}
           <div className="order-2 lg:order-1">
-            <h1 className="text-[38px] font-medium leading-[1.05] tracking-[-0.03em] text-balance sm:text-[56px] lg:text-[64px]">
+            <h1 className="text-[34px] font-medium leading-[1.05] tracking-[-0.03em] sm:text-[44px] lg:text-[48px]">
               {profile.fullName}
             </h1>
-            <p className="mt-5 max-w-[34ch] text-[20px] leading-snug text-balance sm:mt-6 sm:text-[26px]">
-              {profile.intro.map((item, index) => (
-                <Fragment key={item}>
-                  {index > 0 ? (
-                    <span className="px-2.5">·</span>
-                  ) : null}
-                  {item}
-                </Fragment>
-              ))}
-            </p>
+            <div className="mt-5 sm:mt-6">
+              <TagList tags={profile.intro} large />
+            </div>
 
             <div className="mt-9 sm:mt-11">
               <ContactButtons />
@@ -33,7 +26,7 @@ export function Hero() {
 
           {/* Фотография */}
           <div className="order-1 lg:order-2 lg:justify-self-end">
-            <div className="relative aspect-4/5 w-full max-w-[260px] overflow-hidden rounded-card bg-chip sm:max-w-[320px] lg:w-[360px] lg:max-w-none">
+            <div className="relative aspect-square w-full max-w-[260px] overflow-hidden rounded-card bg-chip sm:max-w-[320px] lg:w-[360px] lg:max-w-none">
               <Image
                 src={profile.photo.src}
                 alt={profile.photo.alt}
