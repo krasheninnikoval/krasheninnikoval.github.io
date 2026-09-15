@@ -11,22 +11,22 @@ export function Hero() {
       <Container className="pb-16 pt-24 sm:pt-28 lg:pt-32">
         {/* Сетка 12 колонок с межколонником 32px: текст занимает 8, фото — 4 */}
         <div className="grid items-center gap-y-10 sm:gap-y-12 lg:grid-cols-12 lg:gap-x-8">
-          {/* Фотография — слева, 4 колонки */}
-          <div className="lg:col-span-4">
+          {/* Фотография — слева, 3 колонки */}
+          <div className="lg:col-span-3">
             <div className="relative aspect-square w-full max-w-[260px] overflow-hidden rounded-card bg-chip sm:max-w-[320px] lg:max-w-none">
               <Image
                 src={profile.photo.src}
                 alt={profile.photo.alt}
                 fill
                 priority
-                sizes="(max-width: 640px) 260px, (max-width: 1024px) 320px, 33vw"
+                sizes="(max-width: 640px) 260px, (max-width: 1024px) 320px, 25vw"
                 className="object-cover"
               />
             </div>
           </div>
 
-          {/* Текстовая колонка — 8 колонок */}
-          <div className="lg:col-span-8">
+          {/* Текстовая колонка — 9 колонок */}
+          <div className="lg:col-span-9">
             <TagList tags={profile.intro} />
             <h1 className="mt-5 text-[34px] font-medium leading-[1.05] tracking-[-0.03em] sm:mt-6 sm:text-[44px] lg:text-[48px]">
               {profile.fullName}
