@@ -42,11 +42,11 @@ export function Hero() {
         </div>
 
         {/* Коротко о главном — карточками на серой подложке */}
-        <dl className="mt-16 grid gap-4 sm:mt-24 sm:grid-cols-2 lg:grid-cols-12 lg:gap-x-8">
+        <dl className="mt-16 grid gap-4 sm:mt-24 sm:grid-cols-2 lg:grid-cols-4">
           {profile.facts.map((fact) => (
             <div
               key={fact.title}
-              className="rounded-card bg-chip p-5 lg:col-span-3"
+              className="rounded-card bg-chip p-5"
             >
               {/* Заголовку отведено две строки, чтобы тексты в ряду начинались на одной высоте */}
               <dt className="text-[17px] font-medium leading-snug tracking-[-0.01em] text-ink sm:min-h-[2lh]">
