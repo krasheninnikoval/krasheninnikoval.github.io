@@ -11,25 +11,8 @@ export function Hero() {
       <Container className="pb-16 pt-24 sm:pt-28 lg:pt-32">
         {/* Сетка 12 колонок с межколонником 32px: текст занимает 8, фото — 4 */}
         <div className="grid items-center gap-y-10 sm:gap-y-12 lg:grid-cols-12 lg:gap-x-8">
-          {/* Текстовая колонка: на мобильном идёт после фотографии */}
-          <div className="order-2 lg:order-1 lg:col-span-8">
-            <h1 className="text-[34px] font-medium leading-[1.05] tracking-[-0.03em] sm:text-[44px] lg:text-[48px]">
-              {profile.fullName}
-            </h1>
-            <p className="mt-4 max-w-[36ch] text-[19px] leading-snug text-ink/85 sm:mt-5 sm:text-[22px]">
-              {profile.tagline}
-            </p>
-            <div className="mt-5 sm:mt-6">
-              <TagList tags={profile.intro} large />
-            </div>
-
-            <div className="mt-9 sm:mt-11">
-              <ContactButtons />
-            </div>
-          </div>
-
-          {/* Фотография */}
-          <div className="order-1 lg:order-2 lg:col-span-4">
+          {/* Фотография — слева, 4 колонки */}
+          <div className="lg:col-span-4">
             <div className="relative aspect-square w-full max-w-[260px] overflow-hidden rounded-card bg-chip sm:max-w-[320px] lg:max-w-none">
               <Image
                 src={profile.photo.src}
@@ -39,6 +22,21 @@ export function Hero() {
                 sizes="(max-width: 640px) 260px, (max-width: 1024px) 320px, 33vw"
                 className="object-cover"
               />
+            </div>
+          </div>
+
+          {/* Текстовая колонка — 8 колонок */}
+          <div className="lg:col-span-8">
+            <TagList tags={profile.intro} />
+            <h1 className="mt-5 text-[34px] font-medium leading-[1.05] tracking-[-0.03em] sm:mt-6 sm:text-[44px] lg:text-[48px]">
+              {profile.fullName}
+            </h1>
+            <p className="mt-4 max-w-[48ch] text-[16px] leading-relaxed text-ink/80 sm:text-[17px]">
+              {profile.tagline}
+            </p>
+
+            <div className="mt-9 sm:mt-11">
+              <ContactButtons />
             </div>
           </div>
         </div>
