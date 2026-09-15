@@ -1,36 +1,41 @@
 import { profile } from "@/content";
-import { DocumentIcon, MailIcon, TelegramIcon } from "./icons";
+import { ArrowUpRightIcon } from "./icons";
 
-/* Кнопки-ссылки: иконка и текст, без обводок и заливок. */
-const link =
-  "group inline-flex items-center gap-2 text-[15px] font-medium text-ink underline-offset-[7px] transition-colors hover:text-muted hover:underline sm:gap-3 sm:text-[22px]";
-const icon = "size-[20px] shrink-0 sm:size-[25px]";
+/* Кнопки-пилюли: главное действие тёмное, остальные с обводкой. */
+const pill =
+  "group inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[15px] font-medium leading-none transition-colors sm:px-6 sm:py-3 sm:text-[16px]";
+/* Прозрачная обводка — чтобы высота совпадала с кнопками в обводке */
+const primary = `${pill} border border-transparent bg-ink text-surface hover:bg-ink/85`;
+const secondary = `${pill} border border-line bg-surface text-ink hover:bg-chip`;
 
 export function ContactButtons() {
   return (
-    <div className="flex w-full max-w-[420px] flex-wrap items-center justify-between gap-x-6 gap-y-4 sm:max-w-[470px]">
+    <div className="flex flex-wrap items-center gap-3">
       <a
         href={profile.telegram.url}
         target="_blank"
         rel="noreferrer noopener"
-        className={link}
+        className={primary}
       >
-        <TelegramIcon className={icon} strokeWidth={1.75} />
         Telegram
+        <ArrowUpRightIcon
+          width={16}
+          height={16}
+          strokeWidth={1.8}
+          className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+        />
       </a>
 
       <a
         href={profile.resumeUrl}
         target="_blank"
         rel="noreferrer noopener"
-        className={link}
+        className={secondary}
       >
-        <DocumentIcon className={icon} strokeWidth={1.75} />
         Резюме
       </a>
 
-      <a href={`mailto:${profile.email}`} className={link}>
-        <MailIcon className={icon} strokeWidth={1.75} />
+      <a href={`mailto:${profile.email}`} className={secondary}>
         Почта
       </a>
     </div>
