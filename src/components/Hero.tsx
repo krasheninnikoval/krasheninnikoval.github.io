@@ -11,9 +11,9 @@ export function Hero() {
       <Container className="pb-16 pt-24 sm:pt-28 lg:pt-32">
         {/* Сетка 12 колонок с межколонником 32px: текст занимает 8, фото — 4 */}
         <div className="grid gap-y-10 sm:gap-y-12 lg:grid-cols-12 lg:items-stretch lg:gap-x-8">
-          {/* Фотография — слева, 2 колонки; квадратный кадр подрезан с боков до 4:5 */}
+          {/* Фотография — слева, 2 колонки, квадрат без обрезки */}
           <div className="lg:col-span-2">
-            <div className="relative aspect-4/5 w-full max-w-[260px] overflow-hidden rounded-card bg-chip sm:max-w-[320px] lg:max-w-none">
+            <div className="relative aspect-square w-full max-w-[260px] overflow-hidden rounded-card bg-chip sm:max-w-[320px] lg:max-w-none">
               <Image
                 src={profile.photo.src}
                 alt={profile.photo.alt}
