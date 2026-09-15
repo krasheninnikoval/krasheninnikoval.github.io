@@ -49,9 +49,11 @@ export function Hero() {
         {/* Коротко о главном — в ряд, как результаты у проектов */}
         <dl className="mt-16 grid gap-x-8 gap-y-10 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
           {profile.facts.map((fact) => (
-            <div key={fact.title} className="border-t border-line pt-5">
-              <dt className="text-[15px] font-medium text-ink">{fact.title}</dt>
-              <dd className="mt-2.5 text-[15px] leading-relaxed text-muted">
+            <div key={fact.title}>
+              <dt className="text-[19px] font-medium leading-snug tracking-[-0.01em] text-ink sm:text-[20px]">
+                {fact.title}
+              </dt>
+              <dd className="mt-3 text-[15px] leading-relaxed text-muted">
                 {fact.text}
               </dd>
             </div>
