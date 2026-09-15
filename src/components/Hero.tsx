@@ -28,14 +28,14 @@ export function Hero() {
           {/* Текстовая колонка — 8 колонок */}
           <div className="lg:col-span-8">
             <TagList tags={profile.intro} large />
-            <h1 className="mt-6 text-[36px] font-medium leading-[1.05] tracking-[-0.03em] sm:mt-7 sm:text-[48px] lg:text-[56px]">
+            <h1 className="mt-4 text-[36px] font-medium leading-[1.05] tracking-[-0.03em] sm:mt-5 sm:text-[48px] lg:text-[56px]">
               {profile.fullName}
             </h1>
             <p className="mt-5 max-w-[44ch] text-[17px] leading-relaxed text-ink/80 sm:text-[20px]">
               {profile.tagline}
             </p>
 
-            <div className="mt-10 sm:mt-12">
+            <div className="mt-12 sm:mt-14">
               <ContactButtons />
             </div>
           </div>
