@@ -4,6 +4,8 @@ import type { Profile } from "./types";
 export const profile: Profile = {
   fullName: "Крашенинникова Любовь",
   role: "Продуктовый дизайнер",
+  tagline:
+    "Проектирую сложные интерфейсы: B2B-системы, low-code платформы, промышленное ПО",
   intro: ["Продуктовый дизайнер", "3+ года опыта"],
   facts: [
     {
@@ -24,10 +26,10 @@ export const profile: Profile = {
     },
   ],
   photo: {
-    src: "/images/profile.jpg",
+    src: "/images/profile-square.jpg",
     alt: "Крашенинникова Любовь",
-    width: 1000,
-    height: 1250,
+    width: 1200,
+    height: 1200,
   },
   telegram: {
     handle: "@krasheninnikovalm",

@@ -16,6 +16,9 @@ export function Hero() {
             <h1 className="text-[34px] font-medium leading-[1.05] tracking-[-0.03em] sm:text-[44px] lg:text-[48px]">
               {profile.fullName}
             </h1>
+            <p className="mt-4 max-w-[36ch] text-[19px] leading-snug text-ink/85 sm:mt-5 sm:text-[22px]">
+              {profile.tagline}
+            </p>
             <div className="mt-5 sm:mt-6">
               <TagList tags={profile.intro} large />
             </div>
@@ -34,7 +37,7 @@ export function Hero() {
                 fill
                 priority
                 sizes="(max-width: 640px) 260px, (max-width: 1024px) 320px, 33vw"
-                className="object-cover object-top"
+                className="object-cover"
               />
             </div>
           </div>
