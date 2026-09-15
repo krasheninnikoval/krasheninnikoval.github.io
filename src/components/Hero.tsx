@@ -10,7 +10,7 @@ export function Hero() {
     <section id="about" className="relative">
       <Container className="pb-16 pt-24 sm:pt-28 lg:pt-32">
         {/* Сетка 12 колонок с межколонником 32px: текст занимает 8, фото — 4 */}
-        <div className="grid items-center gap-y-10 sm:gap-y-12 lg:grid-cols-12 lg:gap-x-8">
+        <div className="grid gap-y-10 sm:gap-y-12 lg:grid-cols-12 lg:items-stretch lg:gap-x-8">
           {/* Фотография — слева, 4 колонки */}
           <div className="lg:col-span-4">
             <div className="relative aspect-square w-full max-w-[260px] overflow-hidden rounded-card bg-chip sm:max-w-[320px] lg:max-w-none">
@@ -25,8 +25,8 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Текстовая колонка — 8 колонок */}
-          <div className="lg:col-span-8">
+          {/* Текстовая колонка — 8 колонок: теги по верху фото, кнопки по низу */}
+          <div className="flex flex-col lg:col-span-8">
             <TagList tags={profile.intro} large />
             <h1 className="mt-4 text-[36px] font-medium leading-[1.05] tracking-[-0.03em] sm:mt-5 sm:text-[48px] lg:text-[56px]">
               {profile.fullName}
@@ -35,7 +35,7 @@ export function Hero() {
               {profile.tagline}
             </p>
 
-            <div className="mt-12 sm:mt-14">
+            <div className="mt-12 sm:mt-14 lg:mt-auto lg:pt-10">
               <ContactButtons />
             </div>
           </div>
