@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Golos_Text } from "next/font/google";
+import { CookieNotice } from "@/components/CookieNotice";
 import { MetrikaTracker } from "@/components/Metrika";
 import { profile, site } from "@/content";
 import { METRIKA_ID, metrikaEnabled, metrikaSnippet } from "@/lib/metrika";
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <style>{".reveal{opacity:1}"}</style>
         </noscript>
         {children}
+        <CookieNotice />
         {metrikaEnabled ? <MetrikaTracker counterId={METRIKA_ID} /> : null}
         {metrikaEnabled ? (
           <noscript>
