@@ -142,8 +142,8 @@ export interface Profile {
   role: string;
   /** Строка под именем: специализация и опыт, через разделительную точку */
   intro: string[];
-  /** Абзацы блока «Обо мне» */
-  summary: string[];
+  /** Короткие блоки под первым экраном: опыт, образование, AI, цель */
+  facts: { title: string; text: string }[];
   photo: ImageRef;
   telegram: { handle: string; url: string };
   email: string;
