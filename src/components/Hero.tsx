@@ -41,15 +41,17 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Коротко о главном — в ряд, как результаты у проектов */}
-        <dl className="mt-16 grid gap-x-8 gap-y-10 sm:mt-24 sm:grid-cols-2 lg:grid-cols-12">
+        {/* Коротко о главном — подпись слева, текст справа, как реквизиты */}
+        <dl className="mt-16 sm:mt-24">
           {profile.facts.map((fact) => (
-            <div key={fact.title} className="lg:col-span-3">
-              {/* Заголовку отведено две строки, чтобы тексты в ряду начинались на одной высоте */}
-              <dt className="text-[19px] font-medium leading-snug tracking-[-0.01em] text-ink sm:min-h-[2lh] sm:text-[20px]">
+            <div
+              key={fact.title}
+              className="grid gap-y-2 border-t border-line py-6 sm:py-7 lg:grid-cols-12 lg:gap-x-8"
+            >
+              <dt className="text-[17px] font-medium leading-snug tracking-[-0.01em] text-ink lg:col-span-3">
                 {fact.title}
               </dt>
-              <dd className="mt-3 text-[16px] leading-relaxed text-ink/75">
+              <dd className="max-w-[62ch] text-[16px] leading-relaxed text-ink/75 lg:col-span-9 lg:text-[17px]">
                 {fact.text}
               </dd>
             </div>
