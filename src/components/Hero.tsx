@@ -41,17 +41,18 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Коротко о главном — подпись слева, текст справа, как реквизиты */}
-        <dl className="mt-16 sm:mt-24">
+        {/* Коротко о главном — карточками на серой подложке */}
+        <dl className="mt-16 grid gap-4 sm:mt-24 sm:grid-cols-2 lg:grid-cols-12 lg:gap-x-8">
           {profile.facts.map((fact) => (
             <div
               key={fact.title}
-              className="grid gap-y-2 border-t border-line py-6 sm:py-7 lg:grid-cols-12 lg:gap-x-8"
+              className="rounded-card bg-chip p-5 lg:col-span-3"
             >
-              <dt className="text-[17px] font-medium leading-snug tracking-[-0.01em] text-ink lg:col-span-3">
+              {/* Заголовку отведено две строки, чтобы тексты в ряду начинались на одной высоте */}
+              <dt className="text-[17px] font-medium leading-snug tracking-[-0.01em] text-ink sm:min-h-[2lh]">
                 {fact.title}
               </dt>
-              <dd className="max-w-[62ch] text-[16px] leading-relaxed text-ink/75 lg:col-span-9 lg:text-[17px]">
+              <dd className="mt-3 text-[15px] leading-relaxed text-ink/75">
                 {fact.text}
               </dd>
             </div>
