@@ -141,7 +141,7 @@ export function ProjectsSection() {
         {/* Проекты с кейсами — без разделителей: карточка кейса и так
            отделяет один проект от другого */}
         {/* Якорь меню: заголовок первого проекта встаёт под шапкой */}
-        <ul id="cases" className="scroll-mt-28 space-y-24 sm:space-y-28">
+        <ul id="cases" className="scroll-mt-24 space-y-24 sm:space-y-28">
           {main.map((project) => (
             <ProjectRow key={project.slug} project={project} divided={false} />
           ))}
