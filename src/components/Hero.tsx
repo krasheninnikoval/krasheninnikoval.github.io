@@ -43,7 +43,7 @@ export function Hero() {
         </div>
 
         {/* Коротко о главном — карточками на серой подложке */}
-        <dl className="mt-10 grid gap-6 sm:mt-16 sm:grid-cols-2 lg:grid-cols-4">
+        <dl className="mt-10 grid gap-6 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
           {profile.facts.map((fact) => (
             <div
               key={fact.title}
