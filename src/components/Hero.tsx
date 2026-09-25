@@ -11,7 +11,7 @@ export function Hero() {
       {/* Внешний отступ до «Опыта» заметно больше внутреннего — до карточек */}
       <Container className="pb-28 pt-24 sm:pb-36 sm:pt-28 lg:pt-32">
         {/* Сетка 12 колонок с межколонником 32px: текст занимает 8, фото — 4 */}
-        <div className="grid gap-y-10 sm:gap-y-12 lg:grid-cols-12 lg:items-center lg:gap-x-6">
+        <div className="grid gap-y-10 sm:gap-y-12 lg:grid-cols-12 lg:items-center lg:gap-x-8">
           {/* Фотография — слева, 3 колонки, квадрат без обрезки */}
           <div className="lg:col-span-3">
             <div className="relative aspect-square w-full max-w-[260px] overflow-hidden rounded-card bg-chip sm:max-w-[320px] lg:max-w-none">
@@ -43,7 +43,7 @@ export function Hero() {
         </div>
 
         {/* Коротко о главном — карточками на серой подложке */}
-        <dl className="mt-10 grid gap-6 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
+        <dl className="mt-10 grid gap-4 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
           {profile.facts.map((fact) => (
             <div
               key={fact.title}
