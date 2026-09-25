@@ -138,14 +138,16 @@ export function ProjectsSection() {
            и программ чтения с экрана: без него раздел теряет структуру. */}
         <h2 className="sr-only">Опыт</h2>
 
-        <ul className="space-y-14 sm:space-y-16">
+        {/* Проекты с кейсами — без разделителей: карточка кейса и так
+           отделяет один проект от другого */}
+        <ul className="space-y-24 sm:space-y-28">
           {main.map((project) => (
-            <ProjectRow key={project.slug} project={project} />
+            <ProjectRow key={project.slug} project={project} divided={false} />
           ))}
         </ul>
 
         {other.length > 0 ? (
-          <div className="mt-32 sm:mt-44">
+          <div className="mt-36 sm:mt-48">
             <h3 className="text-[15px] font-medium text-muted sm:text-[17px]">
               Про другие проекты
             </h3>
