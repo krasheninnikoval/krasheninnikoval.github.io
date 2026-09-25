@@ -61,7 +61,7 @@ export function MetricRow({
                   : plain
                     ? hasDigits
                       ? "text-[36px] sm:text-[44px]"
-                      : "text-[28px] sm:text-[34px]"
+                      : "text-[30px] sm:text-[38px]"
                     : "text-[32px] sm:text-4xl",
               )}
             >
