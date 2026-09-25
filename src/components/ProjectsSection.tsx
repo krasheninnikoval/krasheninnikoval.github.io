@@ -60,13 +60,10 @@ function ProjectDescription({
 function ProjectRow({
   project,
   divided = true,
-  id,
 }: {
   project: Project;
   /** Разделительная линия перед проектом */
   divided?: boolean;
-  /** Якорь для меню */
-  id?: string;
 }) {
   /* Показываем первый непрятанный кейс проекта.
      Если такого нет — остаётся только описание и результаты. */
@@ -77,9 +74,7 @@ function ProjectRow({
   return (
     <Reveal
       as="li"
-      id={id}
       className={cn(
-        "scroll-mt-28",
         divided && "border-t border-line pt-10 first:border-t-0 first:pt-0 sm:pt-12",
       )}
     >
@@ -145,6 +140,7 @@ export function ProjectsSection() {
 
         {/* Проекты с кейсами — без разделителей: карточка кейса и так
            отделяет один проект от другого */}
+        {/* Якорь меню: заголовок первого проекта встаёт под шапкой */}
         <ul id="cases" className="scroll-mt-28 space-y-24 sm:space-y-28">
           {main.map((project) => (
             <ProjectRow key={project.slug} project={project} divided={false} />
@@ -152,7 +148,7 @@ export function ProjectsSection() {
         </ul>
 
         {other.length > 0 ? (
-          <div id="other" className="mt-36 scroll-mt-28 sm:mt-48">
+          <div className="mt-36 sm:mt-48">
             <h3 className="text-[15px] font-medium text-muted sm:text-[17px]">
               Про другие проекты
             </h3>
