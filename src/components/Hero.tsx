@@ -9,7 +9,7 @@ export function Hero() {
   return (
     <section id="about" className="relative">
       {/* Внешний отступ до «Опыта» заметно больше внутреннего — до карточек */}
-      <Container className="pb-28 pt-24 sm:pb-36 sm:pt-28 lg:pt-32">
+      <Container className="flex min-h-[100svh] flex-col justify-center pb-28 pt-24 sm:pb-36 sm:pt-28 lg:pt-32">
         {/* Сетка 12 колонок с межколонником 32px: текст занимает 8, фото — 4 */}
         <div className="grid gap-y-10 sm:gap-y-12 lg:grid-cols-12 lg:items-center lg:gap-x-8">
           {/* Фотография — слева, 3 колонки, квадрат без обрезки */}
