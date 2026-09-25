@@ -60,10 +60,13 @@ function ProjectDescription({
 function ProjectRow({
   project,
   divided = true,
+  id,
 }: {
   project: Project;
   /** Разделительная линия перед проектом */
   divided?: boolean;
+  /** Якорь для меню */
+  id?: string;
 }) {
   /* Показываем первый непрятанный кейс проекта.
      Если такого нет — остаётся только описание и результаты. */
@@ -74,7 +77,9 @@ function ProjectRow({
   return (
     <Reveal
       as="li"
+      id={id}
       className={cn(
+        "scroll-mt-28",
         divided && "border-t border-line pt-10 first:border-t-0 first:pt-0 sm:pt-12",
       )}
     >

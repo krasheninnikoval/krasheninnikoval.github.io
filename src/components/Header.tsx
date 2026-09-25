@@ -7,11 +7,10 @@ import { cn } from "@/lib/cn";
 const sections = [
   { id: "about", label: "Обо мне" },
   { id: "cases", label: "Кейсы" },
-  { id: "other", label: "Опыт" },
 ] as const;
 
 const item =
-  "rounded-full px-3.5 py-2.5 text-[15px] transition-colors hover:bg-chip hover:text-ink sm:px-4";
+  "rounded-full px-4 py-2.5 text-[15px] transition-colors hover:bg-chip hover:text-ink sm:px-4.5";
 
 /**
  * Компактная плавающая шапка-капсула по центру.
