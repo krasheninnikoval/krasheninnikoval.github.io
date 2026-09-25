@@ -140,14 +140,14 @@ export function ProjectsSection() {
 
         {/* Проекты с кейсами — без разделителей: карточка кейса и так
            отделяет один проект от другого */}
-        <ul className="space-y-24 sm:space-y-28">
+        <ul id="cases" className="scroll-mt-28 space-y-24 sm:space-y-28">
           {main.map((project) => (
             <ProjectRow key={project.slug} project={project} divided={false} />
           ))}
         </ul>
 
         {other.length > 0 ? (
-          <div className="mt-36 sm:mt-48">
+          <div id="other" className="mt-36 scroll-mt-28 sm:mt-48">
             <h3 className="text-[15px] font-medium text-muted sm:text-[17px]">
               Про другие проекты
             </h3>
