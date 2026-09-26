@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { projects } from "@/content";
 import type { Project } from "@/content/types";
 import { CaseCard } from "./CaseCard";
@@ -82,10 +83,13 @@ function ProjectRow({
          Без кейса описание занимает всю ширину. */}
       <div
         className={cn(
-          study && "grid gap-y-10 lg:grid-cols-12 lg:items-start lg:gap-x-8",
+          (study || project.image) &&
+            "grid gap-y-8 lg:grid-cols-12 lg:items-start lg:gap-x-8",
         )}
       >
-        <div className={cn(study && "lg:col-span-5")}>
+        <div
+          className={cn(study && "lg:col-span-5", project.image && "lg:col-span-7")}
+        >
           <h3 className="text-[28px] font-medium leading-tight tracking-[-0.02em] text-balance sm:text-[34px]">
             {project.title}
           </h3>
@@ -117,6 +121,21 @@ function ProjectRow({
             <MetricRow items={project.results} plain className="mt-10 sm:mt-12" />
           ) : null}
         </div>
+
+        {/* Проект без кейса — просто иллюстрация, без рамки карточки
+           и без ссылки: она не должна читаться как кейс */}
+        {!study && project.image ? (
+          <div className="lg:col-span-5">
+            <Image
+              src={project.image.src}
+              alt={project.image.alt}
+              width={project.image.width}
+              height={project.image.height}
+              sizes="(max-width: 1024px) 100vw, 600px"
+              className="h-auto w-full rounded-media border border-edge"
+            />
+          </div>
+        ) : null}
 
         {study ? (
           <div className="lg:col-span-7">

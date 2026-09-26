@@ -126,6 +126,8 @@ export interface Project {
   description: string | string[];
   /** Что сделала — нумерованным списком под описанием */
   descriptionList?: string[];
+  /** Иллюстрация рядом с описанием — для проектов без кейса */
+  image?: ImageRef;
   tags: string[];
   results: Metric[];
   /**
