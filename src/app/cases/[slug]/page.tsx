@@ -58,11 +58,11 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
             {/* Шапка кейса */}
             <header className="mx-auto w-full max-w-[1040px]">
               <Link
-                href="/#projects"
+                href="/#cases"
                 className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink"
               >
                 <ArrowLeftIcon width={16} height={16} />
-                Весь опыт
+                Все кейсы
               </Link>
 
               <p className="mt-10 text-sm text-muted">{project.title}</p>
