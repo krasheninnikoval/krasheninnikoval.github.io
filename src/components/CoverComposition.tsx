@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { CaseStudy } from "@/content/types";
+import type { CoverPair } from "@/content/types";
 import { cn } from "@/lib/cn";
 
 const card =
@@ -31,7 +31,7 @@ export function CoverComposition({
   sizes,
   compact = false,
 }: {
-  pair: NonNullable<CaseStudy["coverPair"]>;
+  pair: CoverPair;
   className?: string;
   priority?: boolean;
   /** Размеры для оптимизации картинок под ширину блока */

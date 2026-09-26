@@ -60,6 +60,17 @@ export type CaseBlock =
   | { type: "metrics"; heading?: string; items: Metric[] }
   | { type: "divider" };
 
+/** Композиция из двух картинок с нахлёстом и пояснительной дугой. */
+export interface CoverPair {
+  photo: ImageRef;
+  screen: ImageRef;
+  /**
+   * Пояснительная дуга поверх композиции: путь SVG в системе координат
+   * 1000×315 (ширина блока × высота нижней картинки). Необязательна.
+   */
+  arrowPath?: string;
+}
+
 export interface CaseStudy {
   /** Часть адреса страницы: /cases/<slug>. Латиницей, через дефис. */
   slug: string;
@@ -80,15 +91,7 @@ export interface CaseStudy {
    * Обложка-композиция: фотография контекста и экран интерфейса поверх неё.
    * Если задана, используется вместо cover и вместо превью на карточке.
    */
-  coverPair?: {
-    photo: ImageRef;
-    screen: ImageRef;
-    /**
-     * Пояснительная дуга поверх композиции: путь SVG в системе координат
-     * 1000×315 (ширина блока × высота нижней картинки). Необязательна.
-     */
-    arrowPath?: string;
-  };
+  coverPair?: CoverPair;
   meta: {
     /** Сроки — необязательно */
     timeline?: string;
@@ -126,8 +129,13 @@ export interface Project {
   description: string | string[];
   /** Что сделала — нумерованным списком под описанием */
   descriptionList?: string[];
-  /** Иллюстрация рядом с описанием — для проектов без кейса */
-  image?: ImageRef;
+  /** Иллюстрации рядом с описанием — для проектов без кейса */
+  media?: {
+    /** Композиция из двух картинок с нахлёстом, как на обложке кейса */
+    pair?: CoverPair;
+    /** Одна или несколько картинок в ряд */
+    images?: ImageRef[];
+  };
   tags: string[];
   results: Metric[];
   /**

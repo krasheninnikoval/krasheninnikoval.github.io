@@ -2,6 +2,7 @@ import Image from "next/image";
 import { projects } from "@/content";
 import type { Project } from "@/content/types";
 import { CaseCard } from "./CaseCard";
+import { CoverComposition } from "./CoverComposition";
 import { Container } from "./Container";
 import { cn } from "@/lib/cn";
 import { MetaLine } from "./MetaLine";
@@ -21,6 +22,35 @@ function ProjectMeta({ project }: { project: Project }) {
         { label: "Сроки", value: project.period },
       ]}
     />
+  );
+}
+
+/** Картинки проекта без кейса: композиция с нахлёстом или ряд снимков. */
+function ProjectMedia({ media }: { media: NonNullable<Project["media"]> }) {
+  if (media.pair) {
+    return (
+      <CoverComposition
+        pair={media.pair}
+        compact
+        sizes="(max-width: 1024px) 100vw, 600px"
+      />
+    );
+  }
+  if (!media.images?.length) return null;
+  return (
+    <div className="flex flex-wrap items-start gap-4">
+      {media.images.map((image) => (
+        <Image
+          key={image.src}
+          src={image.src}
+          alt={image.alt}
+          width={image.width}
+          height={image.height}
+          sizes="(max-width: 1024px) 50vw, 300px"
+          className="h-auto min-w-0 flex-1 rounded-media border border-edge"
+        />
+      ))}
+    </div>
   );
 }
 
@@ -83,12 +113,12 @@ function ProjectRow({
          Без кейса описание занимает всю ширину. */}
       <div
         className={cn(
-          (study || project.image) &&
+          (study || project.media) &&
             "grid gap-y-8 lg:grid-cols-12 lg:items-start lg:gap-x-8",
         )}
       >
         <div
-          className={cn(study && "lg:col-span-5", project.image && "lg:col-span-7")}
+          className={cn(study && "lg:col-span-5", project.media && "lg:col-span-7")}
         >
           <h3 className="text-[28px] font-medium leading-tight tracking-[-0.02em] text-balance sm:text-[34px]">
             {project.title}
@@ -122,18 +152,11 @@ function ProjectRow({
           ) : null}
         </div>
 
-        {/* Проект без кейса — просто иллюстрация, без рамки карточки
-           и без ссылки: она не должна читаться как кейс */}
-        {!study && project.image ? (
+        {/* Проект без кейса — только картинки, без рамки карточки и без
+           ссылки: они не должны читаться как кейс */}
+        {!study && project.media ? (
           <div className="lg:col-span-5">
-            <Image
-              src={project.image.src}
-              alt={project.image.alt}
-              width={project.image.width}
-              height={project.image.height}
-              sizes="(max-width: 1024px) 100vw, 600px"
-              className="h-auto w-full rounded-media border border-edge"
-            />
+            <ProjectMedia media={project.media} />
           </div>
         ) : null}
 
