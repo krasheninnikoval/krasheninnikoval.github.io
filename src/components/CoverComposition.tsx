@@ -13,6 +13,10 @@ const OVERLAY_HEIGHT = 1.03;
 const OVERLAP_RATIO = 0.243;
 /** Насколько верхняя картинка опущена вниз, в долях своей высоты. */
 const OVERLAY_SHIFT = 0.2;
+/** То же для иллюстрации проекта: экран ниже и сдвинут левее. */
+const BARE_OVERLAY_SHIFT = 0.34;
+/** Отступ верхней картинки от правого края, в долях ширины блока. */
+const BARE_OVERLAY_INSET = 0.08;
 
 /**
  * Обложка кейса: картинка контекста и вторая картинка поверх неё со сдвигом,
@@ -54,8 +58,10 @@ export function CoverComposition({
   const overlayShare = overlayWidth / groupWidth;
   /* Верхняя картинка свисает вниз — на столько же опускаем низ блока,
      иначе рамка подложки снизу окажется тоньше, чем по бокам. */
+  const shift = bare ? BARE_OVERLAY_SHIFT : OVERLAY_SHIFT;
+  const inset = bare ? BARE_OVERLAY_INSET : 0;
   const overhang =
-    (overlayShare / (pair.screen.width / pair.screen.height)) * OVERLAY_SHIFT;
+    (overlayShare / (pair.screen.width / pair.screen.height)) * shift;
 
   return (
     <div
@@ -95,14 +101,16 @@ export function CoverComposition({
         <div
           className={cn(
             card,
-            "sm:absolute sm:bottom-0 sm:right-0 sm:w-(--overlay-width)",
+            "sm:absolute sm:bottom-0 sm:w-(--overlay-width)",
             bare
-              ? "sm:translate-y-[20%] sm:ring-4 sm:ring-surface"
-              : "sm:translate-y-[20%] sm:ring-8 sm:ring-stage",
+              ? "sm:translate-y-(--overlay-shift) sm:ring-4 sm:ring-surface"
+              : "sm:translate-y-(--overlay-shift) sm:ring-8 sm:ring-stage",
           )}
           style={
             {
               "--overlay-width": `${overlayShare * 100}%`,
+              "--overlay-shift": `${shift * 100}%`,
+              right: `${inset * 100}%`,
             } as React.CSSProperties
           }
         >
