@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { projects } from "@/content";
 import type { Project } from "@/content/types";
 import { CaseCard } from "./CaseCard";
@@ -9,6 +8,7 @@ import { MetaLine } from "./MetaLine";
 import { MetricRow } from "./Metrics";
 import { Reveal } from "./Reveal";
 import { TagList } from "./Tag";
+import { ZoomableImage } from "./ZoomableImage";
 
 /** Компания, заказчик и сроки — тонкая строка-подпись под названием проекта. */
 function ProjectMeta({ project }: { project: Project }) {
@@ -32,7 +32,8 @@ function ProjectMedia({ media }: { media: NonNullable<Project["media"]> }) {
       <CoverComposition
         pair={media.pair}
         bare
-        sizes="(max-width: 1024px) 100vw, 840px"
+        zoomable
+        sizes="(max-width: 1024px) 100vw, 960px"
       />
     );
   }
@@ -40,14 +41,11 @@ function ProjectMedia({ media }: { media: NonNullable<Project["media"]> }) {
   return (
     <div className="flex flex-wrap items-start gap-4">
       {media.images.map((image) => (
-        <Image
+        <ZoomableImage
           key={image.src}
-          src={image.src}
-          alt={image.alt}
-          width={image.width}
-          height={image.height}
-          sizes="(max-width: 1024px) 50vw, 400px"
-          className="h-auto min-w-0 flex-1 rounded-media border border-edge"
+          image={image}
+          sizes="(max-width: 1024px) 50vw, 460px"
+          className="min-w-0 flex-1 overflow-hidden rounded-media border border-edge"
         />
       ))}
     </div>
@@ -118,7 +116,7 @@ function ProjectRow({
         )}
       >
         <div
-          className={cn(study && "lg:col-span-5", project.media && "lg:col-span-5")}
+          className={cn(study && "lg:col-span-5", project.media && "lg:col-span-4")}
         >
           <h3 className="text-[28px] font-medium leading-tight tracking-[-0.02em] text-balance sm:text-[34px]">
             {project.title}
@@ -155,7 +153,7 @@ function ProjectRow({
         {/* Проект без кейса — только картинки, без рамки карточки и без
            ссылки: они не должны читаться как кейс */}
         {!study && project.media ? (
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-8">
             <ProjectMedia media={project.media} />
           </div>
         ) : null}

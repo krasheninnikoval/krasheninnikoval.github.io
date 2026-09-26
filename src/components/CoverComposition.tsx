@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ZoomableImage } from "./ZoomableImage";
 import type { CoverPair } from "@/content/types";
 import { cn } from "@/lib/cn";
 
@@ -31,6 +32,7 @@ export function CoverComposition({
   sizes,
   compact = false,
   bare = false,
+  zoomable = false,
 }: {
   pair: CoverPair;
   className?: string;
@@ -41,6 +43,8 @@ export function CoverComposition({
   compact?: boolean;
   /** Без подложки и полей — для иллюстрации проекта */
   bare?: boolean;
+  /** Картинки открываются крупно по клику */
+  zoomable?: boolean;
 }) {
   /* Обе ширины считаются из пропорций так, чтобы высота обложки
      не зависела от того, горизонтальные картинки или вертикальные. */
@@ -80,15 +84,19 @@ export function CoverComposition({
             } as React.CSSProperties
           }
         >
-          <Image
-            src={pair.photo.src}
-            alt={pair.photo.alt}
-            width={pair.photo.width}
-            height={pair.photo.height}
-            sizes={sizes}
-            priority={priority}
-            className="h-auto w-full"
-          />
+          {zoomable ? (
+            <ZoomableImage image={pair.photo} sizes={sizes} />
+          ) : (
+            <Image
+              src={pair.photo.src}
+              alt={pair.photo.alt}
+              width={pair.photo.width}
+              height={pair.photo.height}
+              sizes={sizes}
+              priority={priority}
+              className="h-auto w-full"
+            />
+          )}
         </div>
 
         {/* Верхняя картинка поверх, со светлым зазором */}
@@ -106,15 +114,19 @@ export function CoverComposition({
             } as React.CSSProperties
           }
         >
-          <Image
-            src={pair.screen.src}
-            alt={pair.screen.alt}
-            width={pair.screen.width}
-            height={pair.screen.height}
-            sizes={sizes}
-            priority={priority}
-            className="h-auto w-full"
-          />
+          {zoomable ? (
+            <ZoomableImage image={pair.screen} sizes={sizes} />
+          ) : (
+            <Image
+              src={pair.screen.src}
+              alt={pair.screen.alt}
+              width={pair.screen.width}
+              height={pair.screen.height}
+              sizes={sizes}
+              priority={priority}
+              className="h-auto w-full"
+            />
+          )}
         </div>
 
         {/* Пояснительная дуга — только там, где она задана в кейсе */}
