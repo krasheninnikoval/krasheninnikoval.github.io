@@ -30,6 +30,7 @@ export function CoverComposition({
   priority,
   sizes,
   compact = false,
+  bare = false,
 }: {
   pair: CoverPair;
   className?: string;
@@ -38,6 +39,8 @@ export function CoverComposition({
   sizes: string;
   /** Уменьшенные отступы — для карточки в разделе «Опыт» */
   compact?: boolean;
+  /** Без подложки и полей — для иллюстрации проекта */
+  bare?: boolean;
 }) {
   /* Обе ширины считаются из пропорций так, чтобы высота обложки
      не зависела от того, горизонтальные картинки или вертикальные. */
@@ -57,8 +60,10 @@ export function CoverComposition({
   return (
     <div
       className={cn(
-        "w-full rounded-card bg-stage",
-        compact ? "p-4 sm:p-6" : "p-4 sm:p-8 lg:p-10",
+        "w-full rounded-card",
+        bare
+          ? ""
+          : cn("bg-stage", compact ? "p-4 sm:p-6" : "p-4 sm:p-8 lg:p-10"),
         className,
       )}
     >
@@ -91,7 +96,9 @@ export function CoverComposition({
           className={cn(
             card,
             "sm:absolute sm:bottom-0 sm:right-0 sm:w-(--overlay-width)",
-            "sm:translate-y-[20%] sm:ring-8 sm:ring-stage",
+            bare
+              ? "sm:translate-y-[20%] sm:ring-4 sm:ring-surface"
+              : "sm:translate-y-[20%] sm:ring-8 sm:ring-stage",
           )}
           style={
             {

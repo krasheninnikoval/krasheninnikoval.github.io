@@ -31,8 +31,8 @@ function ProjectMedia({ media }: { media: NonNullable<Project["media"]> }) {
     return (
       <CoverComposition
         pair={media.pair}
-        compact
-        sizes="(max-width: 1024px) 100vw, 600px"
+        bare
+        sizes="(max-width: 1024px) 100vw, 700px"
       />
     );
   }
@@ -118,7 +118,7 @@ function ProjectRow({
         )}
       >
         <div
-          className={cn(study && "lg:col-span-5", project.media && "lg:col-span-7")}
+          className={cn(study && "lg:col-span-5", project.media && "lg:col-span-6")}
         >
           <h3 className="text-[28px] font-medium leading-tight tracking-[-0.02em] text-balance sm:text-[34px]">
             {project.title}
@@ -155,7 +155,7 @@ function ProjectRow({
         {/* Проект без кейса — только картинки, без рамки карточки и без
            ссылки: они не должны читаться как кейс */}
         {!study && project.media ? (
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-6">
             <ProjectMedia media={project.media} />
           </div>
         ) : null}
