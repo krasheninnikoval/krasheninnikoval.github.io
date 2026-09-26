@@ -17,7 +17,9 @@ import { cn } from "@/lib/cn";
 
 /** Список страниц кейсов, которые нужно собрать заранее. */
 export function generateStaticParams() {
-  return getAllCases().map(({ study }) => ({ slug: study.slug }));
+  return getAllCases()
+    .filter(({ study }) => !study.hidden)
+    .map(({ study }) => ({ slug: study.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/cases/[slug]">) {
