@@ -130,11 +130,20 @@ function ProjectRow({
               <MetricRow items={results} plain narrow />
             </div>
           ) : (
-            <ProjectDescription
-              text={project.description}
-              list={project.descriptionList}
-              className="mt-5"
-            />
+            <>
+              {/* У проектов с кейсом описание подписано, чтобы отличать
+                 его от текста на карточке кейса рядом */}
+              {study ? (
+                <p className="mt-5 text-[17px] leading-relaxed text-muted/70">
+                  О проекте
+                </p>
+              ) : null}
+              <ProjectDescription
+                text={project.description}
+                list={project.descriptionList}
+                className={study ? "mt-2" : "mt-5"}
+              />
+            </>
           )}
 
           <div className={project.resultsAside ? "mt-8" : "mt-6"}>
