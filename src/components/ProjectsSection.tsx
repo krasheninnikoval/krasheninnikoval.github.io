@@ -118,7 +118,11 @@ function ProjectRow({
         )}
       >
         <div
-          className={cn(study && "lg:col-span-5", project.media && "lg:col-span-5")}
+          className={cn(
+            /* Отступ справа, чтобы текст не упирался в карточку кейса */
+            study && "lg:col-span-5 lg:pr-10",
+            project.media && "lg:col-span-5 lg:pr-10",
+          )}
         >
           <h3 className="text-[28px] font-medium leading-tight tracking-[-0.02em] text-balance sm:text-[34px]">
             {project.title}
