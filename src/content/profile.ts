@@ -26,7 +26,7 @@ export const profile: Profile = {
     },
   ],
   photo: {
-    src: "/images/profile-1433-2.jpg",
+    src: "/images/profile-0050.jpg",
     alt: "Крашенинникова Любовь",
     width: 1200,
     height: 1200,
