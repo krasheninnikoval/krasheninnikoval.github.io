@@ -132,7 +132,7 @@ export function ProjectsSection() {
   const other = projects.filter((project) => project.secondary);
 
   return (
-    <section id="projects" className="scroll-mt-24 pb-24 sm:pb-32">
+    <section id="projects" className="pb-24 sm:pb-32">
       <Container>
         {/* Заголовок скрыт визуально, но остаётся для поисковиков
            и программ чтения с экрана: без него раздел теряет структуру. */}
@@ -141,7 +141,7 @@ export function ProjectsSection() {
         {/* Проекты с кейсами — без разделителей: карточка кейса и так
            отделяет один проект от другого */}
         {/* Якорь меню: заголовок первого проекта встаёт под шапкой */}
-        <ul id="cases" className="scroll-mt-24 space-y-24 sm:space-y-28">
+        <ul id="cases" className="space-y-24 sm:space-y-28">
           {main.map((project) => (
             <ProjectRow key={project.slug} project={project} divided={false} />
           ))}
