@@ -111,19 +111,10 @@ function ProjectRow({
     >
       {/* У проекта с кейсом — описание слева, карточка справа.
          Без кейса описание занимает всю ширину. */}
-      <div
-        className={cn(
-          (study || project.media) &&
-            "grid gap-y-8 lg:grid-cols-12 lg:items-start lg:gap-x-8",
-        )}
-      >
-        <div
-          className={cn(
-            /* Отступ справа, чтобы текст не упирался в карточку кейса */
-            study && "lg:col-span-5 lg:pr-10",
-            project.media && "lg:col-span-5 lg:pr-10",
-          )}
-        >
+      {/* Одинаковая раскладка у всех проектов: описание на пяти колонках,
+         справа кейс или картинки. Если их пока нет — место остаётся пустым. */}
+      <div className="grid gap-y-8 lg:grid-cols-12 lg:items-start lg:gap-x-8">
+        <div className="lg:col-span-5 lg:pr-8">
           <h3 className="text-[28px] font-medium leading-tight tracking-[-0.02em] text-balance sm:text-[34px]">
             {project.title}
           </h3>
@@ -152,7 +143,12 @@ function ProjectRow({
 
           {/* Без кейса и без выноса — результаты идут под тэгами */}
           {!project.resultsAside && !study ? (
-            <MetricRow items={project.results} plain className="mt-10 sm:mt-12" />
+            <MetricRow
+              items={project.results}
+              plain
+              narrow
+              className="mt-10 sm:mt-12"
+            />
           ) : null}
         </div>
 
