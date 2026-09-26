@@ -20,6 +20,15 @@ const item =
 export function Header({ variant = "page" }: { variant?: "home" | "page" }) {
   const [active, setActive] = useState<string>("about");
 
+  /* Браузер умеет возвращать прежнюю позицию прокрутки при перезагрузке —
+     тогда главная открывается посередине. Открываем всегда сверху,
+     если только в ссылке не указан конкретный раздел. */
+  useEffect(() => {
+    if (variant !== "home") return;
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    if (!window.location.hash) window.scrollTo(0, 0);
+  }, [variant]);
+
   useEffect(() => {
     if (variant !== "home") return;
     /* Активен тот раздел, который пересекает середину экрана. */
