@@ -78,49 +78,57 @@ function ProjectRow({
         divided && "border-t border-line pt-10 first:border-t-0 first:pt-0 sm:pt-12",
       )}
     >
-      {/* Описание проекта */}
-      <h3 className="text-[28px] font-medium leading-tight tracking-[-0.02em] text-balance sm:text-[34px]">
-        {project.title}
-      </h3>
-      <ProjectMeta project={project} />
+      {/* У проекта с кейсом — описание слева, карточка справа.
+         Без кейса описание занимает всю ширину. */}
+      <div
+        className={cn(
+          study && "grid gap-y-10 lg:grid-cols-12 lg:items-start lg:gap-x-8",
+        )}
+      >
+        <div className={cn(study && "lg:col-span-5")}>
+          <h3 className="text-[28px] font-medium leading-tight tracking-[-0.02em] text-balance sm:text-[34px]">
+            {project.title}
+          </h3>
+          <ProjectMeta project={project} />
 
-      {project.resultsAside ? (
-        /* Слева описание, справа результаты: свои у проекта или из его кейса */
-        <div className="mt-5 grid gap-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-center lg:gap-16">
-          <ProjectDescription
-            text={project.description}
-            list={project.descriptionList}
-          />
-          <MetricRow items={results} plain narrow />
+          {project.resultsAside ? (
+            /* Слева описание, справа результаты: свои у проекта или из его кейса */
+            <div className="mt-5 grid gap-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-center lg:gap-16">
+              <ProjectDescription
+                text={project.description}
+                list={project.descriptionList}
+              />
+              <MetricRow items={results} plain narrow />
+            </div>
+          ) : (
+            <ProjectDescription
+              text={project.description}
+              list={project.descriptionList}
+              className="mt-5"
+            />
+          )}
+
+          <div className={project.resultsAside ? "mt-8" : "mt-6"}>
+            <TagList tags={project.tags} />
+          </div>
+
+          {/* Без кейса и без выноса — результаты идут под тэгами */}
+          {!project.resultsAside && !study ? (
+            <MetricRow items={project.results} plain className="mt-10 sm:mt-12" />
+          ) : null}
         </div>
-      ) : (
-        <ProjectDescription
-          text={project.description}
-          list={project.descriptionList}
-          className="mt-5"
-        />
-      )}
 
-      <div className={project.resultsAside ? "mt-8" : "mt-6"}>
-        <TagList tags={project.tags} />
+        {study ? (
+          <div className="lg:col-span-7">
+            <CaseCard
+              study={study}
+              wide
+              showResults={!project.resultsAside}
+              sizes="(max-width: 1024px) 100vw, 840px"
+            />
+          </div>
+        ) : null}
       </div>
-
-      {/* Без кейса и без выноса — результаты идут под тэгами */}
-      {!project.resultsAside && !study ? (
-        <MetricRow items={project.results} plain className="mt-10 sm:mt-12" />
-      ) : null}
-
-      {/* Кейс — под описанием, на всю ширину раздела */}
-      {study ? (
-        <div className="mt-10 sm:mt-12">
-          <CaseCard
-            study={study}
-            wide
-            showResults={!project.resultsAside}
-            sizes="(max-width: 1600px) 100vw, 1520px"
-          />
-        </div>
-      ) : null}
     </Reveal>
   );
 }
