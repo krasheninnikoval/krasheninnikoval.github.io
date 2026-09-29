@@ -10,8 +10,8 @@ export const autograder: CaseStudy = {
   preview: {
     src: "/images/cases/autograder/nivelirovanie.png",
     alt: "Экран запуска системы 2D-нивелирования на панели автогрейдера",
-    width: 1920,
-    height: 1080,
+    width: 3840,
+    height: 2160,
   },
   coverPair: {
     arrowPath: "M400 206 C 326 206, 208 168, 157 64",
@@ -24,8 +24,8 @@ export const autograder: CaseStudy = {
     screen: {
       src: "/images/cases/autograder/nivelirovanie.png",
       alt: "Экран запуска системы 2D-нивелирования",
-      width: 1920,
-      height: 1080,
+      width: 3840,
+      height: 2160,
     },
   },
   meta: {

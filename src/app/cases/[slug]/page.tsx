@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CaseBlocks, caseHeading } from "@/components/CaseBlocks";
 import { CaseCard } from "@/components/CaseCard";
+import { CaseImage } from "@/components/CaseImage";
 import { CoverComposition } from "@/components/CoverComposition";
 import { Container } from "@/components/Container";
 import { MetaLine } from "@/components/MetaLine";
@@ -10,7 +11,6 @@ import { Header } from "@/components/Header";
 import { MetricRow } from "@/components/Metrics";
 import { Reveal } from "@/components/Reveal";
 import { TagList } from "@/components/Tag";
-import { ZoomableImage } from "@/components/ZoomableImage";
 import { ArrowLeftIcon } from "@/components/icons";
 import { getAllCases, getCaseBySlug, getOtherCases } from "@/content";
 import { cn } from "@/lib/cn";
@@ -139,7 +139,7 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
                 sizes="(max-width: 1100px) 70vw, 700px"
               />
             ) : study.cover ? (
-              <ZoomableImage
+              <CaseImage
                 image={study.cover}
                 priority
                 backdrop

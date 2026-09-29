@@ -29,14 +29,59 @@ function ProjectMeta({ project }: { project: Project }) {
 function ProjectMedia({ media }: { media: NonNullable<Project["media"]> }) {
   if (media.pair) {
     return (
-      <CoverComposition
-        pair={media.pair}
-        bare
-        sizes="(max-width: 1024px) 100vw, 840px"
-      />
+      <div className="rounded-card bg-stage p-3 sm:p-4 lg:p-6">
+        <CoverComposition
+          pair={media.pair}
+          bare
+          sizes="(max-width: 1024px) 100vw, 840px"
+        />
+      </div>
+    );
+  }
+  if (media.notice) {
+    return (
+      <div className="relative min-w-0 overflow-hidden rounded-card bg-stage p-3 sm:p-4 lg:p-6">
+        {/* Повторяет размеры трёх экранов Финама, чтобы подложки совпадали
+            при любой ширине, но не выводит недоступные материалы. */}
+        <div
+          aria-hidden
+          className="invisible flex min-w-0 max-w-full gap-3 pb-2 lg:grid lg:grid-cols-3 lg:gap-4 lg:pb-0"
+        >
+          {[0, 1, 2].map((item) => (
+            <span
+              key={item}
+              className="aspect-[784/1692] w-[68vw] max-w-[264px] shrink-0 lg:w-full lg:max-w-none"
+            />
+          ))}
+        </div>
+        <div className="absolute inset-0 flex items-center justify-center p-8 sm:p-12">
+          <p className="max-w-[38ch] text-center text-[15px] leading-relaxed text-muted sm:text-base">
+            {media.notice}
+          </p>
+        </div>
+      </div>
     );
   }
   if (!media.images?.length) return null;
+  if (media.presentation === "screens") {
+    return (
+      <div className="min-w-0 overflow-hidden rounded-card bg-stage p-3 sm:p-4 lg:p-6">
+        <div className="flex min-w-0 max-w-full snap-x snap-mandatory gap-3 overflow-x-auto pb-2 lg:grid lg:grid-cols-3 lg:gap-4 lg:overflow-visible lg:pb-0">
+          {media.images.map((image) => (
+            <Image
+              key={image.src}
+              src={image.src}
+              alt={image.alt}
+              width={image.width}
+              height={image.height}
+              sizes="(max-width: 639px) 68vw, (max-width: 1023px) 264px, 18vw"
+              className="h-auto w-[68vw] max-w-[264px] shrink-0 snap-start lg:w-full lg:max-w-none"
+            />
+          ))}
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="flex flex-wrap items-start gap-4">
       {media.images.map((image) => (
@@ -134,7 +179,7 @@ function ProjectRow({
               {/* У проектов с кейсом описание подписано, чтобы отличать
                  его от текста на карточке кейса рядом */}
               {study ? (
-                <p className="mt-5 text-[17px] leading-relaxed text-muted/70">
+                <p className="mt-5 text-[15px] leading-relaxed text-muted/70">
                   О проекте
                 </p>
               ) : null}
@@ -146,7 +191,7 @@ function ProjectRow({
             </>
           )}
 
-          <div className={project.resultsAside ? "mt-8" : "mt-6"}>
+          <div className={project.secondary ? "mt-6" : "mt-8"}>
             <TagList tags={project.tags} />
           </div>
 
@@ -164,7 +209,7 @@ function ProjectRow({
         {/* Проект без кейса — только картинки, без рамки карточки и без
            ссылки: они не должны читаться как кейс */}
         {!study && project.media ? (
-          <div className="lg:col-span-7">
+          <div className="min-w-0 lg:col-span-7">
             <ProjectMedia media={project.media} />
           </div>
         ) : null}

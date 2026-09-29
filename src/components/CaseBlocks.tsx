@@ -1,7 +1,7 @@
 import type { CaseBlock } from "@/content/types";
 import { cn } from "@/lib/cn";
+import { CaseImage } from "./CaseImage";
 import { MetricRow } from "./Metrics";
-import { ZoomableImage } from "./ZoomableImage";
 
 const reading = "mx-auto w-full max-w-reading";
 const wide = "mx-auto w-full max-w-[1040px]";
@@ -51,7 +51,7 @@ function Block({ block }: { block: CaseBlock }) {
             ) : null}
             <Paragraphs items={block.paragraphs} />
           </div>
-          <ZoomableImage
+          <CaseImage
             image={block.image}
             className="mt-8"
             sizes={
@@ -69,7 +69,7 @@ function Block({ block }: { block: CaseBlock }) {
         : "(max-width: 780px) 100vw, 720px";
       if (!block.heading) {
         return (
-          <ZoomableImage
+          <CaseImage
             image={block.image}
             className={block.wide ? wide : reading}
             sizes={imageSizes}
@@ -83,7 +83,7 @@ function Block({ block }: { block: CaseBlock }) {
           <h2 className={cn(caseHeading, "mx-auto mb-6 w-full max-w-reading")}>
             {block.heading}
           </h2>
-          <ZoomableImage image={block.image} sizes={imageSizes} />
+          <CaseImage image={block.image} sizes={imageSizes} />
         </div>
       );
     }
@@ -103,7 +103,7 @@ function Block({ block }: { block: CaseBlock }) {
             )}
           >
             {block.images.map((image) => (
-              <ZoomableImage
+              <CaseImage
                 key={image.src + image.alt}
                 image={image}
                 sizes="(max-width: 640px) 100vw, 33vw"

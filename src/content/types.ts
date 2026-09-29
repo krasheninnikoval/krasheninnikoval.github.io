@@ -135,6 +135,10 @@ export interface Project {
     pair?: CoverPair;
     /** Одна или несколько картинок в ряд */
     images?: ImageRef[];
+    /** Нейтральная заглушка вместо материалов, которые нельзя показывать */
+    notice?: string;
+    /** Высокие интерфейсные экраны: три в ряд на desktop, лента на mobile */
+    presentation?: "screens";
   };
   tags: string[];
   results: Metric[];

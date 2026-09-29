@@ -52,8 +52,11 @@ export function MetricRow({
             <dd
               className={cn(
                 "font-medium leading-none tracking-tight",
+                plain &&
+                  narrow &&
+                  "flex h-[30px] items-end sm:h-[36px]",
                 /* Словесный итог набирается мельче цифры: длинное слово
-                 в том же кегле выглядит крупнее и перевешивает */
+                   в том же кегле выглядит крупнее и перевешивает */
                 compact
                   ? hasDigits
                     ? "text-[26px] sm:text-[32px]"

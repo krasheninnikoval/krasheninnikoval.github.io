@@ -1,8 +1,7 @@
-import { Fragment } from "react";
 import { cn } from "@/lib/cn";
 
 /**
- * Строка-подпись с реквизитами: «Подпись значение · Подпись значение».
+ * Строка-подпись с реквизитами, разделёнными горизонтальными отступами.
  * Используется и в разделе «Опыт», и в шапке страницы кейса.
  * Пустые значения пропускаются.
  */
@@ -17,15 +16,16 @@ export function MetaLine({
   if (filled.length === 0) return null;
 
   return (
-    <p className={cn("text-[15px] leading-relaxed text-muted", className)}>
-      {filled.map((item, index) => (
-        <Fragment key={item.label}>
-          {index > 0 ? <span className="px-2 text-line">·</span> : null}
-          {/* Реквизит переносится целиком, а не разрывается посередине */}
-          <span className="inline-block">
-            {item.label} {item.value}
-          </span>
-        </Fragment>
+    <p
+      className={cn(
+        "flex flex-wrap items-baseline gap-x-5 text-[15px] leading-relaxed text-muted",
+        className,
+      )}
+    >
+      {filled.map((item) => (
+        <span key={item.label} className="min-w-0">
+          {item.label} {item.value}
+        </span>
       ))}
     </p>
   );
