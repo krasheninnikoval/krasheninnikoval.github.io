@@ -135,6 +135,7 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
             {study.coverComparison ? (
               <ComparisonCover
                 comparison={study.coverComparison}
+                detail
                 priority
                 className="mx-auto mt-14 max-w-[1040px] rounded-card sm:mt-16"
                 sizes="(max-width: 1100px) 100vw, 1040px"

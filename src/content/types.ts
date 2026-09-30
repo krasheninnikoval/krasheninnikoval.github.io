@@ -11,6 +11,8 @@ export interface ImageRef {
   alt: string;
   width: number;
   height: number;
+  /** Короткие подписи поверх изображения, координаты заданы в процентах. */
+  overlayLabels?: { text: string; left: number; top: number }[];
   /** Подпись под картинкой (необязательно) */
   caption?: string;
 }
@@ -46,6 +48,7 @@ export type CaseBlock =
     }
   | { type: "image"; heading?: string; image: ImageRef; wide?: boolean }
   | { type: "gallery"; heading?: string; images: ImageRef[] }
+  | { type: "carousel"; images: ImageRef[]; wide?: boolean }
   | {
       type: "list";
       heading?: string;

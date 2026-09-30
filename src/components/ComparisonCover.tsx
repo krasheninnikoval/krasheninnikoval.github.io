@@ -9,16 +9,28 @@ import { cn } from "@/lib/cn";
 export function ComparisonCover({
   comparison,
   className,
+  detail = false,
   priority = false,
   sizes,
 }: {
   comparison: CoverComparison;
   className?: string;
+  detail?: boolean;
   priority?: boolean;
   sizes: string;
 }) {
   const [beforeHome, beforeMenu] = comparison.before;
   const [afterHome, afterMenu] = comparison.after;
+  const labelClassName = cn(
+    "absolute left-0 top-[5%] font-medium text-muted",
+    detail
+      ? "text-[13px] leading-none sm:text-[18px]"
+      : "text-[13px] sm:text-[15px]",
+  );
+  const imageRowClassName = cn(
+    "absolute inset-x-0 flex items-start justify-between gap-[3%]",
+    detail ? "top-[11%]" : "top-[13%]",
+  );
 
   return (
     <div
@@ -28,10 +40,8 @@ export function ComparisonCover({
       )}
     >
       <div className="absolute inset-y-0 left-[3%] w-[45.5%]">
-        <p className="absolute left-0 top-[5%] text-[13px] font-medium text-muted sm:text-[15px]">
-          Было
-        </p>
-        <div className="absolute inset-x-0 top-[13%] flex items-start justify-between gap-[3%]">
+        <p className={labelClassName}>Было</p>
+        <div className={imageRowClassName}>
           <Image
             src={beforeHome.src}
             alt={beforeHome.alt}
@@ -54,10 +64,8 @@ export function ComparisonCover({
       </div>
 
       <div className="absolute inset-y-0 right-[3%] w-[45.5%]">
-        <p className="absolute left-0 top-[5%] text-[13px] font-medium text-muted sm:text-[15px]">
-          Стало
-        </p>
-        <div className="absolute inset-x-0 top-[13%] flex items-start justify-between gap-[3%]">
+        <p className={labelClassName}>Стало</p>
+        <div className={imageRowClassName}>
           <Image
             src={afterHome.src}
             alt={afterHome.alt}

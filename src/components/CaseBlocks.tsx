@@ -1,5 +1,6 @@
 import type { CaseBlock } from "@/content/types";
 import { cn } from "@/lib/cn";
+import { CaseCarousel } from "./CaseCarousel";
 import { CaseImage } from "./CaseImage";
 import { MetricRow } from "./Metrics";
 
@@ -111,6 +112,19 @@ function Block({ block }: { block: CaseBlock }) {
             ))}
           </div>
         </div>
+      );
+
+    case "carousel":
+      return (
+        <CaseCarousel
+          images={block.images}
+          className={block.wide ? wide : reading}
+          sizes={
+            block.wide
+              ? "(max-width: 1100px) 100vw, 1040px"
+              : "(max-width: 780px) 100vw, 720px"
+          }
+        />
       );
 
     case "list": {

@@ -19,7 +19,7 @@ export function CaseImage({
     <figure className={className}>
       <div
         className={cn(
-          "w-full overflow-hidden rounded-card",
+          "relative w-full overflow-hidden rounded-card",
           backdrop
             ? "bg-stage p-4 sm:p-8 lg:p-12"
             : "rounded-media border border-line bg-chip",
@@ -38,6 +38,16 @@ export function CaseImage({
               "rounded-media shadow-[0_12px_40px_rgba(24,24,27,0.16)]",
           )}
         />
+
+        {image.overlayLabels?.map((label) => (
+          <p
+            key={label.text}
+            className="pointer-events-none absolute whitespace-nowrap text-[13px] font-medium leading-none text-muted sm:text-[18px]"
+            style={{ left: `${label.left}%`, top: `${label.top}%` }}
+          >
+            {label.text}
+          </p>
+        ))}
       </div>
 
       {image.caption ? (
