@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { CaseBlocks, caseHeading } from "@/components/CaseBlocks";
 import { CaseCard } from "@/components/CaseCard";
 import { CaseImage } from "@/components/CaseImage";
+import { ComparisonCover } from "@/components/ComparisonCover";
 import { CoverComposition } from "@/components/CoverComposition";
 import { Container } from "@/components/Container";
 import { MetaLine } from "@/components/MetaLine";
@@ -131,7 +132,14 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
               </div>
             </div>
 
-            {study.coverPair ? (
+            {study.coverComparison ? (
+              <ComparisonCover
+                comparison={study.coverComparison}
+                priority
+                className="mx-auto mt-14 max-w-[1040px] rounded-card sm:mt-16"
+                sizes="(max-width: 1100px) 100vw, 1040px"
+              />
+            ) : study.coverPair ? (
               <CoverComposition
                 pair={study.coverPair}
                 priority

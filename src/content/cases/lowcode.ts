@@ -4,14 +4,18 @@ import type { CaseStudy } from "../types";
    пока на странице стоят серые заглушки. */
 export const lowcode: CaseStudy = {
   slug: "lowcode-builder",
-  title: "Кейс в работе",
-  cardSummary: "дополнить описанием кейса",
+  title: "Развитие low-code конструктора и дизайн-системы",
+  cardTitle: "Название кейса",
+  cardSummary: "Описание",
+  cardResult: "Результаты",
   preview: {
     src: "/images/placeholder/content-16-10.png",
     alt: "Здесь будет обложка кейса",
     width: 1600,
     height: 1000,
   },
+  cardPreviewEdgeToEdge: true,
+  cardPreviewPlaceholder: true,
   meta: {
     team: "Команда из трёх дизайнеров",
   },

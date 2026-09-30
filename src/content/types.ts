@@ -71,6 +71,12 @@ export interface CoverPair {
   arrowPath?: string;
 }
 
+/** Две пары экранов для обложки, показывающей состояние до и после. */
+export interface CoverComparison {
+  before: [ImageRef, ImageRef];
+  after: [ImageRef, ImageRef];
+}
+
 export interface CaseStudy {
   /** Часть адреса страницы: /cases/<slug>. Латиницей, через дефис. */
   slug: string;
@@ -81,10 +87,18 @@ export interface CaseStudy {
    */
   hidden?: boolean;
   title: string;
+  /** Отдельный заголовок только для карточки — например, пока кейс в работе. */
+  cardTitle?: string;
   /** 1–2 предложения о результатах — показывается на карточке */
   cardSummary: string;
+  /** Компактная строка результата только для карточки; метрики кейса не заменяет */
+  cardResult?: string;
   /** Превью для карточки на главной, горизонтальное 16:10 */
   preview: ImageRef;
+  /** Обычное превью занимает всю ширину карточки как эталонная обложка. */
+  cardPreviewEdgeToEdge?: boolean;
+  /** Вместо временной картинки карточка показывает ровную подложку stage. */
+  cardPreviewPlaceholder?: boolean;
   /** Широкая обложка в шапке страницы кейса (необязательно) */
   cover?: ImageRef;
   /**
@@ -92,6 +106,8 @@ export interface CaseStudy {
    * Если задана, используется вместо cover и вместо превью на карточке.
    */
   coverPair?: CoverPair;
+  /** Обложка-сравнение: исходные и финальные экраны интерфейса. */
+  coverComparison?: CoverComparison;
   meta: {
     /** Сроки — необязательно */
     timeline?: string;

@@ -4,28 +4,46 @@ import type { CaseStudy } from "../types";
    Тексты блоков и изображения заменяются на реальные материалы. */
 export const clinicNavigation: CaseStudy = {
   slug: "clinic-navigation",
-  title: "Главная страница и навигация",
+  title: "Редизайн главной страницы и переработка навигации",
   cardSummary:
-    "Заказчик пришёл за визуальным обновлением главной. UX-аудит показал, что проблема глубже: непредсказуемое поведение компонентов, перегруженное меню навигации, несоответствие неймингов",
+    "UX-аудит показал, что визуального обновления недостаточно: проблемы были в навигации, структуре сайта и поведении компонентов",
+  cardResult:
+    "Запущена новая главная с переработанной навигацией, путь до целевых действий сокращён",
   preview: {
     src: "/images/cases/clinic/main-page.png",
     alt: "Главная страница сайта клиники с раскрытым меню",
     width: 1400,
     height: 787,
   },
-  coverPair: {
-    photo: {
-      src: "/images/cases/clinic/new-structure-clean.png",
-      alt: "Схема новой информационной архитектуры сайта",
-      width: 800,
-      height: 990,
-    },
-    screen: {
-      src: "/images/cases/clinic/main-page.png",
-      alt: "Главная страница сайта клиники с раскрытым меню",
-      width: 1400,
-      height: 787,
-    },
+  coverComparison: {
+    before: [
+      {
+        src: "/images/cases/clinic/cover-comparison/before-home.png",
+        alt: "Исходная мобильная главная страница клиники",
+        width: 804,
+        height: 1748,
+      },
+      {
+        src: "/images/cases/clinic/cover-comparison/before-menu.png",
+        alt: "Исходное длинное мобильное меню клиники",
+        width: 804,
+        height: 2904,
+      },
+    ],
+    after: [
+      {
+        src: "/images/cases/clinic/cover-comparison/after-home.png",
+        alt: "Новая мобильная главная страница клиники",
+        width: 804,
+        height: 1748,
+      },
+      {
+        src: "/images/cases/clinic/cover-comparison/after-menu.png",
+        alt: "Новое структурированное мобильное меню клиники",
+        width: 804,
+        height: 1748,
+      },
+    ],
   },
   meta: {
     team: "Единственный дизайнер - я, 2 backend, 1 frontend, PM, работа с SEO-командой",

@@ -2,12 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import type { CaseStudy } from "@/content/types";
 import { cn } from "@/lib/cn";
+import { ComparisonCover } from "./ComparisonCover";
 import { CoverComposition } from "./CoverComposition";
 import { MetricRow } from "./Metrics";
 
 /**
  * Карточка кейса. Используется и в правой колонке проекта на главной,
  * и в блоке «Другие кейсы» внизу страницы кейса.
+ * Единый порядок контента: обложка → заголовок → описание → результат.
  */
 export function CaseCard({
   study,
@@ -22,45 +24,84 @@ export function CaseCard({
   wide?: boolean;
   showResults?: boolean;
 }) {
+  const edgeToEdge = Boolean(
+    study.coverComparison || study.cardPreviewEdgeToEdge,
+  );
+
   return (
     <Link
       href={`/cases/${study.slug}`}
-      className="group block rounded-card border border-line bg-surface p-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-ink/15 hover:shadow-[0_8px_30px_rgba(24,24,27,0.06)]"
-    >
-      {study.coverPair ? (
-        <CoverComposition pair={study.coverPair} compact sizes={sizes} />
-      ) : (
-        <div
-          className={cn(
-            "w-full overflow-hidden rounded-media bg-stage",
-            wide ? "p-5 sm:p-10 lg:p-12" : "p-4 sm:p-6",
-          )}
-        >
-          <Image
-            src={study.preview.src}
-            alt={study.preview.alt}
-            width={study.preview.width}
-            height={study.preview.height}
-            sizes={sizes}
-            className="h-auto w-full rounded-media shadow-[0_1px_2px_rgba(24,24,27,0.05),0_10px_24px_rgba(24,24,27,0.08)] transition-transform duration-500 group-hover:scale-[1.02]"
-          />
-        </div>
+      className={cn(
+        "group block rounded-card border border-line bg-surface",
+        edgeToEdge ? "overflow-hidden" : "p-3",
       )}
+    >
+      <div className={cn("overflow-hidden", !edgeToEdge && "rounded-card")}>
+        <div className="origin-center transition-transform duration-500 ease-out group-hover:scale-[1.02]">
+          {study.cardPreviewPlaceholder ? (
+            <div aria-hidden className="aspect-[5/3] w-full bg-stage" />
+          ) : study.coverComparison ? (
+            <ComparisonCover
+              comparison={study.coverComparison}
+              sizes={sizes}
+            />
+          ) : study.coverPair ? (
+            <CoverComposition pair={study.coverPair} compact sizes={sizes} />
+          ) : (
+            <div
+              className={cn(
+                "w-full overflow-hidden bg-stage",
+                edgeToEdge
+                  ? "aspect-[5/3]"
+                  : cn(
+                      "rounded-media",
+                      wide ? "p-5 sm:p-10 lg:p-12" : "p-4 sm:p-6",
+                    ),
+              )}
+            >
+              <Image
+                src={study.preview.src}
+                alt={study.preview.alt}
+                width={study.preview.width}
+                height={study.preview.height}
+                sizes={sizes}
+                className={cn(
+                  edgeToEdge
+                    ? "h-full w-full object-cover"
+                    : "h-auto w-full rounded-media shadow-[0_1px_2px_rgba(24,24,27,0.05),0_10px_24px_rgba(24,24,27,0.08)]",
+                )}
+              />
+            </div>
+          )}
+        </div>
+      </div>
 
-      <div className="px-2 pb-2 pt-5">
+      <div
+        className={cn(
+          "pt-5",
+          edgeToEdge ? "px-5 pb-5 sm:px-6 sm:pb-6" : "px-2 pb-2",
+        )}
+      >
         <h3
           className={cn(
             "font-medium leading-snug tracking-[-0.01em] text-pretty",
             wide ? "text-[22px] sm:text-[26px]" : "text-xl sm:text-[22px]",
           )}
         >
-          {study.title}
+          {study.cardTitle ?? study.title}
         </h3>
-        <p className="mt-2.5 max-w-[62ch] text-[15px] leading-relaxed text-muted sm:text-base">
+
+        <p className="mt-2.5 max-w-[72ch] text-[15px] leading-relaxed text-muted sm:text-base">
           {study.cardSummary}
         </p>
 
-        {showResults ? (
+        {showResults && study.cardResult ? (
+          <p className="mt-5 text-pretty text-[14px] leading-relaxed text-ink/75 sm:text-[15px]">
+            {study.cardResult}
+          </p>
+        ) : null}
+
+        {showResults && !study.cardResult ? (
           <MetricRow
             items={study.results}
             plain
