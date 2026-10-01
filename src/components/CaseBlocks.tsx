@@ -11,9 +11,10 @@ export const caseHeading =
   "text-2xl font-medium leading-snug tracking-[-0.02em] text-balance sm:text-[28px]";
 const subheading =
   "text-[19px] font-medium leading-snug tracking-[-0.01em] text-balance sm:text-[21px]";
-const prose = "space-y-4 text-[17px] leading-[1.75] text-ink/85";
+const prose =
+  "space-y-4 text-[14px] leading-[19.6px] text-ink/80 lg:text-[17px] lg:leading-[1.75] lg:text-ink/85";
 export const caseList =
-  "space-y-3 pl-5 text-[17px] leading-[1.7] text-ink/85 marker:text-muted";
+  "space-y-3 pl-5 text-[14px] leading-[19.6px] text-ink/80 marker:text-muted lg:text-[17px] lg:leading-[1.7] lg:text-ink/85";
 
 function Paragraphs({ items }: { items: string[] }) {
   return (

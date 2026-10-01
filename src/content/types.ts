@@ -180,6 +180,8 @@ export interface Profile {
   /** Короткие блоки под первым экраном: опыт, образование, AI, цель */
   facts: { title: string; text: string }[];
   photo: ImageRef;
+  /** Альтернативный портрет для первого экрана на ширине меньше desktop. */
+  mobilePhoto?: ImageRef;
   telegram: { handle: string; url: string };
   email: string;
   resumeUrl: string;

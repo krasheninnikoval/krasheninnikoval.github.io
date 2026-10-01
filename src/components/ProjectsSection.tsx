@@ -39,47 +39,43 @@ function ProjectMedia({ media }: { media: NonNullable<Project["media"]> }) {
     );
   }
   if (media.notice) {
-    return (
-      <div className="relative min-w-0 overflow-hidden rounded-card bg-stage p-3 sm:p-4 lg:p-6">
-        {/* Повторяет размеры трёх экранов Финама, чтобы подложки совпадали
-            при любой ширине, но не выводит недоступные материалы. */}
-        <div
-          aria-hidden
-          className="invisible flex min-w-0 max-w-full gap-3 pb-2 lg:grid lg:grid-cols-3 lg:gap-4 lg:pb-0"
-        >
-          {[0, 1, 2].map((item) => (
-            <span
-              key={item}
-              className="aspect-[784/1692] w-[68vw] max-w-[264px] shrink-0 lg:w-full lg:max-w-none"
-            />
-          ))}
-        </div>
-        <div className="absolute inset-0 flex items-center justify-center p-8 sm:p-12">
-          <p className="max-w-[38ch] text-center text-[15px] leading-relaxed text-muted sm:text-base">
-            {media.notice}
-          </p>
-        </div>
-      </div>
-    );
+    return null;
   }
   if (!media.images?.length) return null;
   if (media.presentation === "screens") {
     return (
-      <div className="min-w-0 overflow-hidden rounded-card bg-stage p-3 sm:p-4 lg:p-6">
-        <div className="flex min-w-0 max-w-full snap-x snap-mandatory gap-3 overflow-x-auto pb-2 lg:grid lg:grid-cols-3 lg:gap-4 lg:overflow-visible lg:pb-0">
-          {media.images.map((image) => (
-            <Image
-              key={image.src}
-              src={image.src}
-              alt={image.alt}
-              width={image.width}
-              height={image.height}
-              sizes="(max-width: 639px) 68vw, (max-width: 1023px) 264px, 18vw"
-              className="h-auto w-[68vw] max-w-[264px] shrink-0 snap-start lg:w-full lg:max-w-none"
-            />
-          ))}
+      <>
+        <div className="min-w-0 overflow-hidden rounded-card bg-stage p-3 sm:p-4 lg:hidden">
+          <div className="grid grid-cols-3 items-start gap-2">
+            {media.images.map((image) => (
+              <Image
+                key={image.src}
+                src={image.src}
+                alt={image.alt}
+                width={image.width}
+                height={image.height}
+                sizes="30vw"
+                className="h-auto w-full"
+              />
+            ))}
+          </div>
         </div>
-      </div>
+        <div className="hidden min-w-0 overflow-hidden rounded-card bg-stage p-6 lg:block">
+          <div className="grid min-w-0 max-w-full grid-cols-3 gap-4">
+            {media.images.map((image) => (
+              <Image
+                key={image.src}
+                src={image.src}
+                alt={image.alt}
+                width={image.width}
+                height={image.height}
+                sizes="18vw"
+                className="h-auto w-full"
+              />
+            ))}
+          </div>
+        </div>
+      </>
     );
   }
   return (
@@ -113,7 +109,7 @@ function ProjectDescription({
   return (
     <div
       className={cn(
-        "max-w-[62ch] space-y-4 text-[17px] leading-relaxed text-ink/80",
+        "max-w-[62ch] space-y-4 text-[14px] leading-[19.6px] text-ink/80 lg:text-[17px] lg:leading-relaxed",
         className,
       )}
     >
@@ -158,16 +154,37 @@ function ProjectRow({
          Без кейса описание занимает всю ширину. */}
       {/* Одинаковая раскладка у всех проектов: описание на пяти колонках,
          справа кейс или картинки. Если их пока нет — место остаётся пустым. */}
-      <div className="grid gap-y-8 lg:grid-cols-12 lg:items-start lg:gap-x-8">
-        <div className="lg:col-span-5 lg:pr-8">
+      <div className="grid gap-y-6 lg:grid-cols-12 lg:items-start lg:gap-x-8 lg:gap-y-0">
+        <div className="lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:pr-8">
           <h3 className="text-[28px] font-medium leading-tight tracking-[-0.02em] text-balance sm:text-[34px]">
             {project.title}
           </h3>
           <ProjectMeta project={project} />
+        </div>
 
+        {/* Проект без кейса — только картинки, без рамки карточки и без
+           ссылки: они не должны читаться как кейс */}
+        {!study && project.media && !project.media.notice ? (
+          <div className="min-w-0 lg:col-span-7 lg:col-start-6 lg:row-span-2 lg:row-start-1">
+            <ProjectMedia media={project.media} />
+          </div>
+        ) : null}
+
+        {study ? (
+          <div className="lg:col-span-7 lg:col-start-6 lg:row-span-2 lg:row-start-1">
+            <CaseCard
+              study={study}
+              wide
+              showResults={!project.resultsAside}
+              sizes="(max-width: 1024px) 100vw, 840px"
+            />
+          </div>
+        ) : null}
+
+        <div className="lg:col-span-5 lg:col-start-1 lg:row-start-2 lg:pr-8">
           {project.resultsAside ? (
             /* Слева описание, справа результаты: свои у проекта или из его кейса */
-            <div className="mt-5 grid gap-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-center lg:gap-16">
+            <div className="grid gap-8 lg:mt-5 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-center lg:gap-16">
               <ProjectDescription
                 text={project.description}
                 list={project.descriptionList}
@@ -179,14 +196,14 @@ function ProjectRow({
               {/* У проектов с кейсом описание подписано, чтобы отличать
                  его от текста на карточке кейса рядом */}
               {study ? (
-                <p className="mt-5 text-[15px] leading-relaxed text-muted/70">
+                <p className="text-[13px] leading-[18.2px] text-muted/70 lg:mt-5 lg:text-[15px] lg:leading-relaxed">
                   О проекте
                 </p>
               ) : null}
               <ProjectDescription
                 text={project.description}
                 list={project.descriptionList}
-                className={study ? "mt-2" : "mt-5"}
+                className={study ? "mt-2" : "lg:mt-5"}
               />
             </>
           )}
@@ -205,25 +222,6 @@ function ProjectRow({
             />
           ) : null}
         </div>
-
-        {/* Проект без кейса — только картинки, без рамки карточки и без
-           ссылки: они не должны читаться как кейс */}
-        {!study && project.media ? (
-          <div className="min-w-0 lg:col-span-7">
-            <ProjectMedia media={project.media} />
-          </div>
-        ) : null}
-
-        {study ? (
-          <div className="lg:col-span-7">
-            <CaseCard
-              study={study}
-              wide
-              showResults={!project.resultsAside}
-              sizes="(max-width: 1024px) 100vw, 840px"
-            />
-          </div>
-        ) : null}
       </div>
     </Reveal>
   );

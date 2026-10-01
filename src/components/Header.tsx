@@ -10,7 +10,7 @@ const sections = [
 ] as const;
 
 const item =
-  "rounded-full px-4 py-2.5 text-[15px] transition-colors hover:bg-chip hover:text-ink sm:px-4.5";
+  "inline-flex h-10 items-center rounded-full px-4 text-[14px] leading-[19.6px] transition-colors hover:bg-chip hover:text-ink sm:px-4.5 lg:h-auto lg:py-2.5 lg:text-[15px] lg:leading-normal";
 
 /**
  * Компактная плавающая шапка-капсула по центру.
@@ -57,7 +57,7 @@ export function Header({ variant = "page" }: { variant?: "home" | "page" }) {
     <header className="fixed inset-x-0 top-5 z-50 flex justify-center px-4 sm:top-7">
       <nav
         aria-label="Основная навигация"
-        className="flex items-center gap-1 rounded-full border border-line bg-surface/80 p-2 shadow-[0_2px_10px_rgba(24,24,27,0.05)] backdrop-blur-md"
+        className="flex items-center gap-1 rounded-full border border-line bg-surface/80 p-1 shadow-[0_2px_10px_rgba(24,24,27,0.05)] backdrop-blur-md lg:p-2"
       >
         {sections.map((section) => {
           const isActive = variant === "home" && active === section.id;

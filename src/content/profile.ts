@@ -31,6 +31,12 @@ export const profile: Profile = {
     width: 1200,
     height: 1200,
   },
+  mobilePhoto: {
+    src: "/images/profile-0050-mobile.jpg",
+    alt: "Крашенинникова Любовь",
+    width: 1600,
+    height: 1200,
+  },
   telegram: {
     handle: "@krasheninnikovalm",
     url: "https://t.me/krasheninnikovalm",

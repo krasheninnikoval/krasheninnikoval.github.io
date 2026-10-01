@@ -53,7 +53,7 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
   return (
     <>
       <Header />
-      <main className="flex-1 pb-24 pt-24 sm:pt-28">
+      <main className="flex-1 pb-24 pt-[86px] sm:pt-[102px] lg:pt-28">
         <Container>
           <article>
             {/* Шапка кейса */}
@@ -93,7 +93,7 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
               <div>
                 <h2 className={cn(caseHeading, "mb-5")}>О задаче</h2>
                 {study.lead?.length ? (
-                  <div className="space-y-4 text-[17px] leading-[1.75] text-ink/85">
+                  <div className="space-y-4 text-[14px] leading-[19.6px] text-ink/80 lg:text-[17px] lg:leading-[1.75] lg:text-ink/85">
                     {study.lead.map((paragraph) => (
                       <p key={paragraph.slice(0, 32)}>{paragraph}</p>
                     ))}
@@ -110,7 +110,7 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
                 <h2 className={cn(caseHeading, "mb-5")}>Результаты</h2>
                 {study.highlights?.length ? (
                   /* Как остальные списки кейса, но без нумерации */
-                  <ul className="space-y-3 text-[17px] leading-[1.7] text-ink/85">
+                  <ul className="space-y-3 text-[14px] leading-[19.6px] text-ink/80 lg:text-[17px] lg:leading-[1.7] lg:text-ink/85">
                     {study.highlights.map((item) => (
                       <li key={item.title}>
                         <span className="font-medium text-ink">

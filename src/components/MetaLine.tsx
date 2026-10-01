@@ -18,7 +18,7 @@ export function MetaLine({
   return (
     <p
       className={cn(
-        "flex flex-wrap items-baseline gap-x-5 text-[15px] leading-relaxed text-muted",
+        "flex flex-wrap items-baseline gap-x-5 text-[13px] leading-[18.2px] text-muted lg:text-[15px] lg:leading-relaxed",
         className,
       )}
     >

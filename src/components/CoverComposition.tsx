@@ -84,8 +84,9 @@ export function CoverComposition({
           className={cn(
             card,
             !bare && framedCard,
-            bare && "order-2 w-3/4 justify-self-start sm:order-none",
-            "sm:w-(--photo-width)",
+            bare
+              ? "order-2 w-full justify-self-start sm:order-none sm:w-(--overlay-width) lg:w-(--photo-width)"
+              : "sm:w-(--photo-width)",
           )}
           style={
             {

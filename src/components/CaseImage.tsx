@@ -23,6 +23,8 @@ export function CaseImage({
           backdrop
             ? "bg-stage p-4 sm:p-8 lg:p-12"
             : "rounded-media border border-line bg-chip",
+          Boolean(image.overlayLabels?.length) &&
+            "bg-stage pt-[1.6%] sm:pt-[1.15%] lg:bg-chip lg:pt-0",
         )}
       >
         <Image
@@ -42,8 +44,13 @@ export function CaseImage({
         {image.overlayLabels?.map((label) => (
           <p
             key={label.text}
-            className="pointer-events-none absolute whitespace-nowrap text-[13px] font-medium leading-none text-muted sm:text-[18px]"
-            style={{ left: `${label.left}%`, top: `${label.top}%` }}
+            className="pointer-events-none absolute top-[2.65%] whitespace-nowrap text-[13px] font-medium leading-none text-muted sm:top-[3.64%] sm:text-[18px] lg:top-(--label-top)"
+            style={
+              {
+                left: `${label.left}%`,
+                "--label-top": `${label.top}%`,
+              } as React.CSSProperties
+            }
           >
             {label.text}
           </p>

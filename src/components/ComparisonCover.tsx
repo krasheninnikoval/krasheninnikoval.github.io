@@ -22,14 +22,16 @@ export function ComparisonCover({
   const [beforeHome, beforeMenu] = comparison.before;
   const [afterHome, afterMenu] = comparison.after;
   const labelClassName = cn(
-    "absolute left-0 top-[5%] font-medium text-muted",
+    "absolute left-0 top-[4%] font-medium text-muted sm:top-[5%]",
     detail
       ? "text-[13px] leading-none sm:text-[18px]"
       : "text-[13px] sm:text-[15px]",
   );
   const imageRowClassName = cn(
     "absolute inset-x-0 flex items-start justify-between gap-[3%]",
-    detail ? "top-[11%]" : "top-[13%]",
+    detail
+      ? "top-[14%] sm:top-[13%] lg:top-[11%]"
+      : "top-[14%] lg:top-[13%]",
   );
 
   return (

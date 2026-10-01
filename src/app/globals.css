@@ -44,6 +44,14 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+.carousel-track {
+  scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
 ::selection {
   background-color: #18181b;
   color: #fafaf9;

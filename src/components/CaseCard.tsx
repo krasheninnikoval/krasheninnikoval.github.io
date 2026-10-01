@@ -91,12 +91,12 @@ export function CaseCard({
           {study.cardTitle ?? study.title}
         </h3>
 
-        <p className="mt-2.5 max-w-[72ch] text-[15px] leading-relaxed text-muted sm:text-base">
+        <p className="mt-2.5 max-w-[72ch] text-[14px] leading-[19.6px] text-ink/75 lg:text-base lg:leading-relaxed lg:text-muted">
           {study.cardSummary}
         </p>
 
         {showResults && study.cardResult ? (
-          <p className="mt-5 text-pretty text-[14px] leading-relaxed text-ink/75 sm:text-[15px]">
+          <p className="mt-5 text-pretty text-[14px] leading-[19.6px] text-ink/75 lg:text-[15px] lg:leading-relaxed">
             {study.cardResult}
           </p>
         ) : null}
