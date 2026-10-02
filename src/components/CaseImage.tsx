@@ -8,12 +8,14 @@ export function CaseImage({
   className,
   priority,
   backdrop = false,
+  flat = false,
 }: {
   image: ImageRef;
   sizes: string;
   className?: string;
   priority?: boolean;
   backdrop?: boolean;
+  flat?: boolean;
 }) {
   return (
     <figure className={className}>
@@ -36,8 +38,10 @@ export function CaseImage({
           priority={priority}
           className={cn(
             "h-auto w-full",
+            backdrop && "rounded-media",
             backdrop &&
-              "rounded-media shadow-[0_12px_40px_rgba(24,24,27,0.16)]",
+              !flat &&
+              "shadow-[0_12px_40px_rgba(24,24,27,0.16)]",
           )}
         />
 

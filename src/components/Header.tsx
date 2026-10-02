@@ -26,7 +26,24 @@ export function Header({ variant = "page" }: { variant?: "home" | "page" }) {
   useEffect(() => {
     if (variant !== "home") return;
     if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-    if (!window.location.hash) window.scrollTo(0, 0);
+
+    const { hash, pathname, search } = window.location;
+    if (hash.startsWith("#case-")) {
+      const target = document.getElementById(hash.slice(1));
+      if (!target) return;
+
+      const frame = window.requestAnimationFrame(() => {
+        target.scrollIntoView({ block: "start" });
+        window.history.replaceState(
+          window.history.state,
+          "",
+          `${pathname}${search}`,
+        );
+      });
+      return () => window.cancelAnimationFrame(frame);
+    }
+
+    if (!hash) window.scrollTo(0, 0);
   }, [variant]);
 
   useEffect(() => {

@@ -59,7 +59,8 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
             {/* Шапка кейса */}
             <header className="mx-auto w-full max-w-[1040px]">
               <Link
-                href="/#cases"
+                href={`/#case-${study.slug}`}
+                scroll={false}
                 className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink"
               >
                 <ArrowLeftIcon width={16} height={16} />
@@ -152,6 +153,7 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
                 image={study.cover}
                 priority
                 backdrop
+                flat={study.coverFlat}
                 className="mx-auto mt-14 w-full max-w-[1040px] sm:mt-16"
                 sizes="(max-width: 1100px) 100vw, 1040px"
               />

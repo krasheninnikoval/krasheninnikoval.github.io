@@ -16,11 +16,25 @@ const prose =
 export const caseList =
   "space-y-3 pl-5 text-[14px] leading-[19.6px] text-ink/80 marker:text-muted lg:text-[17px] lg:leading-[1.7] lg:text-ink/85";
 
+function InlineText({ text }: { text: string }) {
+  return text.split(/(\*\*[^*]+\*\*)/g).map((part, index) =>
+    part.startsWith("**") && part.endsWith("**") ? (
+      <strong key={`${part}-${index}`} className="font-medium text-ink">
+        {part.slice(2, -2)}
+      </strong>
+    ) : (
+      part
+    ),
+  );
+}
+
 function Paragraphs({ items }: { items: string[] }) {
   return (
     <div className={prose}>
       {items.map((text) => (
-        <p key={text.slice(0, 32)}>{text}</p>
+        <p key={text.slice(0, 32)}>
+          <InlineText text={text} />
+        </p>
       ))}
     </div>
   );
@@ -32,7 +46,11 @@ function Block({ block }: { block: CaseBlock }) {
       return (
         <div className={reading}>
           {block.heading ? (
-            <h2 className={cn(caseHeading, "mb-5")}>{block.heading}</h2>
+            block.sub ? (
+              <h3 className={cn(subheading, "mb-4")}>{block.heading}</h3>
+            ) : (
+              <h2 className={cn(caseHeading, "mb-5")}>{block.heading}</h2>
+            )
           ) : null}
           {block.placeholder ? (
             <p className="text-center text-[17px] leading-relaxed text-muted">
@@ -90,6 +108,16 @@ function Block({ block }: { block: CaseBlock }) {
       );
     }
 
+    case "imagePlaceholder":
+      return (
+        <figure className={block.wide ? wide : reading}>
+          <div aria-hidden className="aspect-[16/10] w-full rounded-card bg-stage" />
+          <figcaption className="mt-3 text-sm leading-relaxed text-muted">
+            {block.caption}
+          </figcaption>
+        </figure>
+      );
+
     case "gallery":
       return (
         <div className={wide}>
@@ -142,7 +170,9 @@ function Block({ block }: { block: CaseBlock }) {
           {block.paragraphs ? (
             <div className={cn(prose, "mb-5")}>
               {block.paragraphs.map((text) => (
-                <p key={text.slice(0, 32)}>{text}</p>
+                <p key={text.slice(0, 32)}>
+                  <InlineText text={text} />
+                </p>
               ))}
             </div>
           ) : null}
@@ -156,8 +186,17 @@ function Block({ block }: { block: CaseBlock }) {
                 </li>
               ) : (
                 <li key={item.term} className="pl-1">
-                  <span className="font-medium text-ink">{item.term}.</span>{" "}
-                  {item.text}
+                  <span className="font-medium text-ink">{item.term}.</span>
+                  {item.text ? <> {item.text}</> : null}
+                  {item.items?.length ? (
+                    <ul className="mt-3 list-disc space-y-3 pl-5 marker:text-muted">
+                      {item.items.map((nestedItem) => (
+                        <li key={nestedItem.slice(0, 32)} className="pl-1">
+                          {nestedItem}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
                 </li>
               ),
             )}

@@ -39,7 +39,25 @@ function ProjectMedia({ media }: { media: NonNullable<Project["media"]> }) {
     );
   }
   if (media.notice) {
-    return null;
+    return (
+      <div className="relative min-w-0 overflow-hidden rounded-card bg-stage p-6">
+        {/* Сохраняем высоту подложки на уровне трёх экранов Финама,
+            но не выводим материалы проекта под NDA. */}
+        <div
+          aria-hidden
+          className="invisible grid min-w-0 max-w-full grid-cols-3 gap-4"
+        >
+          {[0, 1, 2].map((item) => (
+            <span key={item} className="aspect-[784/1692] w-full" />
+          ))}
+        </div>
+        <div className="absolute inset-0 flex items-center justify-center p-12">
+          <p className="max-w-[38ch] text-center text-base leading-relaxed text-muted">
+            {media.notice}
+          </p>
+        </div>
+      </div>
+    );
   }
   if (!media.images?.length) return null;
   if (media.presentation === "screens") {
@@ -154,7 +172,10 @@ function ProjectRow({
          Без кейса описание занимает всю ширину. */}
       {/* Одинаковая раскладка у всех проектов: описание на пяти колонках,
          справа кейс или картинки. Если их пока нет — место остаётся пустым. */}
-      <div className="grid gap-y-6 lg:grid-cols-12 lg:items-start lg:gap-x-8 lg:gap-y-0">
+      <div
+        id={study ? `case-${study.slug}` : undefined}
+        className="grid scroll-mt-4 gap-y-6 lg:grid-cols-12 lg:items-start lg:gap-x-8 lg:gap-y-0"
+      >
         <div className="lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:pr-8">
           <h3 className="text-[28px] font-medium leading-tight tracking-[-0.02em] text-balance sm:text-[34px]">
             {project.title}
@@ -164,8 +185,13 @@ function ProjectRow({
 
         {/* Проект без кейса — только картинки, без рамки карточки и без
            ссылки: они не должны читаться как кейс */}
-        {!study && project.media && !project.media.notice ? (
-          <div className="min-w-0 lg:col-span-7 lg:col-start-6 lg:row-span-2 lg:row-start-1">
+        {!study && project.media ? (
+          <div
+            className={cn(
+              "min-w-0 lg:col-span-7 lg:col-start-6 lg:row-span-2 lg:row-start-1",
+              project.media.notice && "hidden lg:block",
+            )}
+          >
             <ProjectMedia media={project.media} />
           </div>
         ) : null}

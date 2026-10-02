@@ -57,6 +57,9 @@ export function CaseCard({
                       "rounded-media",
                       wide ? "p-5 sm:p-10 lg:p-12" : "p-4 sm:p-6",
                     ),
+                edgeToEdge &&
+                  study.cardPreviewInset &&
+                  "flex items-center p-4 sm:p-6 lg:p-8",
               )}
             >
               <Image
@@ -67,7 +70,12 @@ export function CaseCard({
                 sizes={sizes}
                 className={cn(
                   edgeToEdge
-                    ? "h-full w-full object-cover"
+                    ? cn(
+                        "h-full w-full",
+                        study.cardPreviewInset
+                          ? "h-auto rounded-media object-contain"
+                          : "object-cover",
+                      )
                     : "h-auto w-full rounded-media shadow-[0_1px_2px_rgba(24,24,27,0.05),0_10px_24px_rgba(24,24,27,0.08)]",
                 )}
               />

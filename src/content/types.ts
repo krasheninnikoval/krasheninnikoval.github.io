@@ -25,7 +25,9 @@ export interface Metric {
 
 /** Блоки, из которых собирается тело кейса. Порядок и состав — любые. */
 /** Пункт списка: обычная строка или «выделенное начало + пояснение». */
-export type ListItem = string | { term: string; text: string };
+export type ListItem =
+  | string
+  | { term: string; text?: string; items?: string[] };
 
 export type CaseBlock =
   | {
@@ -47,6 +49,13 @@ export type CaseBlock =
       wide?: boolean;
     }
   | { type: "image"; heading?: string; image: ImageRef; wide?: boolean }
+  | {
+      type: "imagePlaceholder";
+      caption: string;
+      wide?: boolean;
+      /** Заглушка относится к предыдущему текстовому разделу. */
+      sub?: boolean;
+    }
   | { type: "gallery"; heading?: string; images: ImageRef[] }
   | { type: "carousel"; images: ImageRef[]; wide?: boolean }
   | {
@@ -100,10 +109,14 @@ export interface CaseStudy {
   preview: ImageRef;
   /** Обычное превью занимает всю ширину карточки как эталонная обложка. */
   cardPreviewEdgeToEdge?: boolean;
+  /** Превью размещается с воздухом внутри подложки, не заполняя её целиком. */
+  cardPreviewInset?: boolean;
   /** Вместо временной картинки карточка показывает ровную подложку stage. */
   cardPreviewPlaceholder?: boolean;
   /** Широкая обложка в шапке страницы кейса (необязательно) */
   cover?: ImageRef;
+  /** Изображение лежит на подложке без собственной тени и скругления. */
+  coverFlat?: boolean;
   /**
    * Обложка-композиция: фотография контекста и экран интерфейса поверх неё.
    * Если задана, используется вместо cover и вместо превью на карточке.
