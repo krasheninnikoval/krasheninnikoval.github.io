@@ -2,6 +2,7 @@ import type { CaseBlock } from "@/content/types";
 import { cn } from "@/lib/cn";
 import { CaseCarousel } from "./CaseCarousel";
 import { CaseImage } from "./CaseImage";
+import { CaseImagePair } from "./CaseImagePair";
 import { MetricRow } from "./Metrics";
 
 const reading = "mx-auto w-full max-w-reading";
@@ -93,6 +94,10 @@ function Block({ block }: { block: CaseBlock }) {
             image={block.image}
             className={block.wide ? wide : reading}
             sizes={imageSizes}
+            backdrop={block.backdrop}
+            flat={block.flat}
+            captionInsideBackdrop={block.captionInsideBackdrop}
+            captionPosition={block.captionPosition}
           />
         );
       }
@@ -103,7 +108,14 @@ function Block({ block }: { block: CaseBlock }) {
           <h2 className={cn(caseHeading, "mx-auto mb-6 w-full max-w-reading")}>
             {block.heading}
           </h2>
-          <CaseImage image={block.image} sizes={imageSizes} />
+          <CaseImage
+            image={block.image}
+            sizes={imageSizes}
+            backdrop={block.backdrop}
+            flat={block.flat}
+            captionInsideBackdrop={block.captionInsideBackdrop}
+            captionPosition={block.captionPosition}
+          />
         </div>
       );
     }
@@ -120,6 +132,14 @@ function Block({ block }: { block: CaseBlock }) {
             {block.caption}
           </figcaption>
         </figure>
+      );
+
+    case "imagePair":
+      return (
+        <CaseImagePair
+          images={block.images}
+          className={block.wide ? wide : reading}
+        />
       );
 
     case "gallery":

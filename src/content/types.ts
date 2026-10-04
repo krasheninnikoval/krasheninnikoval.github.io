@@ -15,6 +15,8 @@ export interface ImageRef {
   overlayLabels?: { text: string; left: number; top: number }[];
   /** Подпись под картинкой (необязательно) */
   caption?: string;
+  /** Небольшой заголовок внутри подписи (необязательно) */
+  captionTitle?: string;
 }
 
 /** Показатель результата: крупная цифра + подпись под ней. */
@@ -48,12 +50,34 @@ export type CaseBlock =
       /** true — картинка шире колонки текста */
       wide?: boolean;
     }
-  | { type: "image"; heading?: string; image: ImageRef; wide?: boolean }
+  | {
+      type: "image";
+      heading?: string;
+      image: ImageRef;
+      wide?: boolean;
+      /** Изображение относится к предыдущему текстовому разделу. */
+      sub?: boolean;
+      /** Серая подложка с внутренними отступами вокруг изображения. */
+      backdrop?: boolean;
+      /** Убирает тень у изображения внутри подложки. */
+      flat?: boolean;
+      /** Подпись остаётся внутри общей серой подложки. */
+      captionInsideBackdrop?: boolean;
+      /** Расположение подписи внутри подложки. */
+      captionPosition?: "below" | "left";
+    }
   | {
       type: "imagePlaceholder";
       caption: string;
       wide?: boolean;
       /** Заглушка относится к предыдущему текстовому разделу. */
+      sub?: boolean;
+    }
+  | {
+      type: "imagePair";
+      images: [ImageRef, ImageRef];
+      wide?: boolean;
+      /** Пара изображений относится к предыдущему текстовому разделу. */
       sub?: boolean;
     }
   | { type: "gallery"; heading?: string; images: ImageRef[] }
