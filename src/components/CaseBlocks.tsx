@@ -110,9 +110,13 @@ function Block({ block }: { block: CaseBlock }) {
 
     case "imagePlaceholder":
       return (
-        <figure className={block.wide ? wide : reading}>
-          <div aria-hidden className="aspect-[16/10] w-full rounded-card bg-stage" />
-          <figcaption className="mt-3 text-sm leading-relaxed text-muted">
+        <figure
+          className={cn(
+            block.wide ? wide : reading,
+            "flex aspect-[16/10] items-center justify-center rounded-card bg-stage p-6 sm:p-12",
+          )}
+        >
+          <figcaption className="max-w-[38ch] text-center text-base leading-relaxed text-muted">
             {block.caption}
           </figcaption>
         </figure>
