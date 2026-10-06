@@ -174,7 +174,7 @@ function ProjectRow({
          справа кейс или картинки. Если их пока нет — место остаётся пустым. */}
       <div
         id={study ? `case-${study.slug}` : undefined}
-        className="grid scroll-mt-4 gap-y-6 lg:grid-cols-12 lg:items-start lg:gap-x-8 lg:gap-y-0"
+        className="grid scroll-mt-4 gap-y-6 lg:grid-cols-12 lg:grid-rows-[auto_1fr] lg:items-start lg:gap-x-8 lg:gap-y-0"
       >
         <div className="lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:pr-8">
           <h3 className="text-[28px] font-medium leading-tight tracking-[-0.02em] text-balance sm:text-[34px]">
