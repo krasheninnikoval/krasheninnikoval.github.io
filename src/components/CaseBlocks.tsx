@@ -99,6 +99,7 @@ function Block({ block }: { block: CaseBlock }) {
             flat={block.flat}
             extraBottomSpace={block.extraBottomSpace}
             captionInsideBackdrop={block.captionInsideBackdrop}
+            fullWidthInsideBackdrop={block.fullWidthInsideBackdrop}
             captionPosition={block.captionPosition}
           />
         );
@@ -117,6 +118,7 @@ function Block({ block }: { block: CaseBlock }) {
             flat={block.flat}
             extraBottomSpace={block.extraBottomSpace}
             captionInsideBackdrop={block.captionInsideBackdrop}
+            fullWidthInsideBackdrop={block.fullWidthInsideBackdrop}
             captionPosition={block.captionPosition}
           />
         </div>

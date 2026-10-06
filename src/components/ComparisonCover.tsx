@@ -21,20 +21,39 @@ export function ComparisonCover({
 }) {
   const [beforeHome, beforeMenu] = comparison.before;
   const [afterHome, afterMenu] = comparison.after;
-  const labelClassName = cn(
-    "absolute left-0 top-[4%] font-medium text-muted sm:top-[5%]",
-    detail
-      ? "text-[13px] leading-none sm:text-[18px]"
-      : "text-[13px] sm:text-[15px]",
-  );
-  const imageRowClassName = cn(
-    "absolute inset-x-0 flex items-start justify-between gap-[3%]",
-    detail
-      ? "top-[14%] sm:top-[13%] lg:top-[11%]"
-      : "top-[14%] lg:top-[13%]",
+  const cardLabelClassName =
+    "absolute left-0 top-[4%] text-[13px] font-medium text-muted sm:top-[5%] sm:text-[15px]";
+  const cardImageRowClassName =
+    "absolute inset-x-0 top-[14%] flex items-start justify-between gap-[3%] lg:top-[13%]";
+
+  const imageRow = (
+    home: typeof beforeHome,
+    menu: typeof beforeMenu,
+    rowClassName: string,
+  ) => (
+    <div className={rowClassName}>
+      <Image
+        src={home.src}
+        alt={home.alt}
+        width={home.width}
+        height={home.height}
+        sizes={sizes}
+        priority={priority}
+        className="h-auto min-w-0 flex-1"
+      />
+      <Image
+        src={menu.src}
+        alt={menu.alt}
+        width={menu.width}
+        height={menu.height}
+        sizes={sizes}
+        priority={priority}
+        className="h-auto min-w-0 flex-1"
+      />
+    </div>
   );
 
-  return (
+  const comparisonContent = (
     <div
       className={cn(
         "relative aspect-[5/3] w-full overflow-hidden bg-stage",
@@ -42,52 +61,48 @@ export function ComparisonCover({
       )}
     >
       <div className="absolute inset-y-0 left-[3%] w-[45.5%]">
-        <p className={labelClassName}>Было</p>
-        <div className={imageRowClassName}>
-          <Image
-            src={beforeHome.src}
-            alt={beforeHome.alt}
-            width={beforeHome.width}
-            height={beforeHome.height}
-            sizes={sizes}
-            priority={priority}
-            className="h-auto min-w-0 flex-1"
-          />
-          <Image
-            src={beforeMenu.src}
-            alt={beforeMenu.alt}
-            width={beforeMenu.width}
-            height={beforeMenu.height}
-            sizes={sizes}
-            priority={priority}
-            className="h-auto min-w-0 flex-1"
-          />
-        </div>
+        <p className={cardLabelClassName}>Было</p>
+        {imageRow(beforeHome, beforeMenu, cardImageRowClassName)}
       </div>
 
       <div className="absolute inset-y-0 right-[3%] w-[45.5%]">
-        <p className={labelClassName}>Стало</p>
-        <div className={imageRowClassName}>
-          <Image
-            src={afterHome.src}
-            alt={afterHome.alt}
-            width={afterHome.width}
-            height={afterHome.height}
-            sizes={sizes}
-            priority={priority}
-            className="h-auto min-w-0 flex-1"
-          />
-          <Image
-            src={afterMenu.src}
-            alt={afterMenu.alt}
-            width={afterMenu.width}
-            height={afterMenu.height}
-            sizes={sizes}
-            priority={priority}
-            className="h-auto min-w-0 flex-1"
-          />
-        </div>
+        <p className={cardLabelClassName}>Стало</p>
+        {imageRow(afterHome, afterMenu, cardImageRowClassName)}
       </div>
     </div>
+  );
+
+  if (!detail) return comparisonContent;
+
+  return (
+    <figure className={cn(className, "overflow-hidden rounded-card bg-stage")}>
+      <div className="mx-4 grid grid-cols-[48.5%_48.5%] justify-between pt-4 sm:mx-8 sm:pt-8 lg:mx-12 lg:pt-12">
+        <div>
+          <p className="text-[13px] font-medium leading-[18px] text-ink sm:text-[15px] sm:leading-relaxed">
+            Было
+          </p>
+          <div className="mt-4 aspect-[0.95] overflow-hidden sm:mt-5">
+            {imageRow(
+              beforeHome,
+              beforeMenu,
+              "flex items-start justify-between gap-[3%]",
+            )}
+          </div>
+        </div>
+
+        <div>
+          <p className="text-[13px] font-medium leading-[18px] text-ink sm:text-[15px] sm:leading-relaxed">
+            Стало
+          </p>
+          <div className="mt-4 aspect-[0.95] overflow-hidden sm:mt-5">
+            {imageRow(
+              afterHome,
+              afterMenu,
+              "flex items-start justify-between gap-[3%]",
+            )}
+          </div>
+        </div>
+      </div>
+    </figure>
   );
 }

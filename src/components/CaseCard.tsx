@@ -104,9 +104,17 @@ export function CaseCard({
         </p>
 
         {showResults && study.cardResult ? (
-          <p className="mt-5 text-pretty text-[14px] leading-[19.6px] text-ink/75 lg:text-[15px] lg:leading-relaxed">
-            {study.cardResult}
-          </p>
+          <div className="mt-5 flex items-start gap-2">
+            <span
+              aria-hidden
+              className="shrink-0 text-[14px] leading-[19.6px] text-ink lg:text-[15px] lg:leading-relaxed"
+            >
+              →
+            </span>
+            <p className="min-w-0 whitespace-pre-line text-pretty text-[14px] font-medium leading-[19.6px] text-ink/75 lg:text-[15px] lg:leading-relaxed">
+              {study.cardResult}
+            </p>
+          </div>
         ) : null}
 
         {showResults && !study.cardResult ? (

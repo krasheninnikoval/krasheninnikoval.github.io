@@ -114,33 +114,64 @@ export function CaseCarousel({
           aria-label="Слайды карусели"
         >
           {images.map((image, index) => {
+            const hasCaption = Boolean(image.captionTitle || image.caption);
             return (
-              <div
+              <figure
                 key={image.src}
                 data-carousel-slide={index}
                 className={cn(
                   "w-[85%] min-w-[85%] shrink-0 snap-always snap-center first:snap-start last:snap-end lg:w-full lg:min-w-full lg:snap-start",
                   variant === "stage"
-                    ? "aspect-[5/3] overflow-hidden rounded-card border border-line bg-stage"
+                    ? hasCaption
+                      ? "flex flex-col overflow-hidden rounded-card bg-stage"
+                      : "aspect-[5/3] overflow-hidden rounded-card border border-line bg-stage"
                     : "flex items-start justify-start",
                 )}
                 role="group"
                 aria-roledescription="slide"
                 aria-label={`${index + 1} из ${images.length}`}
               >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  width={image.width}
-                  height={image.height}
-                  sizes={sizes}
+                {hasCaption ? (
+                  <figcaption className="mb-3 px-4 pt-4 text-ink sm:mb-4 sm:px-8 sm:pt-8 lg:px-12 lg:pt-12">
+                    {image.captionTitle ? (
+                      <span
+                        className={cn(
+                          "block text-[13px] font-medium leading-[18px] sm:text-[15px] sm:leading-relaxed",
+                          image.caption && "mb-1.5",
+                        )}
+                      >
+                        {image.captionTitle}
+                      </span>
+                    ) : null}
+                    {image.caption ? (
+                      <span className="block text-[12px] font-normal leading-4 text-muted sm:text-sm sm:leading-relaxed">
+                        {image.caption}
+                      </span>
+                    ) : null}
+                  </figcaption>
+                ) : null}
+
+                <div
                   className={cn(
-                    variant === "stage"
-                      ? "h-full w-full object-contain"
-                      : "h-auto w-full",
+                    hasCaption && variant === "stage"
+                      ? "mt-auto aspect-[5/3] overflow-hidden rounded-media"
+                      : "h-full w-full",
                   )}
-                />
-              </div>
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={image.width}
+                    height={image.height}
+                    sizes={sizes}
+                    className={cn(
+                      variant === "stage"
+                        ? "h-full w-full object-contain"
+                        : "h-auto w-full",
+                    )}
+                  />
+                </div>
+              </figure>
             );
           })}
         </div>

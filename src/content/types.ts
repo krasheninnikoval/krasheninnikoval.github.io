@@ -19,6 +19,8 @@ export interface ImageRef {
   captionTitle?: string;
   /** Не добавлять скругление сайта поверх формы исходного изображения. */
   preserveSourceCorners?: boolean;
+  /** Пустые поля внутри файла, скрываемые при выводе для выравнивания полезного контента по сетке. */
+  horizontalCrop?: { left: number; right: number };
 }
 
 /** Показатель результата: крупная цифра + подпись под ней. */
@@ -67,6 +69,8 @@ export type CaseBlock =
       extraBottomSpace?: boolean;
       /** Подпись остаётся внутри общей серой подложки. */
       captionInsideBackdrop?: boolean;
+      /** Изображение сохраняет полную ширину подложки, отступы добавляются только подписи сверху. */
+      fullWidthInsideBackdrop?: boolean;
       /** Расположение подписи внутри подложки. */
       captionPosition?: "below" | "left" | "above";
     }
@@ -125,6 +129,8 @@ export interface CoverPair {
 export interface CoverComparison {
   before: [ImageRef, ImageRef];
   after: [ImageRef, ImageRef];
+  /** Заголовок обложки на подробной странице кейса. */
+  captionTitle?: string;
 }
 
 export interface CaseStudy {
