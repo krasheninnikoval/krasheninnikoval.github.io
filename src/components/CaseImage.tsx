@@ -9,6 +9,7 @@ export function CaseImage({
   priority,
   backdrop = false,
   flat = false,
+  extraBottomSpace = false,
   captionInsideBackdrop = false,
   captionPosition = "below",
 }: {
@@ -18,31 +19,54 @@ export function CaseImage({
   priority?: boolean;
   backdrop?: boolean;
   flat?: boolean;
+  extraBottomSpace?: boolean;
   captionInsideBackdrop?: boolean;
-  captionPosition?: "below" | "left";
+  captionPosition?: "below" | "left" | "above";
 }) {
+  const hasCaption = Boolean(image.captionTitle || image.caption);
   const sideCaption =
     backdrop &&
     captionInsideBackdrop &&
     captionPosition === "left" &&
-    Boolean(image.caption);
-  const caption = image.caption ? (
+    hasCaption;
+  const aboveCaption =
+    backdrop &&
+    captionInsideBackdrop &&
+    captionPosition === "above" &&
+    hasCaption;
+  const caption = hasCaption ? (
     <figcaption
       className={cn(
-        "text-muted",
+        aboveCaption ? "text-ink" : "text-muted",
         sideCaption
           ? "mt-0 min-w-0 self-start text-[12px] leading-4 sm:mt-6 sm:text-sm sm:leading-relaxed lg:mt-8"
-          : captionInsideBackdrop
+          : aboveCaption
+            ? "mb-4 sm:mb-5"
+            : captionInsideBackdrop
             ? "mt-4 text-sm leading-relaxed"
             : "mt-3 text-sm leading-relaxed",
       )}
     >
       {image.captionTitle ? (
-        <span className="mb-1.5 block text-[13px] font-medium leading-[18px] text-ink sm:text-[15px] sm:leading-relaxed">
+        <span
+          className={cn(
+            "block text-[13px] font-medium leading-[18px] text-ink sm:text-[15px] sm:leading-relaxed",
+            image.caption && "mb-1.5",
+          )}
+        >
           {image.captionTitle}
         </span>
       ) : null}
-      <span>{image.caption}</span>
+      {image.caption ? (
+        <span
+          className={cn(
+            aboveCaption &&
+              "block text-[12px] font-normal leading-4 text-muted sm:text-sm sm:leading-relaxed",
+          )}
+        >
+          {image.caption}
+        </span>
+      ) : null}
     </figcaption>
   ) : null;
 
@@ -57,13 +81,15 @@ export function CaseImage({
           "grid grid-cols-[minmax(0,1fr)_minmax(0,1.8fr)] items-start gap-3 sm:grid-cols-[minmax(0,0.65fr)_minmax(0,2.35fr)] sm:gap-6 lg:gap-10",
       )}
     >
-      {sideCaption ? caption : null}
+      {sideCaption || aboveCaption ? caption : null}
 
       <div
         className={cn(
           "relative w-full overflow-hidden rounded-card",
           backdrop && !captionInsideBackdrop
-            ? "bg-stage p-4 sm:p-8 lg:p-12"
+            ? extraBottomSpace
+              ? "bg-stage px-4 pt-4 pb-8 sm:px-8 sm:pt-8 sm:pb-12 lg:px-12 lg:pt-12 lg:pb-16"
+              : "bg-stage p-4 sm:p-8 lg:p-12"
             : !backdrop && "rounded-media border border-line bg-chip",
           Boolean(image.overlayLabels?.length) &&
             "bg-stage pt-[1.6%] sm:pt-[1.15%] lg:bg-chip lg:pt-0",
@@ -101,7 +127,7 @@ export function CaseImage({
         ))}
       </div>
 
-      {!sideCaption ? caption : null}
+      {!sideCaption && !aboveCaption ? caption : null}
     </figure>
   );
 }

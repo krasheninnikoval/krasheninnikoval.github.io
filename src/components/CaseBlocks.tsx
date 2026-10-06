@@ -1,6 +1,7 @@
 import type { CaseBlock } from "@/content/types";
 import { cn } from "@/lib/cn";
 import { CaseCarousel } from "./CaseCarousel";
+import { CaseImageGroup } from "./CaseImageGroup";
 import { CaseImage } from "./CaseImage";
 import { CaseImagePair } from "./CaseImagePair";
 import { MetricRow } from "./Metrics";
@@ -96,6 +97,7 @@ function Block({ block }: { block: CaseBlock }) {
             sizes={imageSizes}
             backdrop={block.backdrop}
             flat={block.flat}
+            extraBottomSpace={block.extraBottomSpace}
             captionInsideBackdrop={block.captionInsideBackdrop}
             captionPosition={block.captionPosition}
           />
@@ -113,6 +115,7 @@ function Block({ block }: { block: CaseBlock }) {
             sizes={imageSizes}
             backdrop={block.backdrop}
             flat={block.flat}
+            extraBottomSpace={block.extraBottomSpace}
             captionInsideBackdrop={block.captionInsideBackdrop}
             captionPosition={block.captionPosition}
           />
@@ -137,6 +140,16 @@ function Block({ block }: { block: CaseBlock }) {
     case "imagePair":
       return (
         <CaseImagePair
+          images={block.images}
+          layout={block.layout}
+          className={block.wide ? wide : reading}
+        />
+      );
+
+    case "imageGroup":
+      return (
+        <CaseImageGroup
+          heading={block.heading}
           images={block.images}
           className={block.wide ? wide : reading}
         />
@@ -210,7 +223,10 @@ function Block({ block }: { block: CaseBlock }) {
                 </li>
               ) : (
                 <li key={item.term} className="pl-1">
-                  <span className="font-medium text-ink">{item.term}.</span>
+                  <span className="font-medium text-ink">
+                    {item.term}
+                    {/[.:!?]$/.test(item.term) ? "" : "."}
+                  </span>
                   {item.text ? <> {item.text}</> : null}
                   {item.items?.length ? (
                     <ul className="mt-3 list-disc space-y-3 pl-5 marker:text-muted">

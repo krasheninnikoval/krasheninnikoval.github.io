@@ -49,6 +49,7 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
 
   const { study, project } = found;
   const others = getOtherCases(slug);
+  const HighlightsList = study.highlightsOrdered ? "ol" : "ul";
 
   return (
     <>
@@ -110,17 +111,24 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
               <div>
                 <h2 className={cn(caseHeading, "mb-5")}>Результаты</h2>
                 {study.highlights?.length ? (
-                  /* Как остальные списки кейса, но без нумерации */
-                  <ul className="space-y-3 text-[14px] leading-[19.6px] text-ink/80 lg:text-[17px] lg:leading-[1.7] lg:text-ink/85">
+                  <HighlightsList
+                    className={cn(
+                      "space-y-3 text-[14px] leading-[19.6px] text-ink/80 lg:text-[17px] lg:leading-[1.7] lg:text-ink/85",
+                      study.highlightsOrdered
+                        ? "list-decimal pl-5 marker:text-muted"
+                        : "list-none",
+                    )}
+                  >
                     {study.highlights.map((item) => (
                       <li key={item.title}>
                         <span className="font-medium text-ink">
-                          {item.title}.
+                          {item.title}
+                          {/[.:!?]$/.test(item.title) ? "" : "."}
                         </span>{" "}
                         {item.text}
                       </li>
                     ))}
-                  </ul>
+                  </HighlightsList>
                 ) : study.results.length > 0 ? (
                   <MetricRow items={study.results} plain narrow />
                 ) : (

@@ -17,6 +17,8 @@ export interface ImageRef {
   caption?: string;
   /** Небольшой заголовок внутри подписи (необязательно) */
   captionTitle?: string;
+  /** Не добавлять скругление сайта поверх формы исходного изображения. */
+  preserveSourceCorners?: boolean;
 }
 
 /** Показатель результата: крупная цифра + подпись под ней. */
@@ -61,10 +63,12 @@ export type CaseBlock =
       backdrop?: boolean;
       /** Убирает тень у изображения внутри подложки. */
       flat?: boolean;
+      /** Добавляет изображению немного больше воздуха снизу внутри подложки. */
+      extraBottomSpace?: boolean;
       /** Подпись остаётся внутри общей серой подложки. */
       captionInsideBackdrop?: boolean;
       /** Расположение подписи внутри подложки. */
-      captionPosition?: "below" | "left";
+      captionPosition?: "below" | "left" | "above";
     }
   | {
       type: "imagePlaceholder";
@@ -77,7 +81,17 @@ export type CaseBlock =
       type: "imagePair";
       images: [ImageRef, ImageRef];
       wide?: boolean;
+      /** Расположение двух изображений: рядом или друг под другом. */
+      layout?: "columns" | "stack";
       /** Пара изображений относится к предыдущему текстовому разделу. */
+      sub?: boolean;
+    }
+  | {
+      type: "imageGroup";
+      heading: string;
+      images: ImageRef[];
+      wide?: boolean;
+      /** Группа изображений относится к предыдущему текстовому разделу. */
       sub?: boolean;
     }
   | { type: "gallery"; heading?: string; images: ImageRef[] }
@@ -161,6 +175,8 @@ export interface CaseStudy {
   results: Metric[];
   /** Краткие итоги: крупная часть и пояснение под ней */
   highlights?: { title: string; text?: string }[];
+  /** Краткие итоги выводятся нумерованным списком. */
+  highlightsOrdered?: boolean;
   /** Абзацы-вступление между шапкой и обложкой — необязательно */
   lead?: string[];
   blocks: CaseBlock[];

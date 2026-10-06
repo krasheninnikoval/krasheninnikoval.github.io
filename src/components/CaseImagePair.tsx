@@ -5,31 +5,52 @@ import { cn } from "@/lib/cn";
 export function CaseImagePair({
   images,
   className,
+  layout = "columns",
 }: {
   images: [ImageRef, ImageRef];
   className?: string;
+  layout?: "columns" | "stack";
 }) {
+  const stacked = layout === "stack";
+
   return (
     <div
       className={cn(
         className,
-        "grid gap-8 rounded-card bg-stage p-4 sm:grid-cols-2 sm:gap-8 sm:p-8 lg:gap-10 lg:p-12",
+        "grid rounded-card bg-stage p-4 sm:p-8 lg:p-12",
+        stacked
+          ? "gap-8 sm:gap-10 lg:gap-12"
+          : "gap-8 sm:grid-cols-2 sm:gap-8 lg:gap-10",
       )}
     >
       {images.map((image, index) => (
         <figure key={image.src} className="flex min-w-0 flex-col">
-          <div className="flex h-[320px] items-start justify-center sm:h-[420px] lg:h-[480px]">
+          <div
+            className={cn(
+              "flex items-start justify-center",
+              !stacked && "h-[320px] sm:h-[420px] lg:h-[480px]",
+            )}
+          >
             <Image
               src={image.src}
               alt={image.alt}
               width={image.width}
               height={image.height}
-              sizes="(max-width: 639px) calc(100vw - 72px), (max-width: 1100px) 45vw, 456px"
+              sizes={
+                stacked
+                  ? "(max-width: 1100px) calc(100vw - 72px), 944px"
+                  : "(max-width: 639px) calc(100vw - 72px), (max-width: 1100px) 45vw, 456px"
+              }
               className={cn(
-                "w-auto max-w-full rounded-media object-contain",
-                index === 0
-                  ? "h-[320px] sm:h-[420px] lg:h-[480px]"
-                  : "h-[181px] sm:h-[237px] lg:h-[271px]",
+                "max-w-full rounded-media object-contain",
+                stacked
+                  ? "h-auto w-full"
+                  : cn(
+                      "w-auto",
+                      index === 0
+                        ? "h-[320px] sm:h-[420px] lg:h-[480px]"
+                        : "h-[181px] sm:h-[237px] lg:h-[271px]",
+                    ),
               )}
             />
           </div>
