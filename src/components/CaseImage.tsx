@@ -82,9 +82,12 @@ export function CaseImage({
         className,
         backdrop &&
           captionInsideBackdrop &&
-          (fullWidthInsideBackdrop
-            ? "overflow-hidden rounded-card bg-stage"
-            : "rounded-card bg-stage p-4 sm:p-8 lg:p-12"),
+          cn(
+            fullWidthInsideBackdrop
+              ? "overflow-hidden bg-stage"
+              : "bg-stage p-4 sm:p-8 lg:p-12",
+            !image.preserveSourceCorners && "rounded-card",
+          ),
         sideCaption &&
           "grid grid-cols-[minmax(0,1fr)_minmax(0,1.8fr)] items-start gap-3 sm:grid-cols-[minmax(0,0.65fr)_minmax(0,2.35fr)] sm:gap-6 lg:gap-10",
       )}
@@ -93,7 +96,8 @@ export function CaseImage({
 
       <div
         className={cn(
-          "relative overflow-hidden rounded-card",
+          "relative overflow-hidden",
+          !image.preserveSourceCorners && "rounded-card",
           fullWidthInsideBackdrop && horizontalCrop
             ? "mx-4 w-auto sm:mx-8 lg:mx-12 lg:aspect-(--crop-aspect)"
             : "w-full",
@@ -101,9 +105,13 @@ export function CaseImage({
             ? extraBottomSpace
               ? "bg-stage px-4 pt-4 pb-8 sm:px-8 sm:pt-8 sm:pb-12 lg:px-12 lg:pt-12 lg:pb-16"
               : "bg-stage p-4 sm:p-8 lg:p-12"
-            : !backdrop && "rounded-media border border-line bg-chip",
+            : !backdrop &&
+              cn(
+                "border border-line bg-chip",
+                !image.preserveSourceCorners && "rounded-media",
+              ),
           Boolean(image.overlayLabels?.length) &&
-            "bg-stage pt-[1.6%] sm:pt-[1.15%] lg:bg-chip lg:pt-0",
+            "bg-stage pt-4 sm:pt-5 lg:bg-chip lg:pt-0",
         )}
         style={
           horizontalCrop
@@ -126,7 +134,9 @@ export function CaseImage({
             horizontalCrop
               ? "relative h-auto w-full lg:absolute lg:top-0 lg:left-(--crop-left) lg:w-(--crop-width) lg:max-w-none"
               : "h-auto w-full",
-            backdrop && "rounded-media",
+            backdrop &&
+              !image.preserveSourceCorners &&
+              "rounded-media",
             backdrop &&
               !flat &&
               "shadow-[0_12px_40px_rgba(24,24,27,0.16)]",

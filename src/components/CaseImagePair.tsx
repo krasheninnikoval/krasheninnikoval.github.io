@@ -12,12 +12,16 @@ export function CaseImagePair({
   layout?: "columns" | "stack";
 }) {
   const stacked = layout === "stack";
+  const preserveSourceCorners = images.every(
+    (image) => image.preserveSourceCorners,
+  );
 
   return (
     <div
       className={cn(
         className,
-        "grid rounded-card bg-stage p-4 sm:p-8 lg:p-12",
+        "grid bg-stage p-4 sm:p-8 lg:p-12",
+        !preserveSourceCorners && "rounded-card",
         stacked
           ? "gap-8 sm:gap-10 lg:gap-12"
           : "gap-8 sm:grid-cols-2 sm:gap-8 lg:gap-10",
@@ -42,7 +46,8 @@ export function CaseImagePair({
                   : "(max-width: 639px) calc(100vw - 72px), (max-width: 1100px) 45vw, 456px"
               }
               className={cn(
-                "max-w-full rounded-media object-contain",
+                "max-w-full object-contain",
+                !image.preserveSourceCorners && "rounded-media",
                 stacked
                   ? "h-auto w-full"
                   : cn(

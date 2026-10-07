@@ -13,8 +13,18 @@ export function CaseImageGroup({
   compactMobile?: boolean;
   className?: string;
 }) {
+  const preserveSourceCorners = images.every(
+    (image) => image.preserveSourceCorners,
+  );
+
   return (
-    <section className={cn(className, "rounded-card bg-stage p-4 sm:p-8 lg:p-12")}>
+    <section
+      className={cn(
+        className,
+        "bg-stage p-4 sm:p-8 lg:p-12",
+        !preserveSourceCorners && "rounded-card",
+      )}
+    >
       <h4 className="mb-6 text-[15px] font-medium leading-snug text-ink sm:mb-8 sm:text-[17px]">
         {heading}
       </h4>

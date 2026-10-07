@@ -23,6 +23,7 @@ export const lowcode: CaseStudy = {
     alt: "Интерфейс графического маппинга с панелью функций и связанными блоками данных",
     width: 3585,
     height: 2080,
+    preserveSourceCorners: true,
   },
   coverFlat: true,
   meta: {
@@ -107,6 +108,7 @@ export const lowcode: CaseStudy = {
         alt: "Старое меню функций графического маппинга без группировки и поиска",
         width: 3840,
         height: 2160,
+        preserveSourceCorners: true,
         captionTitle: "Исходное меню",
         caption: "Все функции располагались единым списком без группировки и поиска",
       },
@@ -134,6 +136,7 @@ export const lowcode: CaseStudy = {
           alt: "Вариант группировки функций с аккордеоном внутри основного меню",
           width: 846,
           height: 1840,
+          preserveSourceCorners: true,
           captionTitle: "Аккордеон",
           caption:
             "Группы раскрывались внутри существующего меню, список снова разрастался и появлялся скролл",
@@ -143,6 +146,7 @@ export const lowcode: CaseStudy = {
           alt: "Выбранный вариант группировки функций с дополнительным меню",
           width: 1400,
           height: 1040,
+          preserveSourceCorners: true,
           captionTitle: "Дополнительное меню · Выбрано",
           caption:
             "При выборе группы рядом открывался отдельный список функций, группы и функции больше не конкурировали за место в одном меню",
@@ -165,6 +169,7 @@ export const lowcode: CaseStudy = {
         alt: "Итоговое меню функций графического маппинга с группировкой и поиском",
         width: 3840,
         height: 2160,
+        preserveSourceCorners: true,
         captionTitle: "Итоговое решение",
       },
       wide: true,
@@ -189,6 +194,7 @@ export const lowcode: CaseStudy = {
         alt: "Сценарии взаимодействия с меню функций: перенос блока, поиск, открытие и закрытие меню",
         width: 3032,
         height: 1752,
+        preserveSourceCorners: true,
         captionTitle: "Проработка сценариев использования",
       },
       wide: true,
@@ -227,6 +233,7 @@ export const lowcode: CaseStudy = {
         alt: "Варианты подсказок о назначении функции, параметрах и типах данных в блоке графического маппинга",
         width: 2768,
         height: 1504,
+        preserveSourceCorners: true,
       },
       wide: true,
       sub: true,
@@ -251,6 +258,7 @@ export const lowcode: CaseStudy = {
           alt: "Развёрнутый объект с отображением вложенных параметров и связей",
           width: 2326,
           height: 900,
+          preserveSourceCorners: true,
           captionTitle: "Объект развёрнут",
           caption: "Все вложенные параметры и связи отображаются",
         },
@@ -259,6 +267,7 @@ export const lowcode: CaseStudy = {
           alt: "Свёрнутый объект с пунктирными связями от скрытых вложенных параметров",
           width: 2326,
           height: 900,
+          preserveSourceCorners: true,
           captionTitle: "Объект свёрнут",
           caption:
             "Параметры скрыты, связи с вложенными параметрами отображаются пунктиром, а подсказка объясняет их происхождение",
@@ -286,6 +295,7 @@ export const lowcode: CaseStudy = {
           alt: "Исходное состояние блока «Условие» с параметром без определённого типа данных",
           width: 618,
           height: 300,
+          preserveSourceCorners: true,
           captionTitle: "До",
           caption:
             "По умолчанию добавлялся параметр без определённого типа данных",
@@ -305,6 +315,7 @@ export const lowcode: CaseStudy = {
           alt: "Блок «Условие» после настройки с параметрами и обозначениями типов данных",
           width: 614,
           height: 672,
+          preserveSourceCorners: true,
           captionTitle: "После настройки",
           caption:
             "В блоке отображаются добавленные параметры и тип данных после настройки связей",
