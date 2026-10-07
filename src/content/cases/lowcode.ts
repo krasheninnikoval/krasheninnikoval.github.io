@@ -311,6 +311,7 @@ export const lowcode: CaseStudy = {
         },
       ],
       wide: true,
+      compactMobile: true,
       sub: true,
     },
     {

@@ -153,6 +153,7 @@ function Block({ block }: { block: CaseBlock }) {
         <CaseImageGroup
           heading={block.heading}
           images={block.images}
+          compactMobile={block.compactMobile}
           className={block.wide ? wide : reading}
         />
       );

@@ -95,6 +95,8 @@ export type CaseBlock =
       heading: string;
       images: ImageRef[];
       wide?: boolean;
+      /** На адаптиве изображения выводятся в половину своей обычной ширины. */
+      compactMobile?: boolean;
       /** Группа изображений относится к предыдущему текстовому разделу. */
       sub?: boolean;
     }

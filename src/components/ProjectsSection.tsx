@@ -165,7 +165,7 @@ function ProjectRow({
     <Reveal
       as="li"
       className={cn(
-        divided && "border-t border-line pt-10 first:border-t-0 first:pt-0 sm:pt-12",
+        divided && "pt-10 first:pt-0 sm:pt-12",
       )}
     >
       {/* У проекта с кейсом — описание слева, карточка справа.
@@ -238,7 +238,7 @@ function ProjectRow({
             <TagList tags={project.tags} />
           </div>
 
-          {/* Без кейса и без выноса — результаты идут под тэгами */}
+          {/* Без кейса и без выноса — результаты идут под тегами. */}
           {!project.resultsAside && !study ? (
             <MetricRow
               items={project.results}

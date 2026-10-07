@@ -102,7 +102,6 @@ export const projects: Project[] = [
     tags: ["B2C", "Fintech", "Веб", "Адаптив", "Telegram Mini App"],
     results: [
       { value: "≈2 мин", label: "среднее время сессии в разделе" },
-      { value: "70–80%", label: "глубина просмотра страницы" },
       { value: "5–7%", label: "переходов на целевые страницы" },
     ],
     cases: [],
