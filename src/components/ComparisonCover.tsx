@@ -76,16 +76,16 @@ export function ComparisonCover({
 
   return (
     <figure className={cn(className, "overflow-hidden rounded-card bg-stage")}>
-      <div className="mx-4 grid grid-cols-[48.5%_48.5%] justify-between pt-4 sm:mx-8 sm:pt-8 lg:mx-12 lg:pt-12">
+      <div className="mx-4 grid grid-cols-[48.5%_48.5%] justify-between py-4 sm:mx-8 sm:py-8 lg:mx-12 lg:py-12">
         <div>
           <p className="text-[13px] font-medium leading-[18px] text-ink sm:text-[15px] sm:leading-relaxed">
             Было
           </p>
-          <div className="mt-4 aspect-[0.95] overflow-hidden sm:mt-5">
+          <div className="relative mt-4 aspect-[0.95] sm:mt-5">
             {imageRow(
               beforeHome,
               beforeMenu,
-              "flex items-start justify-between gap-[3%]",
+              "absolute inset-x-0 top-0 flex items-start justify-between gap-[3%]",
             )}
           </div>
         </div>
