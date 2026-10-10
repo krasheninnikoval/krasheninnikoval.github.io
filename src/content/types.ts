@@ -209,6 +209,12 @@ export interface Project {
   description: string | string[];
   /** Что сделала — нумерованным списком под описанием */
   descriptionList?: string[];
+  /** Тематические подразделы описания со своим текстом и списком задач. */
+  descriptionSections?: {
+    heading: string;
+    text: string | string[];
+    list?: string[];
+  }[];
   /** Иллюстрации рядом с описанием — для проектов без кейса */
   media?: {
     /** Композиция из двух картинок с нахлёстом, как на обложке кейса */

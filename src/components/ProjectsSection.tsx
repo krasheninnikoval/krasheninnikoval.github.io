@@ -117,10 +117,12 @@ function ProjectMedia({ media }: { media: NonNullable<Project["media"]> }) {
 function ProjectDescription({
   text,
   list,
+  sections,
   className,
 }: {
   text: string | string[];
   list?: string[];
+  sections?: NonNullable<Project["descriptionSections"]>;
   className?: string;
 }) {
   const paragraphs = Array.isArray(text) ? text : [text];
@@ -143,6 +145,34 @@ function ProjectDescription({
           ))}
         </ol>
       ) : null}
+      {sections?.map((section) => {
+        const sectionParagraphs = Array.isArray(section.text)
+          ? section.text
+          : [section.text];
+
+        return (
+          <section key={section.heading} className="space-y-4 pt-2">
+            <div>
+              <h4 className="inline font-medium text-ink">
+                {section.heading}.
+              </h4>{" "}
+              <p className="inline">{sectionParagraphs[0]}</p>
+            </div>
+            {sectionParagraphs.slice(1).map((paragraph) => (
+              <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+            ))}
+            {section.list?.length ? (
+              <ol className="list-decimal space-y-3 pl-5 marker:text-muted">
+                {section.list.map((item) => (
+                  <li key={item.slice(0, 32)} className="pl-1">
+                    {item}
+                  </li>
+                ))}
+              </ol>
+            ) : null}
+          </section>
+        );
+      })}
     </div>
   );
 }
@@ -214,6 +244,7 @@ function ProjectRow({
               <ProjectDescription
                 text={project.description}
                 list={project.descriptionList}
+                sections={project.descriptionSections}
               />
               <MetricRow items={results} plain narrow />
             </div>
@@ -229,6 +260,7 @@ function ProjectRow({
               <ProjectDescription
                 text={project.description}
                 list={project.descriptionList}
+                sections={project.descriptionSections}
                 className={study ? "mt-2" : "lg:mt-5"}
               />
             </>
